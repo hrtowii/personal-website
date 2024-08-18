@@ -1,0 +1,8 @@
+.album_art {
+    border-radius: 12px;
+}
+
+.music_card {
+    display: flex;
+    flex-direction: column;
+}
