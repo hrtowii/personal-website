@@ -3,7 +3,6 @@ import {useLanyard, type Data} from 'use-lanyard';
 import './MusicCard.css'
 
 function MusicTitle(data: any) {
-	console.log(data.data)
 	if (data.data != null && data.data.spotify != null) {
 		return ( 
 			<p>Currently listening to {data?.data.spotify.song}</p>
@@ -33,7 +32,10 @@ export default function MusicCard() {
 
 	return ( 
 	<div className="music_card">
-		<img className="album_art" height={125} width={125} src={data?.spotify?.album_art_url || ''}></img>
+		<div className="image_wrapper">
+		<img className="album_art_glow" height={125} width={125} src={data?.spotify?.album_art_url || '/placeholder_album_art.png'}></img>
+		<img className="album_art" height={125} width={125} src={data?.spotify?.album_art_url || '/placeholder_album_art.png'}></img>
+		</div>
 		<MusicTitle data={data}/>
 	</div> );
 }

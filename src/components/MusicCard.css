@@ -1,5 +1,10 @@
-.album_art {
+.album_art, .album_art_glow {
     border-radius: 12px;
+    position:absolute;
+}
+
+.album_art_glow {
+    filter: blur(30px) saturate(5);
 }
 
 .music_card {
