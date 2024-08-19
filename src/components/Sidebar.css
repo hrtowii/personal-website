@@ -1,0 +1,74 @@
+.pfp, .pfp_glow {
+    position: absolute;
+    border-radius: 12px;
+    /* border-radius: 2rem+12px; */
+    border: 0.8px #94a3b8 solid;
+}
+
+.pfp_wrapper {
+    height: 125px;
+    width: 125px;
+}
+
+.pfp_glow {
+    opacity: 0.5;
+    filter: blur(12px) saturate(6);
+}
+
+.intro_text {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    max-width: 50%;
+    margin-left: 1.5rem;
+}
+
+.intro_text span {
+    font-size: 1.5rem;
+}
+
+.intro_text p {
+    font-size: 0.9rem;
+    margin-bottom: 0px;
+}
+
+@media (prefers-color-scheme: light) {
+    .my_name {
+        color: rgb(var(--accent-dark));
+        font-weight: 600;
+    }
+    .navsocial i, .navsocial span {
+        color: rgb(var(--accent-dark));
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .my_name {
+        color: rgb(var(--accent-light));
+        font-weight: 600;
+    }
+    .navsocial i {
+        font-size: 1.3rem;
+        color: rgb(var(--accent-light));
+    }
+}
+
+.navsocial {
+    overflow: hidden;
+    background-color: var(--card-background);
+    border-radius: 2rem+10px;
+    width: 90%;
+}
+
+.navsocial a {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+  
+.navsocial :not(a) {
+    padding-right: 0px;
+}

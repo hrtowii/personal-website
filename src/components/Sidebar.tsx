@@ -1,0 +1,38 @@
+import React, {useEffect, useState} from 'react';
+// import {useLanyard, type Data} from 'use-lanyard';
+import './Sidebar.css'
+import MusicCard from './MusicCard';
+
+export default function Sidebar() {
+    // const DISCORD_ID = '413331641109446656';
+	// const {data} = useLanyard(DISCORD_ID);
+    // const [avatarLink, setAvatarLink] = useState("");
+    // useEffect(() => {
+    //     setAvatarLink(`https://cdn.discordapp.com/avatars/${DISCORD_ID}/${data?.discord_user.avatar}.png?size=512`)
+    // }, [data])
+    return (
+        <div id="sidebar">
+            <div className="intro">
+                <div className='pfp_wrapper'>
+                    <img className="pfp_glow" height={125} width={125} src={"https://cdn.discordapp.com/avatars/413331641109446656/6c32c98d780aec6085e07cfc3d53446c.png?size=512"}/>
+                    <img className="pfp" height={125} width={125} src={"https://cdn.discordapp.com/avatars/413331641109446656/6c32c98d780aec6085e07cfc3d53446c.png?size=512"}/>
+                </div>
+                <div className="intro_text">
+                    <span>Hi, I'm <span className='my_name'>Lucas</span></span>
+                    <p>A coder living in Singapore. Currently studying IT at Nanyang Polytechnic.</p>
+                </div>
+            </div>
+            {/* <p>If you want to chat, feel free to reach out to me on <span>Twitter</span>. You can also email me at me@hrtowii.dev</p>
+            <div className='contact_me'>
+                <h2 style={{fontWeight: '400'}}>Contact Me</h2>
+                <div className="navsocial">
+                    <a href="https://instagram.com/htrowii"><i className="fab fa-instagram"></i><span>Instagram</span></a>
+                    <a href="https://t.me/htrowii"><i className="fab fa-telegram"></i><span>Telegram</span></a>
+                    <a href="https://github.com/hrtowii"><i className="fab fa-github"></i><span>GitHub</span></a>
+                    <a href="mailto:leonghongkit@gmail.com"><i className="fa-solid fa-envelope"></i><span>Email me</span></a>
+                </div>
+            </div> */}
+            {/* <MusicCard/> */}
+        </div>
+    )
+}

@@ -1,8 +1,5 @@
 .album_art, .album_art_glow {
     position: absolute;
-}
-
-.album_art_position, .album_art, .album_art_glow {
     border-radius: 12px;
 }
 
@@ -12,46 +9,18 @@
 }
 
 .album_art_glow {
-    filter: blur(25px) saturate(3);
+    filter: blur(12px) saturate(3);
+    opacity: 0.6;
 }
 
 .music_card {
-    width: 150px;
+    width: 160px;
     padding: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: var(--card-background);
     border-radius: 10px+2rem;
-}
-
-.radio_logo {
-    min-width: 30px;
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    margin: 0.5rem; 
-    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 300ms; 
-    fill: currentColor; 
-    color: #62DBBE;
-    width: 30px;
-    height: 30px;
-
-
-    @media (min-width: 768px) { 
-        margin: 1.25rem; 
-    }
-    @media (min-width: 1024px) { 
-        width: 60px;
-        height: 60px;
-    }
-
-
-    :hover {
-        transform: rotate(40deg);
-    }
 }
 
 .music_card_top_left {

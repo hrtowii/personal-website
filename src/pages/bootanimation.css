@@ -1,0 +1,34 @@
+#checkra1n-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.image-container {
+    position: relative;
+    width: 814px; 
+    height: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;1
+}
+
+.checkra1n {
+    position: absolute;
+    top: 30%;
+    left: 0%;
+    width: 100%;
+    height: 80%;
+    object-fit: cover;
+}
+
+.svg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: invert(1);
+    mix-blend-mode: difference; /* Invert intersection */
+}

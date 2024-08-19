@@ -1,11 +1,23 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+// import Card from '../components/Card.astro';
 import MusicCard from '../components/MusicCard'
+import Sidebar from '../components/Sidebar'
+import './index.css'
 ---
 
 <Layout title="htrowii's website">
-	<main>
-		<MusicCard client:load/>
+	<main class="grid-container">
+		<div id="sidebar">
+			<Sidebar client:load/>
+		</div>
+		<div class="main-content">
+			<div class="tophalf">
+				<MusicCard client:load/>
+			</div>
+			<div class="bottomhalf">
+				<!-- <p>asdasdasd</p> -->
+			</div>
+		</div>
 	</main>
 </Layout>
