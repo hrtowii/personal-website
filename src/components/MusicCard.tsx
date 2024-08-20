@@ -10,7 +10,10 @@ interface MusicData {
 
 function MusicTitle(title: any) {
 	return ( 
-		<p style={{marginBottom: 0, overflow: 'hidden'}}>{title.title}</p>
+		<>
+		<p style={{margin: 0}}>{title.title}</p>
+		<p style={{margin: 0, fontSize: "0.8rem", opacity: 0.8}}>{title.artist}</p>
+		</>
 	)
 }
 
@@ -42,17 +45,17 @@ export default function MusicCard() {
 	}, [oldMusic])
 	return ( 
 	<div className="music_card">
-		<div className="music_card_top_left">
+		{/* <div className="music_card_top_left">
 			<p style={{marginTop: 0}}>currently listening</p>
-		</div>
+		</div> */}
 		
 		<div className="image_wrapper">
-			<img className="album_art_glow" height={150} width={150} src={oldMusic?.art_url || '/placeholder_album_art.png'}></img>
-			<img className="album_art" height={150} width={150} src={oldMusic?.art_url || '/placeholder_album_art.png'}></img>
+			<img className="album_art_glow" height={125} width={125} src={oldMusic?.art_url || '/placeholder_album_art.png'}></img>
+			<img className="album_art" height={125} width={125} src={oldMusic?.art_url || '/placeholder_album_art.png'}></img>
 		</div>
 
 		<div className='music_card_end'>
-			<MusicTitle title={oldMusic?.title || ""}/>
+			<MusicTitle title={oldMusic?.title || ""} artist={oldMusic?.artist}/>
 		</div>
 
 	</div> );

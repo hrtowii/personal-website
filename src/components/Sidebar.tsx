@@ -12,6 +12,7 @@ export default function Sidebar() {
     // }, [data])
     return (
         <div id="sidebar">
+            <div className="sidebar-top">
             <div className="intro">
                 <div className='pfp_wrapper'>
                     <img className="pfp_glow" height={125} width={125} src={"https://cdn.discordapp.com/avatars/413331641109446656/6c32c98d780aec6085e07cfc3d53446c.png?size=512"}/>
@@ -33,7 +34,10 @@ export default function Sidebar() {
                     <a href="mailto:leonghongkit@gmail.com"><i className="fa-solid fa-envelope"></i><span>Email me</span></a>
                 </div>
             </div> */}
-            {/* <MusicCard/> */}
+            </div>
+            <div className="sidebar-bottom">
+                <MusicCard/>
+            </div>
         </div>
     )
 }

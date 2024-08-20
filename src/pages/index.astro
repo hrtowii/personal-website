@@ -2,37 +2,38 @@
 import Layout from '../layouts/Layout.astro';
 import MusicCard from '../components/MusicCard'
 import BlogCard from '../components/BlogCard';
+import SkillsCard from '../components/SkillsCard'
 import Sidebar from '../components/Sidebar'
 import './index.css'
 ---
 
 <Layout title="htrowii's website">
 	<main class="grid-container">
-		<div id="sidebar">
+		<div id="sidebar-wrapper">
 			<Sidebar client:load/>
 		</div>
 		<div class="main-content">
 			<div class="tophalf">
-				<div class="item" style="grid-column: span 1; grid-row: span 1; border-radius: 5rem 5rem 4px 5rem;">
+				<div id="item1" class="item">
 					<!-- 1x1 -->
 				</div>
-				<div class="item" style="grid-column: span 2; grid-row: span 1; border-radius: 5rem 5rem 4px 4px;">2x1</div>
-				<div class="item" style="grid-column: span 1; grid-row: span 1; background-color: rgba(0,0,0,0);"><h3>Projects</h3></div>
-				<div class="item" style="grid-column: span 1; grid-row: span 1; border-radius: 5rem+4px;">1x1</div>
-				<!-- <div class="item" style="grid-column: span 1; grid-row: span 2;">1x2</div> -->
-				<MusicCard client:load/>
-				<div class="item" style="grid-column: span 2; grid-row: span 2; border-radius: 4px 4px 4px 5rem;">2x2</div>
-				<div class="item" style="grid-column: span 1; grid-row: span 2; border-top-left-radius: 5rem;">1x2</div>
-				<div class="item" style="grid-column: span 1; grid-row: span 1; border-radius: 4px 4px 5rem 5rem">1x1</div>
-				<div class="item" style="grid-column: span 1; grid-row: span 1; border-radius: 5rem;">1x1</div>
+				<div id="item2" class="item">2x1</div>
+				<div id="item3" class="item"><h3>Projects</h3></div>
+				<div id="item4" class="item">1x1</div>
+				<div id="item5" class="item">1x2</div>
+				<!-- <MusicCard client:load/>  -->
+				<!-- this is item5, style it properly later with media query type shit -->
+				<div id="item6" class="item">2x2</div>
+				<div id="item7" class="item">1x2</div>
+				<div id="item8" class="item">1x1</div>
+				<div id="item9" class="item">1x1</div>
 			</div>
 			<div class="bottomhalf">
 				<div class="one-third">
 					<BlogCard/>
 				</div>
 				<div class="two-thirds">
-					<BlogCard/>
-					<BlogCard/>
+					<SkillsCard/>
 				</div>
 			</div>
 		</div>

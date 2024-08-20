@@ -4,37 +4,30 @@
 }
 
 .image_wrapper {
-    height: 150px;
-    width: 150px;
+    height: 125px;
+    width: 125px;
 }
 
 .album_art_glow {
-    filter: blur(24px) saturate(3);
-    /* opacity: 0.6; */
+    filter: blur(12px) saturate(3);
+    opacity: 0.6;
 }
 
 .music_card {
     /* width: 160px; */
-    padding: 0rem;
+    padding: 1.5rem;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: var(--card-background);
     border-radius: 3.5rem+4px;
-    /* border-radius: 2.5rem 0 0 0; */
-    grid-column: span 1; grid-row: span 2;
-}
-
-.music_card_top_left {
-    /* width: 80%; */
-    /* margin-top: 20px; */
-    display: flex;
-    justify-content: end;
+    gap: 1.25rem;
+    border: 0.6px var(--card-border) solid;
 }
 
 .music_card_end {
-    width: 80%;
     display: flex;
-    justify-content: end;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
 }
