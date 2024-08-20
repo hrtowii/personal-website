@@ -72,3 +72,17 @@
 .navsocial :not(a) {
     padding-right: 0px;
 }
+
+.twitter {
+    color: #1DA1F2;
+    text-decoration: none;
+}
+
+.discord {
+    color: #7289DA;
+    text-decoration: none;
+}
+
+.email-me {
+    color: grey;
+}

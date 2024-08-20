@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
-// import Card from '../components/Card.astro';
 import MusicCard from '../components/MusicCard'
+import BlogCard from '../components/BlogCard';
 import Sidebar from '../components/Sidebar'
 import './index.css'
 ---
@@ -13,10 +13,27 @@ import './index.css'
 		</div>
 		<div class="main-content">
 			<div class="tophalf">
+				<div class="item" style="grid-column: span 1; grid-row: span 1; border-radius: 5rem 5rem 4px 5rem;">
+					<!-- 1x1 -->
+				</div>
+				<div class="item" style="grid-column: span 2; grid-row: span 1; border-radius: 5rem 5rem 4px 4px;">2x1</div>
+				<div class="item" style="grid-column: span 1; grid-row: span 1; background-color: rgba(0,0,0,0);"><h3>Projects</h3></div>
+				<div class="item" style="grid-column: span 1; grid-row: span 1; border-radius: 5rem+4px;">1x1</div>
+				<!-- <div class="item" style="grid-column: span 1; grid-row: span 2;">1x2</div> -->
 				<MusicCard client:load/>
+				<div class="item" style="grid-column: span 2; grid-row: span 2; border-radius: 4px 4px 4px 5rem;">2x2</div>
+				<div class="item" style="grid-column: span 1; grid-row: span 2; border-top-left-radius: 5rem;">1x2</div>
+				<div class="item" style="grid-column: span 1; grid-row: span 1; border-radius: 4px 4px 5rem 5rem">1x1</div>
+				<div class="item" style="grid-column: span 1; grid-row: span 1; border-radius: 5rem;">1x1</div>
 			</div>
 			<div class="bottomhalf">
-				<!-- <p>asdasdasd</p> -->
+				<div class="one-third">
+					<BlogCard/>
+				</div>
+				<div class="two-thirds">
+					<BlogCard/>
+					<BlogCard/>
+				</div>
 			</div>
 		</div>
 	</main>

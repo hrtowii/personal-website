@@ -19,11 +19,12 @@ export default function Sidebar() {
                 </div>
                 <div className="intro_text">
                     <span>Hi, I'm <span className='my_name'>Lucas</span></span>
-                    <p>A coder living in Singapore. Currently studying IT at Nanyang Polytechnic.</p>
+                    <p>Currently studying IT at Nanyang Polytechnic</p>
+                    <p>Learning fullstack!</p>
                 </div>
             </div>
-            {/* <p>If you want to chat, feel free to reach out to me on <span>Twitter</span>. You can also email me at me@hrtowii.dev</p>
-            <div className='contact_me'>
+            <p>If you want to chat, feel free to reach out to me on <a className='twitter' href='https://twitter.com/hrtowii'><span className='twitter'>Twitter</span></a> and <a className='discord' href='https://discord.com/users/413331641109446656'><span className='discord'>Discord</span></a>. You can also <a className='email-me' href="mailto:me@hrtowii.dev"><span className='email-me'>email me at me@hrtowii.dev</span></a></p>
+            { /* <div className='contact_me'>
                 <h2 style={{fontWeight: '400'}}>Contact Me</h2>
                 <div className="navsocial">
                     <a href="https://instagram.com/htrowii"><i className="fab fa-instagram"></i><span>Instagram</span></a>

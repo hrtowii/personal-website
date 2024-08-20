@@ -1,0 +1,7 @@
+.blog-card {
+    background-color: var(--card-background);
+    padding-inline: 1rem;
+    border-radius: 10px+2rem;
+    height: 100%;
+    display: flex;
+}
