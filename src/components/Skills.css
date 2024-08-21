@@ -17,49 +17,93 @@
     justify-content: start;
     background-color: var(--card-background);
     border: 0.6px var(--card-border) solid;
+    gap:1px;
+}
+
+.skill-box > * {
+    margin-left: 1rem;
+}
+
+.skill-box p {
+    margin-block: 0px;
+}
+
+.skill-box > strong { /* scuffed but it's the skill title in each box*/
+    margin-block: 1rem;
 }
 
 .skill {
     display: flex;
-    gap: 1rem;
+    gap: 0.5rem;
     align-items: center;
 }
 
 .skill >.fa-brands {
-    font-size: 2rem;
+    font-size: 1.75rem;
+    width: 1.75rem;
+    height: 1.75rem;
 }
 
 #skill1 {
     grid-column: span 1;
     grid-row: span 1;
     border-radius: 5rem+4px;
-    color: #42A5F5;
 }
 
 #skill2 {
     grid-column: span 1;
     grid-row: span 1;
     border-radius: 5rem 4px 4px 5rem;
-    color: #fe9f48;
 }
 
 #skill3 {
     grid-column: span 2;
     grid-row: span 1;
     border-radius: 4px 5rem 5rem 4px;
-    color: #61dbfb;
 }
 
 #skill4 {
     grid-column: span 2;
     grid-row: span 1;
     border-radius: 4px 5rem 4px 5rem;
-    color: #f7df1e;
 }
 
 #skill5 {
     grid-column: span 2;
     grid-row: span 1;
     border-radius: 4px 4px 5rem 5rem;
+}
+
+.fa-github {
+    color: var(--foreground);
+}
+
+.fa-flutter {
+    color: #42A5F5;
+}
+
+.fa-js {
+    color: #f7df1e;
+}
+
+.fa-python {
     color: #4584b6;
+}
+
+.fa-react {
+    color: #61dbfb;
+}
+
+.fa-swift {
+   color: #f05138;
+}
+
+.fa-figma {
+    color: rgb(var(--accent-dark));
+}
+
+@media (prefers-color-scheme: dark) {
+    .fa-figma {
+        color: rgb(var(--accent-light));
+    }
 }

@@ -119,3 +119,11 @@
     flex-direction: column;
     gap: 1.35rem;
 }
+
+/* .accent-gradient {
+    background: linear-gradient(-45deg, #f4dbd6, #f0c6c6, #f5bde6, #c6a0f6, #ed8796, #ee99a0, #f5a97f) no-repeat fixed center;
+    background-size: 300% 300%;
+      animation: gradient 4s ease infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+} */
