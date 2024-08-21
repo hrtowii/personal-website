@@ -1,15 +1,3 @@
-#sidebar {
-    /* background-color: var(--card-background); */
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    padding-block: 1.5rem;
-    padding-inline: 1.5rem;
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
-    background-color: var(--sidebar);
-}
-
 #sidebar-wrapper {
     display: flex;
     border: 0.6px var(--card-border) solid;

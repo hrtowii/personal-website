@@ -14,7 +14,6 @@
 }
 
 .music_card {
-    /* width: 160px; */
     padding: 1.5rem;
     display: flex;
     align-items: center;
@@ -23,11 +22,13 @@
     border-radius: 3.5rem+4px;
     gap: 1.25rem;
     border: 0.6px var(--card-border) solid;
+    height: 70%;
 }
 
 .music_card_end {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     width: 50%;
     height: 100%;
 }

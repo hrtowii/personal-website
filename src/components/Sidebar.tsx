@@ -25,15 +25,7 @@ export default function Sidebar() {
                 </div>
             </div>
             <p>If you want to chat, feel free to reach out to me on <a className='twitter' href='https://twitter.com/hrtowii'><span className='twitter'>Twitter</span></a> and <a className='discord' href='https://discord.com/users/413331641109446656'><span className='discord'>Discord</span></a>. You can also <a className='email-me' href="mailto:me@hrtowii.dev"><span className='email-me'>email me at me@hrtowii.dev</span></a></p>
-            { /* <div className='contact_me'>
-                <h2 style={{fontWeight: '400'}}>Contact Me</h2>
-                <div className="navsocial">
-                    <a href="https://instagram.com/htrowii"><i className="fab fa-instagram"></i><span>Instagram</span></a>
-                    <a href="https://t.me/htrowii"><i className="fab fa-telegram"></i><span>Telegram</span></a>
-                    <a href="https://github.com/hrtowii"><i className="fab fa-github"></i><span>GitHub</span></a>
-                    <a href="mailto:leonghongkit@gmail.com"><i className="fa-solid fa-envelope"></i><span>Email me</span></a>
-                </div>
-            </div> */}
+            {/* <GitHubCalendar username="hrtowii" /> */}
             </div>
             <div className="sidebar-bottom">
                 <MusicCard/>
