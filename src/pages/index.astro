@@ -16,51 +16,51 @@ import './index.css'
 			<div class="tophalf">
 				<div id="item1" class="item">
 					<div class="item-content">
+						<h4>hnr2023</h4>
 					</div>
-					<!-- 1x1 -->
-				   </div>
-				   <div id="item2" class="item">
+				</div>
+				<div id="item2" class="item">
 					<div class="item-content">
-					 <h4>Coffier</h4>
+					 	<h4>Coffier</h4>
 					</div>
-				   </div>
-				   <div id="item3" class="transparentitem">
+				</div>
+				<div id="item3" class="transparentitem">
 					<div class="item-content">
-					 <h3>Projects</h3>
+					 	<h3>Projects</h3>
 					</div>
-				   </div>
-				   <div id="item4" class="item">
+				</div>
+				<div id="item4" class="item">
 					<div class="item-content">
+						<h4>Serotonin</h4>
 					</div>
-				   </div>
-				   <div id="item5" class="item">
+				</div>
+				<div id="item5" class="item">
 					<div class="item-content">
-					 1x2
+						<h4>KFDFontOverwrite</h4>
 					</div>
-				   </div>
-				   <!-- <MusicCard client:load/> -->
-				   <!-- this is item5, style it properly later with media query type shit -->
-				   <div id="item6" class="item">
+				</div>
+				<div id="item6" class="item">
 					<div class="item-content">
-					 <!-- 2x2 -->
-					 <h4>Serotonin</h4>
+						<!-- 2x2 -->
+						<h4>Serotonin</h4>
+							<div class="item-subtitle"></div>
 					</div>
-				   </div>
-				   <div id="item7" class="item">
+				</div>
+				<div id="item7" class="item">
 					<div class="item-content">
-					 1x2
+						<h4>Serotonin</h4>
 					</div>
-				   </div>
-				   <div id="item8" class="item">
+				</div>
+				<div id="item8" class="item">
 					<div class="item-content">
-					 1x1
+						<h4>Serotonin</h4>
 					</div>
-				   </div>
-				   <div id="item9" class="item">
+				</div>
+				<div id="item9" class="item">
 					<div class="item-content">
-					 1x1
+						<h4>Serotonin</h4>
 					</div>
-				   </div>
+				</div>
 			</div>
 			<div class="bottomhalf">
 				<div class="one-third">
@@ -73,6 +73,29 @@ import './index.css'
 		</div>
 	</main>
 </Layout>
+
+<script>
+	const subtitle = document.getElementsByClassName("item-subtitle")[0];
+
+const createWord = (text: string, index: number) => {
+  const word = document.createElement("span");
+  
+  word.innerHTML = `${text} `;
+  
+  word.classList.add("item-subtitle-word");
+  
+  word.style.transitionDelay = `${index * 40}ms`;
+  
+  return word;
+}
+
+const addWord = (text: string, index: number) => subtitle.appendChild(createWord(text, index));
+
+const createSubtitle = (text: string) => text.split(" ").map(addWord);
+
+createSubtitle("Semi-jailbreak for iOS 16-16.6.1");
+
+</script>
 
 <!-- <script>
 document.getElementById("cards")!.onmousemove = e => {
