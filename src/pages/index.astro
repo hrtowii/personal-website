@@ -15,18 +15,52 @@ import './index.css'
 		<div class="main-content">
 			<div class="tophalf">
 				<div id="item1" class="item">
+					<div class="item-content">
+					</div>
 					<!-- 1x1 -->
-				</div>
-				<div id="item2" class="item">2x1</div>
-				<div id="item3" class="item"><h3>Projects</h3></div>
-				<div id="item4" class="item"></div>
-				<div id="item5" class="item">1x2</div>
-				<!-- <MusicCard client:load/>  -->
-				<!-- this is item5, style it properly later with media query type shit -->
-				<div id="item6" class="item">2x2</div>
-				<div id="item7" class="item">1x2</div>
-				<div id="item8" class="item">1x1</div>
-				<div id="item9" class="item">1x1</div>
+				   </div>
+				   <div id="item2" class="item">
+					<div class="item-content">
+					 <h4>Coffier</h4>
+					</div>
+				   </div>
+				   <div id="item3" class="transparentitem">
+					<div class="item-content">
+					 <h3>Projects</h3>
+					</div>
+				   </div>
+				   <div id="item4" class="item">
+					<div class="item-content">
+					</div>
+				   </div>
+				   <div id="item5" class="item">
+					<div class="item-content">
+					 1x2
+					</div>
+				   </div>
+				   <!-- <MusicCard client:load/> -->
+				   <!-- this is item5, style it properly later with media query type shit -->
+				   <div id="item6" class="item">
+					<div class="item-content">
+					 <!-- 2x2 -->
+					 <h4>Serotonin</h4>
+					</div>
+				   </div>
+				   <div id="item7" class="item">
+					<div class="item-content">
+					 1x2
+					</div>
+				   </div>
+				   <div id="item8" class="item">
+					<div class="item-content">
+					 1x1
+					</div>
+				   </div>
+				   <div id="item9" class="item">
+					<div class="item-content">
+					 1x1
+					</div>
+				   </div>
 			</div>
 			<div class="bottomhalf">
 				<div class="one-third">
@@ -39,3 +73,15 @@ import './index.css'
 		</div>
 	</main>
 </Layout>
+
+<!-- <script>
+document.getElementById("cards")!.onmousemove = e => {
+  for(let card of document.getElementsByClassName("item") as HTMLCollectionOf<HTMLElement>) {
+    const rect = card.getBoundingClientRect(),
+          x = e.clientX - rect.left,
+          y = e.clientY - rect.top;
+    card.style.setProperty("--mouse-x", `${x}px`);
+    card.style.setProperty("--mouse-y", `${y}px`);
+  };
+}
+</script> -->

@@ -1,18 +1,47 @@
 import React, {useEffect, useState} from 'react';
-import {useLanyard, type Data} from 'use-lanyard';
+import {useLanyard} from 'use-lanyard';
 import './MusicCard.css'
 
 interface MusicData {
 	artist: string;
 	art_url: string;
 	title: string;
+	length: number;
+	elapsed: number;
 }
 
-function MusicTitle(title: any) {
+function msToMinSeconds(millis: number) {
+	var minutes = Math.floor(millis / 60000);
+	var seconds = Number(((millis % 60000) / 1000).toFixed(0));
+return seconds == 60
+	? minutes + 1 + ":00"
+	: minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+}
+
+function MusicTitle({title, artist, elapsed, length}: {title: string, artist: string, elapsed: number, length: number}) {
+	const progressPercentage = (elapsed / length) * 100;
 	return ( 
 		<>
-		<p style={{margin: 0}}>{title.title}</p>
-		<p style={{margin: 0, fontSize: "0.8rem", opacity: 0.8}}>{title.artist}</p>
+		<div className='title-artist'>
+			<p style={{margin: 0}}>{title}</p>
+			<p style={{margin: 0, fontSize: "0.8rem", opacity: 0.8}}>{artist}</p>
+		</div>
+		<div style={{ marginTop: '10px', width: '100%' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '5px', fontSize: '0.7rem' }}>
+          <span>{msToMinSeconds(elapsed)}</span>
+          <span>{msToMinSeconds(length)}</span>
+        </div>
+        <div style={{ width: '100%', height: '4px', backgroundColor: 'var(--foreground)', borderRadius: '1rem' }}>
+          <div
+            style={{
+              width: `${progressPercentage}%`,
+              height: '100%',
+              backgroundColor: 'rgb(var(--accent-light))',
+              borderRadius: '2px',
+            }}
+          />
+        </div>
+      </div>
 		</>
 	)
 }
@@ -29,11 +58,15 @@ export default function MusicCard() {
 				setOldMusic({
 					artist: "None",
 					art_url: '/placeholder_album_art.png',
-					title: "None"
+					title: "None",
+					length: 0,
+					elapsed: 0
 				})
 			}
 		} else {
-			let music_data: MusicData = {artist: data!.spotify!.artist, art_url: data!.spotify!.album_art_url!, title: data.spotify!.song}
+			let music_data: MusicData = {artist: data!.spotify!.artist, art_url: data!.spotify!.album_art_url!, title: data.spotify!.song, length: data.spotify.timestamps.end - data.spotify.timestamps.start, elapsed: new Date().getTime() - data.spotify.timestamps.start}
+			console.log("formatted song length:", msToMinSeconds(music_data.length));
+			console.log("formatted time elapsed:", msToMinSeconds(music_data.elapsed));
 			// console.log(music_data)
 			setOldMusic(music_data)
 			// console.log(oldMusic)
@@ -55,7 +88,7 @@ export default function MusicCard() {
 		</div>
 
 		<div className='music_card_end'>
-			<MusicTitle title={oldMusic?.title || ""} artist={oldMusic?.artist}/>
+			<MusicTitle title={oldMusic?.title || ""} artist={oldMusic?.artist || ""} elapsed={oldMusic?.elapsed || 0} length={oldMusic?.length || 100}/>
 		</div>
 
 	</div> );
