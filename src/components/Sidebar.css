@@ -3,12 +3,24 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    padding-block: 1.5rem;
-    padding-inline: 1.5rem;
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
     background-color: var(--sidebar);
     justify-content: space-between;
+    width: 100%;
+    height: 100vh;
+}
+
+@font-face{
+	font-family: 'MyWebFont';
+	src: url(ndot47.ttf); 
+}
+
+.bio {
+	filter: drop-shadow(0 0 6px rgba(105, 155, 255, 0.5));
+	font-family: MyWebFont;
+	font-size: 40px;
+	font-weight: 100;
+	margin-bottom: -.45em;
+	max-width: 700px;
 }
 
 .pfp, .pfp_glow {
@@ -26,45 +38,6 @@
 .pfp_glow {
     opacity: 0.5;
     filter: blur(12px) saturate(6);
-}
-
-.intro_text {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    justify-content: space-between;
-    max-width: 50%;
-    margin-left: 1.5rem;
-}
-
-.intro_text span {
-    font-size: 1.5rem;
-}
-
-.intro_text p {
-    font-size: 0.9rem;
-    margin-bottom: 0px;
-}
-
-@media (prefers-color-scheme: light) {
-    .my_name {
-        color: rgb(var(--accent-dark));
-        font-weight: 600;
-    }
-    .navsocial i, .navsocial span {
-        color: rgb(var(--accent-dark));
-    }
-}
-
-@media (prefers-color-scheme: dark) {
-    .my_name {
-        color: rgb(var(--accent-light));
-        font-weight: 600;
-    }
-    .navsocial i {
-        font-size: 1.3rem;
-        color: rgb(var(--accent-light));
-    }
 }
 
 .navsocial {
@@ -86,16 +59,9 @@
     padding-right: 0px;
 }
 
-.twitter {
-    color: #1DA1F2;
-    text-decoration: none;
-}
-
-.discord {
-    color: #7289DA;
-    text-decoration: none;
-}
-
-.email-me {
-    color: grey;
+.sidebar-bottom {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-end;
 }
