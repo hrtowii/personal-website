@@ -65,8 +65,8 @@ export default function MusicCard() {
 			}
 		} else {
 			let music_data: MusicData = {artist: data!.spotify!.artist, art_url: data!.spotify!.album_art_url!, title: data.spotify!.song, length: data.spotify.timestamps.end - data.spotify.timestamps.start, elapsed: new Date().getTime() - data.spotify.timestamps.start}
-			console.log("formatted song length:", msToMinSeconds(music_data.length));
-			console.log("formatted time elapsed:", msToMinSeconds(music_data.elapsed));
+			// console.log("formatted song length:", msToMinSeconds(music_data.length));
+			// console.log("formatted time elapsed:", msToMinSeconds(music_data.elapsed));
 			// console.log(music_data)
 			setOldMusic(music_data)
 			// console.log(oldMusic)

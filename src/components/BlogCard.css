@@ -5,4 +5,5 @@
     height: 100%;
     display: flex;
     border: 0.6px var(--card-border) solid;
+    z-index: 2;
 }

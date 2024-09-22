@@ -3,14 +3,14 @@ import Layout from '../layouts/Layout.astro';
 import MusicCard from '../components/MusicCard'
 import BlogCard from '../components/BlogCard';
 import SkillsCard from '../components/SkillsCard'
-import Sidebar from '../components/Sidebar'
+import Hero from '../components/Hero'
 import './index.css'
 ---
 
 <Layout title="htrowii's website">
 	<main class="grid-container">
-		<div id="sidebar-wrapper">
-			<Sidebar client:load/>
+		<div id="Hero-wrapper">
+			<Hero client:load/>
 		</div>
 		<div class="main-content">
 			<div class="tophalf">
@@ -97,18 +97,6 @@ const createSubtitle = (text: string) => text.split(" ").map(addWord);
 createSubtitle("Semi-jailbreak for iOS 16-16.6.1");
 
 </script>
-
-<!-- <script>
-document.getElementById("cards")!.onmousemove = e => {
-  for(let card of document.getElementsByClassName("item") as HTMLCollectionOf<HTMLElement>) {
-    const rect = card.getBoundingClientRect(),
-          x = e.clientX - rect.left,
-          y = e.clientY - rect.top;
-    card.style.setProperty("--mouse-x", `${x}px`);
-    card.style.setProperty("--mouse-y", `${y}px`);
-  };
-}
-</script> -->
 
 <script>
     async function get_data_for_repo(repo: string) {

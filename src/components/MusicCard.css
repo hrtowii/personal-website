@@ -1,11 +1,12 @@
 .album_art, .album_art_glow {
-    position: absolute;
     border-radius: 12px;
+    grid-row-start: 1;
+    grid-column-start: 1;
 }
 
 .image_wrapper {
-    height: 125px;
-    width: 125px;
+    display: grid;
+    grid-template-columns: 1fr;
 }
 
 .album_art_glow {
@@ -14,17 +15,23 @@
 }
 
 .music_card {
-    padding: 1.5rem;
+    padding: 1.2rem;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: var(--card-background);
-    border-radius: 3.5rem+4px;
-    gap: 1.25rem;
+    border-radius: 20px;
+    gap: 1rem;
     border: 0.6px var(--card-border) solid;
-    height: 70%;
+    height: 125px;
+    z-index: 2;
 }
 
+@media (max-width: 576px) {
+    .music_card {
+        /* width: 60vw; */
+    }
+}
 .music_card_end {
     display: flex;
     flex-direction: column;

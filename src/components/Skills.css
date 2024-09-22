@@ -1,16 +1,6 @@
-.skills {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    width: 100%;
-    height: 100%;
-    gap: 1.25rem;
-}
-
 .skill-box {
     height: 100%;
     width: 100%;
-    /* padding: 1.5rem; */
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -19,102 +9,48 @@
     border: 0.6px var(--card-border) solid;
     gap: 0.7rem;
     border-radius: 1.5rem;
-}
-
-.skill-box > * {
+  }
+  
+  .skill-box > * {
     margin-left: 1rem;
-}
-
-.skill-box p {
+  }
+  
+  .skill-box p {
     margin-block: 0px;
-}
-
-.skill-box > strong { /* scuffed but it's the skill title in each box*/
+  }
+  
+  .skill-box > strong {
     margin-top: 1rem;
-}
-
-.skill {
+  }
+  
+  .skill {
     display: flex;
     gap: 0.5rem;
-    align-items: center;;
+    align-items: center;
     height: 100%;
-    /* cursor: pointer; */
-}
-
-.skill >.fa-brands {
+    z-index: 2;
+  }
+  
+  .skill > .fa-brands {
     font-size: 1.75rem;
     width: 1.75rem;
     height: 1.75rem;
-}
-
-#skill1 {
-    grid-column: span 1;
-    grid-row: span 1;
-    /* border-radius: 4px+5rem; */
-}
-
-#skill2 {
-    grid-column: span 1;
-    grid-row: span 1;
-    /* border-radius: 4px 4px 4px 5rem; */
-}
-
-#skill3 {
-    grid-column: span 2;
-    grid-row: span 1;
-    /* border-radius: 4px 5rem 5rem 4px; */
-}
-
-#skill4 {
-    grid-column: span 2;
-    grid-row: span 1;
-    /* border-radius: 4px 5rem 4px 5rem; */
-}
-
-#skill5 {
-    grid-column: span 2;
-    grid-row: span 1;
-    /* border-radius: 4px 4px 5rem 5rem; */
-}
-
-.fa-github {
-    color: var(--foreground);
-}
-
-.fa-flutter {
-    color: #42A5F5;
-}
-
-.fa-js {
-    color: #f7df1e;
-}
-
-.fa-python {
-    color: #4584b6;
-}
-
-.fa-react {
-    color: #61dbfb;
-}
-
-.fa-swift {
-   color: #f05138;
-}
-
-.fa-figma {
-    color: rgb(var(--accent-dark));
-}
-
-.prisma {
-    filter: invert();
-}
-
-@media (prefers-color-scheme: dark) {
-    .fa-figma {
-        color: rgb(var(--accent-light));
-    }
-}
-
+  }
+  
+  .skills {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1.25rem;
+    width: 100%;
+  }
+  
+  #skill1 { grid-column: span 1; grid-row: span 1; }
+  #skill2 { grid-column: span 1; grid-row: span 1; }
+  #skill3 { grid-column: span 2; grid-row: span 1; }
+  #skill4 { grid-column: span 2; grid-row: span 1; }
+  #skill5 { grid-column: span 2; grid-row: span 1; }
+  
 .skillflex {
     display: flex;
     /* justify-content: space-between; */
@@ -129,3 +65,51 @@
     width: 50%;
     margin-bottom: 1rem;
 }
+
+  @media (max-width: 1199px) {
+    .skills {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: auto;
+    }
+  
+    #skill1, #skill2, #skill3, #skill4, #skill5 {
+      grid-column: span 1;
+      grid-row: auto;
+    }
+  
+    #skill3, #skill4, #skill5 {
+      grid-column: span 2;
+    }
+    .skillflex {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .skillleft, .skillright {
+        display: flex;
+        margin-bottom: 1rem;
+    }
+  }
+  @media (max-width: 767px) {
+    .skills {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  
+  .fa-github { color: var(--foreground); }
+  .fa-flutter { color: #42A5F5; }
+  .fa-js { color: #f7df1e; }
+  .fa-python { color: #4584b6; }
+  .fa-react { color: #61dbfb; }
+  .fa-swift { color: #f05138; }
+  .fa-figma { color: rgb(var(--accent-dark)); }
+  .prisma { filter: invert(); }
+  
+  @media (prefers-color-scheme: dark) {
+    .fa-figma {
+      color: rgb(var(--accent-light));
+    }
+  }

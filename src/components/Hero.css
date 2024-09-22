@@ -1,27 +1,50 @@
-#sidebar {
+#Hero {
     /* background-color: var(--card-background); */
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    background-color: var(--sidebar);
+    background-color: var(--Hero);
     justify-content: space-between;
     width: 100%;
     height: 100vh;
+    padding-inline: 2rem;
+    /* padding-block: 2rem; */
 }
 
 @font-face{
 	font-family: 'MyWebFont';
 	src: url(ndot47.ttf); 
 }
-
+/* copied from https://staturnz.com */
 .bio {
 	filter: drop-shadow(0 0 6px rgba(105, 155, 255, 0.5));
 	font-family: MyWebFont;
 	font-size: 40px;
 	font-weight: 100;
-	margin-bottom: -.45em;
 	max-width: 700px;
 }
+
+/* @media (max-width: 576px) {  }
+
+@media (max-width: 768px) {  }
+
+@media (max-width: 992px) {  }
+
+@media (max-width: 1200px) {  }
+
+@media (max-width: 1400px) {  } */
+
+@media (max-width: 576px) {
+	.bio {
+		font-size: 2rem;
+	}
+    .Hero-bottom {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 2rem;
+    }
+}
+
 
 .pfp, .pfp_glow {
     position: absolute;
@@ -59,9 +82,13 @@
     padding-right: 0px;
 }
 
-.sidebar-bottom {
+.Hero-top {
+    margin-top: 2rem;
+}
+.Hero-bottom {
     display: flex;
     width: 100%;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: end;
+    margin-bottom: 2rem;
 }
