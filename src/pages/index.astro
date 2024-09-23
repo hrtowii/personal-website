@@ -1,10 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import MusicCard from '../components/MusicCard'
 import BlogCard from '../components/BlogCard';
 import SkillsCard from '../components/SkillsCard'
 import Hero from '../components/Hero'
 import './index.css'
+import ProjectItem from '../components/ProjectItem';
 ---
 
 <Layout title="htrowii's website">
@@ -14,54 +14,23 @@ import './index.css'
 		</div>
 		<div class="main-content">
 			<div class="tophalf">
-				<div id="item1" class="item">
-					<div class="item-content">
-						<h4>hnr2024</h4>
-						<div id="projectStars_hrtowii/hnr2024"><p>Loading</p></div>
-					</div>
-				</div>
-				<div id="item2" class="item">
-					<div class="item-content">
-					 	<h4>KFDFontOverwrite</h4>
-					</div>
-				</div>
+				<ProjectItem client:load id="item1" title="hnr2024" repo="hrtowii/hnr2024" />
+				<ProjectItem client:load id="item2" title="KFDFontOverwrite" repo="hrtowii/WDBFontOverwrite" />
 				<div id="item3" class="transparentitem">
 					<div class="item-content">
 					 	<h3>Projects</h3>
 					</div>
 				</div>
-				<div id="item4" class="item">
-					<div class="item-content">
-						<h4>yt2mp3</h4>
-					</div>
-				</div>
-				<div id="item5" class="item">
-					<div class="item-content">
-						<h4>Coffier</h4>
-					</div>
-				</div>
-				<div id="item6" class="item">
-					<div class="item-content">
-						<!-- 2x2 -->
-						<h4>Serotonin</h4>
-						<div class="item-subtitle"></div>
-					</div>
-				</div>
+				<ProjectItem client:load id="item4" title="yt2mp3" repo="hrtowii/telegram_yt2mp3" />
+				<ProjectItem client:load id="item5" title="Coffier" repo="hrtowii/hnr2023" />
+				<ProjectItem client:load id="item6" title="Serotonin" repo="mineek/Serotonin" />
 				<div id="item7" class="item">
 					<div class="item-content">
 						<h4>Heartfelt</h4>
 					</div>
 				</div>
-				<div id="item8" class="item">
-					<div class="item-content">
-						<h4>img2epub</h4>
-					</div>
-				</div>
-				<div id="item9" class="item">
-					<div class="item-content">
-						<h4>fetchc</h4>
-					</div>
-				</div>
+				<ProjectItem client:load id="item8" title="img2epub" repo="hrtowii/telegram_img2epub" />
+				<ProjectItem client:load id="item9" title="SpotifyEQ-iOS" repo="hrtowii/SpotifyEQ-iOS" />
 			</div>
 			<div class="bottomhalf">
 				<div class="one-third">
@@ -74,54 +43,3 @@ import './index.css'
 		</div>
 	</main>
 </Layout>
-
-<script>
-	const subtitle = document.getElementsByClassName("item-subtitle")[0];
-
-const createWord = (text: string, index: number) => {
-  const word = document.createElement("span");
-
-  word.innerHTML = `${text} `;
-
-  word.classList.add("item-subtitle-word");
-
-  word.style.transitionDelay = `${index * 40}ms`;
-
-  return word;
-}
-
-const addWord = (text: string, index: number) => subtitle.appendChild(createWord(text, index));
-
-const createSubtitle = (text: string) => text.split(" ").map(addWord);
-
-createSubtitle("Semi-jailbreak for iOS 16-16.6.1");
-
-</script>
-
-<script>
-    async function get_data_for_repo(repo: string) {
-        const res = await fetch(`https://api.github.com/repos/${repo}`);
-        const data = await res.json();
-        const stars = data.stargazers_count;
-        console.log(`projectStars_${repo}`)
-        const stars_element = document.getElementById(`projectStars_${repo}`);
-        if (stars_element) {
-            console.log('asdasdsd')
-            stars_element.innerHTML = stars_element.innerHTML.replace('Loading', stars);
-        }
-
-        // const title = data.name;
-        // const title_element = document.getElementById(`projectTitle_${repo}`);
-        // if (title_element) {
-        //     title_element.innerHTML = title_element.innerHTML.replace('Loading', title);
-        // }
-
-        // const desc = data.description;
-        // const desc_element = document.getElementById(`projectDesc_${repo}`);
-        // if (desc_element) {
-        //     desc_element.innerHTML = desc_element.innerHTML.replace('Loading', desc);
-        // }
-    };
-
-    await get_data_for_repo("hrtowii/hnr2024")
-</script>
