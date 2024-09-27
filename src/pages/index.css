@@ -73,7 +73,7 @@ body {
   .tophalf {
     display: flex;
     flex-direction: column;
-    height: auto;
+    height: fit-content;
   }
   .item {
     display: flex;

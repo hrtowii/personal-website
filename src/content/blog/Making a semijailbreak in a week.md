@@ -1,7 +1,6 @@
 ---
 date: 2024-09-27
 title: making a semi-jailbreak in a week
-excerpt: example?
 ---
 # Introduction
 One fine week in January 2024, I released a semi-jailbreak named [Serotonin](https://github.com/hrtowii/Serotonin). If you're unaware of what it does, it aims to enable tweak injection for SpringBoard and works with the RootHide bootstrap. I never really explained how it worked and why I view it as a failure, so this blog post aims to cover that. Let's go over what led up to the release, how I made it, and how I'd have made it now if I didn't rush it out.

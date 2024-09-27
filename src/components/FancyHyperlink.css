@@ -1,0 +1,52 @@
+.fancy-link {
+    --text-color: black;
+    --accent-color: black;
+    --hover-text-color: white;
+    --hover-bg-color: black;
+    display: inline-block;
+    font-family: 'Sora';
+    color: var(--foreground);
+    text-decoration: none;
+    transition: color 0.15s ease-in-out;
+}
+
+.link-content {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    background-image: linear-gradient(to bottom, var(--accent-color), var(--accent-color));
+    background-size: 100% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: all 0.15s ease-in-out;
+    padding-top: 2.5px;
+}
+
+.arrow-icon {
+    margin-left: 0px;
+    transition: stroke 0.15s ease-in-out;
+}
+
+.fancy-link:hover .link-content {
+    color: var(--hover-text-color);
+    background-size: 100% 100%;
+}
+
+.fancy-link:hover .link-content>* {
+    color: var(--hover-text-color);
+    background-size: 100% 100%;
+}
+
+.fancy-link:hover .arrow-icon {
+    stroke: var(--hover-text-color);
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+    .fancy-link {
+        --text-color: #ebdbb2;
+        --accent-color: #ebdbb2;
+        --hover-text-color: #1d2021;
+        --hover-bg-color: #ebdbb2;
+    }
+}

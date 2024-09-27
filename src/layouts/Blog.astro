@@ -9,15 +9,14 @@ interface Props {
 }
 import { filenameToTitle } from '../filenameToTitle'
 
-const { filename, title, date, excerpt } = Astro.props;
-console.log(Astro.props)
+const { filename, title, date } = Astro.props;
 ---
 
 <Layout title={title}>
   <Metadata
     slot="metadata"
     title={filenameToTitle(filename)}
-    description={excerpt}
+    description={title}
     image={`${Astro.url}og.png`}
     canonicalUrl={`${Astro.url}`}
     publishedTime={date.toISOString()}
@@ -26,7 +25,6 @@ console.log(Astro.props)
   <article>
     <h1>{title}</h1>
     <p>Published on: {date.toLocaleDateString()}</p>
-    <p><em>{excerpt}</em></p>
     <div class="content">
       <slot />
     </div>

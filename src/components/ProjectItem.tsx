@@ -1,20 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import './ProjectItem.css'
+import FancyHyperlink from './FancyHyperlink';
 interface ProjectItemProps {
   id: string;
   title: string;
   repo: string;
+  link: string;
+  description: string;
 }
 
-const ProjectItem: React.FC<ProjectItemProps> = ({ id, title, repo }) => {
+const ProjectItem: React.FC<ProjectItemProps> = ({ id, title, repo, link, description }) => {
   const [stars, setStars] = useState<number | string>('Loading');
 
   useEffect(() => {
     const fetchStars = async () => {
       try {
-        const res = await fetch(`https://api.github.com/repos/${repo}`);
-        const data = await res.json();
-        setStars(data.stargazers_count);
+        // const res = await fetch(`https://api.github.com/repos/${repo}`);
+        // const data = await res.json();
+        // setStars(data.stargazers_count);
+        // use this to prevent rate limiting yourself
+        setStars(100)
       } catch (error) {
         console.error('Error fetching repo data:', error);
         setStars('N/A');
@@ -26,7 +31,8 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ id, title, repo }) => {
 
   return (
     <div id={id} className="item">
-      <div className="item-content">
+      <div className="item-wrapper">
+        <div className="item-content">
         <div className="item-title">
           <h4>{title}</h4>
           <div className="stars">
@@ -49,6 +55,9 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ id, title, repo }) => {
             </div>
           </div>
         </div>
+          <p>{description}</p>
+        </div>
+        <FancyHyperlink content="Link to content" href={link} />
       </div>
     </div>
   );

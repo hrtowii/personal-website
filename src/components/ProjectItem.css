@@ -7,9 +7,10 @@
     position: relative;
     overflow: hidden;
     z-index: 2;
+    height: auto;
 }
 
-.item-content {
+.item-wrapper {
     /* background-image: radial-gradient(
       rgba(255, 255, 255, 0.2) 8%, 
       transparent 8%
@@ -24,12 +25,17 @@
     padding-inline: 1rem;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
-.item-content h4 {
+.item-wrapper h4 {
     margin: 0px;
-    margin-block: 1rem;
+    margin-top: 1rem;
     font-size: 1.25rem;
+}
+
+.item-wrapper .fancy-link {
+    margin-bottom: 1.5rem;
 }
 
 .item-title,
@@ -65,7 +71,8 @@
     border: none;
 }
 
-#item3>.item-content {
+/* project */
+#item3>.item-wrapper {
     padding: 0px;
     font-size: 1.25rem;
     align-items: center;

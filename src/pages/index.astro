@@ -5,6 +5,7 @@ import SkillsCard from '../components/SkillsCard'
 import Hero from '../components/Hero'
 import './index.css'
 import ProjectItem from '../components/ProjectItem';
+import FancyHyperlink from '../components/FancyHyperlink';
 ---
 
 <Layout title="htrowii's website">
@@ -14,23 +15,30 @@ import ProjectItem from '../components/ProjectItem';
 		</div>
 		<div class="main-content">
 			<div class="tophalf">
-				<ProjectItem client:load id="item1" title="hnr2024" repo="hrtowii/hnr2024" />
-				<ProjectItem client:load id="item2" title="KFDFontOverwrite" repo="hrtowii/WDBFontOverwrite" />
+				<ProjectItem client:load description="Insert placeholder hereInsert placeholder hereInsert placeholder hereInsert placeholder hereInsert placeholder hereInsert placeholder here" id="item1" title="hnr2024" repo="hrtowii/hnr2024" link='https://github.com/hrtowii/hnr2024'/>
+				<ProjectItem client:load description="Insert placeholder here" id="item2" title="KFDFontOverwrite" repo="hrtowii/WDBFontOverwrite" link='https://github.com/hrtowii/KFDFontOverwrite'/>
 				<div id="item3" class="transparentitem">
-					<div class="item-content">
+					<div class="item-wrapper">
 					 	<h3>Projects</h3>
 					</div>
 				</div>
-				<ProjectItem client:load id="item4" title="yt2mp3" repo="hrtowii/telegram_yt2mp3" />
-				<ProjectItem client:load id="item5" title="Coffier" repo="hrtowii/hnr2023" />
-				<ProjectItem client:load id="item6" title="Serotonin" repo="mineek/Serotonin" />
+				<ProjectItem client:load description="Insert placeholder here" id="item4" title="yt2mp3" repo="hrtowii/telegram_yt2mp3" link='https://github.com/hrtowii/telegram_yt2mp3'/>
+				<ProjectItem client:load description="Insert placeholder here" id="item5" title="Coffier" repo="hrtowii/hnr2023" link='https://github.com/hrtowii/hnr2023'/>
+				<ProjectItem client:load description="Insert placeholder here" id="item6" title="Serotonin" repo="mineek/Serotonin" link='https://github.com/mineek/Serotonin'/>
 				<div id="item7" class="item">
-					<div class="item-content">
-						<h4>Heartfelt</h4>
+					<div class="item-wrapper">
+						<div class="item-content">
+							<h4>Heartfelt</h4>
+							<p>
+								Built full-stack B2B software for funeral parlors to list and sell funeral services to customers.
+							</p>
+						</div>
+						<FancyHyperlink href="https://eas-ai.com" 
+						content="Link to company" />
 					</div>
 				</div>
-				<ProjectItem client:load id="item8" title="img2epub" repo="hrtowii/telegram_img2epub" />
-				<ProjectItem client:load id="item9" title="SpotifyEQ-iOS" repo="hrtowii/SpotifyEQ-iOS" />
+				<ProjectItem client:load description="Insert placeholder here" id="item8" title="img2epub" repo="hrtowii/telegram_img2epub" link='https://github.com/hrtowii/telegram_img2epub'/>
+				<ProjectItem client:load description="Insert placeholder here" id="item9" title="SpotifyEQ-iOS" repo="hrtowii/SpotifyEQ-iOS" link='https://github.com/hrtowii/SpotifyEQ-iOS'/>
 			</div>
 			<div class="bottomhalf">
 				<div class="one-third">
