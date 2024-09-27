@@ -13,7 +13,7 @@
 
 @font-face{
 	font-family: 'MyWebFont';
-	src: url(ndot47.ttf); 
+	src: url('/ndot47.ttf'); 
 }
 /* copied from https://staturnz.com */
 .bio {

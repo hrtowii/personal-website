@@ -7,12 +7,7 @@ export const buildHTML = (
 	date: Date,
 	slug: string,
 ) => {
-	return html`
-<div
-  style={{
-    display: 'flex',
-  }}
->
+	return html`<div style="display: flex;">
 <svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_1_2)">
 <rect width="1200" height="630" fill="#100B1D"/>
@@ -26,7 +21,7 @@ export const buildHTML = (
 </clipPath>
 </defs>
 </svg>
-<h1 style={{position: 'absolute', top: '74', left: '67', maxWidth: 800, color:'#C1B5E3', fontSize: '64px'}}>Making a semi-jailbreak in a week</h1>
+<p style="position: absolute; top: 74px; left: 67px; max-width: 800px; color: #C1B5E3; font-size: 64px;">${title}</p>
 </div>
 `}
 

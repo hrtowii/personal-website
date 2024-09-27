@@ -1,7 +1,5 @@
 ---
 import Blog from '../../../layouts/Blog.astro';
-import Metadata from '../../../components/Metadata.astro';
-import { filenameToTitle } from '../../../filenameToTitle'
 import { getCollection } from 'astro:content';
 const { entry } = Astro.props;
 const { Content } = await entry.render();
@@ -17,14 +15,5 @@ export async function getStaticPaths() {
 ---
 
 <Blog filename={entry.id} {...entry.data}>
-  <Metadata
-    slot="metadata"
-    title={filenameToTitle(entry.id)}
-    description={entry.data.excerpt}
-    image={`${Astro.site}blog/${entry.slug}/og.png`}
-    canonicalUrl={`${Astro.site}blog/${entry.slug}`}
-    publishedTime={entry.data.date.toISOString()}
-    type="article"
-  />
   <Content />
 </Blog>

@@ -1,26 +1,28 @@
 ---
 import Layout from './Layout.astro';
-import { ViewTransitions } from 'astro:transitions';
-
+import Metadata from '../components/Metadata.astro';
 interface Props {
   filename: string;
   title: string;
   date: Date;
   excerpt: string;
 }
+import { filenameToTitle } from '../filenameToTitle'
 
 const { filename, title, date, excerpt } = Astro.props;
+console.log(Astro.props)
 ---
 
 <Layout title={title}>
-  <Fragment slot="head">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/e23a98c840.js" crossorigin="anonymous"></script>
-    <slot name="metadata" />
-  </Fragment>
-  
+  <Metadata
+    slot="metadata"
+    title={filenameToTitle(filename)}
+    description={excerpt}
+    image={`${Astro.url}og.png`}
+    canonicalUrl={`${Astro.url}`}
+    publishedTime={date.toISOString()}
+    type="article"
+  />
   <article>
     <h1>{title}</h1>
     <p>Published on: {date.toLocaleDateString()}</p>
