@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import './ProjectItem.css'
 interface ProjectItemProps {
   id: string;
   title: string;

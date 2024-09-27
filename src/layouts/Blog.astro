@@ -1,0 +1,47 @@
+---
+import Layout from './Layout.astro';
+import { ViewTransitions } from 'astro:transitions';
+
+interface Props {
+  filename: string;
+  title: string;
+  date: Date;
+  excerpt: string;
+}
+
+const { filename, title, date, excerpt } = Astro.props;
+---
+
+<Layout title={title}>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/e23a98c840.js" crossorigin="anonymous"></script>
+    <slot name="metadata" />
+  </Fragment>
+  
+  <article>
+    <h1>{title}</h1>
+    <p>Published on: {date.toLocaleDateString()}</p>
+    <p><em>{excerpt}</em></p>
+    <div class="content">
+      <slot />
+    </div>
+  </article>
+</Layout>
+
+<style>
+  article {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  h1 {
+    font-size: 2.5em;
+    color: var(--foreground);
+  }
+  .content {
+    margin-top: 20px;
+  }
+</style>

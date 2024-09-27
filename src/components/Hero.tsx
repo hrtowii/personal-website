@@ -28,23 +28,10 @@ export default function Hero() {
         <div id="Hero">
             <div className="Hero-top">
             <div className='pfp_wrapper'>
-                    <img className="pfp_glow" height={125} width={125} src={avatarLink}/>
-                    <img className="pfp" height={125} width={125} src={avatarLink}/>
-                </div>
-            {/* <div className="intro"> */}
-                {/* <div className='pfp_wrapper'>
-                    <img className="pfp_glow" height={125} width={125} src={avatarLink}/>
-                    <img className="pfp" height={125} width={125} src={avatarLink}/>
-                </div> */}
-                {/* <div className="intro_text">
-                    <span>Hi, I'm <span className='my_name'>Lucas</span></span>
-                    <p>Currently studying IT at Nanyang Polytechnic</p>
-                    <p>Learning fullstack!</p>
-                </div>
+                <img className="pfp_glow" height={125} width={125} src={avatarLink}/>
+                <img className="pfp" height={125} width={125} src={avatarLink}/>
             </div>
-            <p>If you want to chat, feel free to reach out to me on <a className='twitter' href='https://twitter.com/htrowii'><span className='twitter'>Twitter</span></a> and <a className='discord' href='https://discord.com/users/413331641109446656'><span className='discord'>Discord</span></a>. You can also <a className='email-me' href="mailto:me@hrtowii.dev"><span className='email-me'>email me at me@hrtowii.dev</span></a></p> */}
             </div>
-            {/* <GitHubCalendar username="hrtowii" /> */}
             <div className="Hero-bottom">
                 <span className='bio'>
                     h t r o w i i
