@@ -4,7 +4,7 @@ const blogCollection = defineCollection({
   schema: z.object({
     date: z.date(),
     title: z.string(),
-    excerpt: z.string(),
+    // excerpt: z.string(),
   }),
 });
 

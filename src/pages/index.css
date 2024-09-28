@@ -24,7 +24,7 @@ body {
     grid-column: 2 / 3;
     grid-row: 1 / 2;
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    /* grid-template-rows: 1fr 1fr; */
     /* grid dots */
     background-image: radial-gradient(circle at 1px 1px, var(--dots-color) 1px, transparent 0);
     background-size: 40px 40px;
@@ -35,7 +35,7 @@ body {
 
 .tophalf {
     display: grid;
-    height: 60vh;
+    height: 80vh;
     /* grid-row: 1 / 2; */
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(3, 1fr);
@@ -47,6 +47,7 @@ body {
     grid-row: 2 / 3;
     grid-template-columns: 1fr 2fr;
     gap: 1.25rem;
+    height: 20vh;
 }
 
 .one-third, .two-thirds {
