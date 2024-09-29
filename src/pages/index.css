@@ -30,7 +30,6 @@ body {
     background-size: 40px 40px;
     padding: 1.25rem;
     gap: 1.25rem;
-    margin-top: 3rem;
 }
 
 .tophalf {
@@ -47,7 +46,7 @@ body {
     grid-row: 2 / 3;
     grid-template-columns: 1fr 2fr;
     gap: 1.25rem;
-    height: 20vh;
+    height: 100%;
 }
 
 .one-third, .two-thirds {

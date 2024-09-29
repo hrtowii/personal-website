@@ -6,6 +6,14 @@ import Hero from '../components/Hero'
 import './index.css'
 import ProjectItem from '../components/ProjectItem';
 import FancyHyperlink from '../components/FancyHyperlink';
+import { getCollection } from 'astro:content';
+const allBlogPosts = await getCollection('blog');
+const sortedBlogPosts = allBlogPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const blogPosts = sortedBlogPosts.slice(0, 2).map(post => ({
+  title: post.data.title,
+  date: post.data.date.toLocaleDateString(),
+  slug: post.slug
+}));
 ---
 
 <Layout title="htrowii's website">
@@ -42,7 +50,7 @@ import FancyHyperlink from '../components/FancyHyperlink';
 			</div>
 			<div class="bottomhalf">
 				<div class="one-third">
-					<BlogCard/>
+					<BlogCard client:load blogPosts={blogPosts} />
 				</div>
 				<div class="two-thirds">
 					<SkillsCard/>
