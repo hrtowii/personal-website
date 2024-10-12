@@ -25,12 +25,13 @@
     border: 0.6px var(--card-border) solid;
     height: 125px;
     z-index: 2;
-    width: calc(22% - 2.4rem);
+    /* width: calc(100% - 2.4rem); */
 }
 
 @media (max-width: 576px) {
     .music_card {
-        width: calc(100% - 2.4rem);
+        /* width: calc(100% - 2.4rem); */
+        display: none;
     }
 }
 .music_card_end {

@@ -89,10 +89,10 @@ function SkillsCard() {
                 </i>
                 <p>C#</p>
               </div>
-              <div className="skill">
+              {/* <div className="skill">
                 <i className="fa-brands fa-python"></i>
                 <p>Python</p>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

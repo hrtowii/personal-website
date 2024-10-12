@@ -31,12 +31,19 @@ export default function Hero() {
                 <img className="pfp_glow" height={125} width={125} src={avatarLink}/>
                 <img className="pfp" height={125} width={125} src={avatarLink}/>
             </div>
+            <MusicCard/>
             </div>
             <div className="Hero-bottom">
                 <span className='bio'>
                     h t r o w i i
                 </span>
-                <MusicCard/>
+                <footer className="footer main-text-small">
+                    <a className="footer-links link-twitter" href="https://twitter.com/htrowii">twitter</a>
+                    <a className="footer-links link-github" href="https://github.com/hrtowii">github</a>
+                    <a className="footer-links link-mastodon" rel="me" href="mailto:leonghongkit@gmail.com">email</a>
+                    {/* <a className="footer-links link-repo" href="https://repo.staturnz.com">repo</a> */}
+                    <div className="scrunch" aria-hidden="true"></div>
+                </footer>
             </div>
         </div>
         </>
