@@ -41,7 +41,7 @@ export default function Hero() {
                     <a className="footer-links link-twitter" href="https://twitter.com/htrowii">twitter</a>
                     <a className="footer-links link-github" href="https://github.com/hrtowii">github</a>
                     <a className="footer-links link-mastodon" rel="me" href="mailto:leonghongkit@gmail.com">email</a>
-                    {/* <a className="footer-links link-repo" href="https://repo.staturnz.com">repo</a> */}
+                    <a className="footer-links link-repo" href="https://discordapp.com/users/413331641109446656">discord</a>
                     <div className="scrunch" aria-hidden="true"></div>
                 </footer>
             </div>
