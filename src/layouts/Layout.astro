@@ -35,13 +35,13 @@ import { ViewTransitions } from 'astro:transitions';
 				rgb(var(--accent-light)) 30%,
 				white 60%
 			);
-			--card-background: hsl(0 0% 100%);
+			--card-background: hsl(220, 82%, 92%);
 			--card-foreground: hsl(222.2 14% 14.9%);
-			--background: hsl(0 0% 90%);
-			--foreground: hsl(222.2 14% 8.9%);
-			--Hero: hsl(0 0% 85%);
-			--dots-color: hsl(0 0% 90%);
-			--card-border: rgb(242 244 247);
+			--background: hsl(220, 93%, 95%);
+			--foreground: hsl(234, 16%, 35%);
+			--Hero: hsl(231, 97%, 92%);
+			--dots-color: hsl(231, 97%, 72%);
+			--card-border: hsl(231, 97%, 72%);
 		}
 	}
 	@media (prefers-color-scheme: dark) {
@@ -58,7 +58,7 @@ import { ViewTransitions } from 'astro:transitions';
 			--card-foreground: hsl(0 0% 90%);
 			--card-background: hsl(222.2 34% 8.9%);
 			--background: hsl(222.2 34% 5.9%);
-			--foreground: hsl(0 0% 100%);
+			--foreground: hsl(222.2 94% 90.9%);
 			--Hero: hsl(222.2 34% 6.9%);
 			--dots-color: hsl(222.2 4% 24.9%);
 			--card-border: rgb(51, 55, 57);
@@ -75,11 +75,11 @@ import { ViewTransitions } from 'astro:transitions';
 	body {
 		margin: 0px;
 	}
-	p, span, h1, h2, h3, h4, h5, h6 {
+	p, span, h1, h2, h3, h4, h5, h6, ol, ul {
 		color: var(--foreground);
 	}
 	code {
-		font-family:
+		/* font-family:
 			Menlo,
 			Monaco,
 			Lucida Console,
@@ -87,10 +87,52 @@ import { ViewTransitions } from 'astro:transitions';
 			DejaVu Sans Mono,
 			Bitstream Vera Sans Mono,
 			Courier New,
-			monospace;
+			monospace; */
+		color: rgb(var(--accent-light)) !important;
+		background-color: #242424;
+		padding: 0.25rem;
+		border-radius: 0.5rem;
+	}
+	pre > code {
+		background-color: rgba(0,0,0,0) !important;
+	}
+	pre {
+		padding: 1.2rem;
+		border-radius: 0.8rem;
 	}
 	.content {
 		margin: 10vh;
+	}
+	article a::before {
+		content: "\[\["; 
+		color: #beebfe99;
+	}
+	article a::after {
+		content: "\]\]"; 
+		color: #beebfe99;
+	}
+	article a {
+		color: rgb(190 235 254);
+	}
+	article a:hover {
+		opacity: 0.8;
+		transition: 0.08s ease-out;
+	}
+	blockquote {
+	border-left: 5px solid #ccc;
+	margin: 1.5em 10px;
+	padding: 0.5em 10px;
+	quotes: "\201C""\201D""\2018""\2019";
+	}
+	blockquote:before {
+	color: #ccc;
+	font-size: 4em;
+	line-height: 0.1em;
+	margin-right: 0.25em;
+	vertical-align: -0.4em;
+	}
+	blockquote p {
+	display: inline;
 	}
 
 </style>

@@ -1,8 +1,8 @@
 .fancy-link {
-    --text-color: black;
-    --accent-color: black;
-    --hover-text-color: white;
-    --hover-bg-color: black;
+    --text-color: hsl(231, 97%, 72%);
+    --accent-color: hsl(231, 97%, 72%);
+    --hover-text-color: hsl(222.2 34% 8.9%);;
+    --hover-bg-color: hsl(231, 97%, 72%);
     display: inline-block;
     font-family: 'Sora';
     color: var(--foreground);
@@ -41,12 +41,11 @@
     stroke: var(--hover-text-color);
 }
 
-/* Dark mode styles */
 @media (prefers-color-scheme: dark) {
     .fancy-link {
-        --text-color: #ebdbb2;
-        --accent-color: #ebdbb2;
-        --hover-text-color: #1d2021;
-        --hover-bg-color: #ebdbb2;
+        --text-color: hsl(231, 97%, 72%);
+        --accent-color: hsl(231, 97%, 72%);
+        --hover-text-color: hsl(222.2 34% 8.9%);;
+        --hover-bg-color: hsl(231, 97%, 72%);
     }
 }

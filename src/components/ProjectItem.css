@@ -8,21 +8,23 @@
     overflow: hidden;
     z-index: 2;
     height: auto;
+    border-radius: 1.5rem;
 }
 
 .item-wrapper {
-    /* background-image: radial-gradient(
+    /* 
+    background-image: radial-gradient(
       rgba(255, 255, 255, 0.2) 8%, 
       transparent 8%
-    ); */
+    );
     background-position: 0% 0%;
     background-size: 5vmin 5vmin;
     position: relative;
     transition: background-position 350ms ease;
+    */
     height: 100%;
-    width: 100%;
+    width: calc(100% - 2rem);
     z-index: 2;
-    padding-inline: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -36,6 +38,23 @@
 
 .item-wrapper .fancy-link {
     margin-bottom: 1.5rem;
+}
+
+.item-content-again {
+    width: 100%;
+}
+
+.carousel-container {
+    gap: 10px;
+    overflow-x: scroll;
+    display: inline-flex;
+    width: 100%;
+}
+
+.carousel-image {
+    max-height: 250px;
+    border-radius: 8px;
+    /* object-fit: cover; */
 }
 
 .item-title,
@@ -55,13 +74,13 @@
 #item1 {
     grid-column: span 1;
     grid-row: span 1;
-    border-radius: 4px 3rem 3rem 3rem;
+    /* border-radius: 4px 3rem 3rem 3rem; */
 }
 
 #item2 {
     grid-column: span 2;
     grid-row: span 1;
-    border-radius: 4px 3rem 4px 4px;
+    /* border-radius: 4px 3rem 4px 4px; */
 }
 
 #item3 {
@@ -73,6 +92,7 @@
 
 /* project */
 #item3>.item-wrapper {
+    width: 100%;
     padding: 0px;
     font-size: 1.25rem;
     align-items: center;
@@ -82,35 +102,35 @@
 #item4 {
     grid-column: span 1;
     grid-row: span 1;
-    border-radius: 4px 3rem 3rem 4px;
+    /* border-radius: 4px 3rem 3rem 4px; */
 }
 
 #item5 {
     grid-column: span 1;
     grid-row: span 2;
-    border-radius: 4px+3rem;
+    /* border-radius: 4px+3rem; */
 }
 
 #item6 {
     grid-column: span 2;
     grid-row: span 2;
-    border-radius: 4px 4px 4px 3rem;
+    /* border-radius: 4px 4px 4px 3rem; */
 }
 
 #item7 {
     grid-column: span 1;
     grid-row: span 2;
-    border-top-right-radius: 3rem;
+    /* border-top-right-radius: 3rem; */
 }
 
 #item8 {
     grid-column: span 1;
     grid-row: span 1;
-    border-radius: 4px 4px 3rem 3rem;
+    /* border-radius: 4px 4px 3rem 3rem; */
 }
 
 #item9 {
     grid-column: span 1;
     grid-row: span 1;
-    border-radius: 4px 3rem 3rem 3rem;
+    /* border-radius: 4px 3rem 3rem 3rem; */
 }

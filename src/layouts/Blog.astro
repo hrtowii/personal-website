@@ -25,9 +25,7 @@ const { filename, title, date } = Astro.props;
   <article>
     <h1>{title}</h1>
     <p>Published on: {date.toLocaleDateString()}</p>
-    <div class="content">
       <slot />
-    </div>
   </article>
 </Layout>
 
@@ -35,9 +33,6 @@ const { filename, title, date } = Astro.props;
   article {
     max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
-  }
-  .content {
-    margin-top: 20px;
+    padding: 2rem;
   }
 </style>
