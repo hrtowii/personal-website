@@ -2,7 +2,25 @@
 date: 2024-11-29
 title: Making a semi-jailbreak in a week
 ---
+<style>
+img {
+    display: block !important;
+    max-width: min(100%, 600px) !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 1rem auto !important;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
 
+@media (max-width: 600px) {
+    img {
+        max-width: 95% !important;
+        max-height: 300px !important;
+        object-fit: contain !important;
+    }
+}
+</style>
 # Introduction
 One fine week in January 2024, I released a semi-jailbreak named [Serotonin](https://github.com/hrtowii/Serotonin). If you're unaware of what it does, it aims to enable tweak injection for SpringBoard and works with the RootHide bootstrap. I never really explained how it worked and why I view it as a failure, so this blog post aims to cover that. Let's go over what led up to the release, how I made it, and how I'd have made it now if I didn't rush it out.
 
