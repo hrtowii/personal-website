@@ -4,6 +4,7 @@ interface Props {
 }
 const { title } = Astro.props;
 import { ViewTransitions } from 'astro:transitions';
+import Analytics from '@vercel/analytics/astro'
 ---
 
 <!doctype html>
@@ -21,6 +22,7 @@ import { ViewTransitions } from 'astro:transitions';
 	</head>
 	<body>
 		<slot />
+		<Analytics />
 	</body>
 </html>
 <style is:global>
