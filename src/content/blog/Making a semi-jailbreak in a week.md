@@ -10,7 +10,7 @@ Disclaimer: I did not do this alone. I have gotten countless amounts of help fro
 # Background: What's a semi-jailbreak?
 
 ## What does a jailbreak need?
-Traditional jailbreaks typically involve running exploits to ultimately inject a dylib into every process to tweak them.
+Traditional jailbreaks typically involve running exploits to ultimately defeat codesigning in order to inject dylibs into them for tweaks.
 
 In Dopamine 1 (v2 wasn't out yet), this was achieved by using the [Fugu15 exploit chain](https://objectivebythesea.org/v5/talks/OBTS_v5_lHenze.pdf), which consisted of a DriverKit kernel exploit, a CoreTrust+installd bypass, a PAC bypass, and a PPL bypass. 
 
@@ -23,14 +23,14 @@ Is it the ability to run arbitrary binaries? To get a root shell? To get cool ic
 ### kernel r/w
 To read and write to kernel memory, a kernel exploit is needed. 
 
-I could write another blogpost on how \*OS kexploits have evolved throughout their versions, but the gist is that _physical_ memory has less mitigations than _virtual_ memory. This is evident from recent kexploits abusing [physical use-after-frees](https://github.com/felix-pb/kfd/blob/main/writeups/exploiting-puafs.md) and the last virtual memory exploit being [multicast_bytecopy](https://github.com/potmdehex/multicast_bytecopy) which only works up to iOS 15.
+I could write another blogpost on how \*OS kexploits have evolved throughout their versions, but the gist is that vulnerabilities present in the *virtual memory layer* of the kernel have a lot more mitigations than bugs affecting the *physical memory layer* only. This is evident from recent kexploits abusing [physical use-after-frees](https://github.com/felix-pb/kfd/blob/main/writeups/exploiting-puafs.md) and the last virtual memory exploit being [multicast_bytecopy](https://github.com/potmdehex/multicast_bytecopy) and [weightBufs](https://github.com/0x36/weightBufs) which only work up to iOS 15.
 
 [kfd](https://github.com/felix-pb/kfd) is a set of kernel exploits that mainly work from iOS ???-16.6.1. landa is the most recent version that works up to 16.6.1, and doesn't require any cleanup on exploit failure. This makes it the best version in terms of both reliability and version support.
 
 ### Codesigning bypass
 Codesigning is an essential part of the iOS security model that ensures that random binaries can't run with arbitrary entitlements. For more info on this I recommend reading [the Apple Wiki article](https://theapplewiki.com/wiki/Code_signature) and [this article from Alfie](https://alfiecg.uk/2024/01/06/Ad-hoc-signing.html).
 
-What's relevant here is that CoreTrust has a vulnerability that allows us to run any binary we want with arbitrary entitlements (barring 3). By itself, this is pretty useful (see TrollStore, Bootstrap).
+What's relevant here is that CoreTrust has a vulnerability that allows us to run any binary we want with arbitrary entitlements (barring 3). This is because CoreTrust was recently changed to fast track binaries to be run without any further checks if it reports that it's from Apple. By itself, this is pretty useful (see TrollStore, Bootstrap).
 
 # The idea: Replacing launchd to win
 `launchd` replacement has always been viewed as a "holy grail" in the sense that running arbitrary code in it allows us to hook every other spawn function, as every process that's spawned in iOS userspace has to go through its `posix_spawn()` function.
@@ -213,6 +213,7 @@ Initially, I just replaced it with a random copy of launchd without extra entitl
 
 HOLY SHIT IT WORKS???????
 ![semijb1](./images/semijb1.png)
+
 This panic is from our launchd violating Launch Constraints, and to fix it I just copied over the entitlements of the original launchd, and added `get-task-allow`.
 
 and... we have a replaced launchd! 
@@ -223,6 +224,7 @@ i renamed it to lunchd for shits and giggles
 We're not out of the woods yet, though. Having a copy of the original isn't very helpful unless you hook it to run your own code. This is where more problems arise...
 
 Initially, launchd was just SIGSEGVing for no reason even when there was no load command added for dylib injection. 
+
 ![semijb3](./images/semijb3.png)
 
 You can get around this by forcing launchd to become arm64 by zeroing out the CPU subtype of the binary. Just go in 8 bytes and zero out 8 bytes.
@@ -233,9 +235,10 @@ CF FA ED FE 0C 00 00 01 02 00 00 80
 ```
 
 It should look like this:
+
 ![Pasted image 20241129021817.png](./images/semijba.png)
 
-Yeah I kind of have no idea why this was needed, but it works sooooo :shrug:. I didn't find out about this, thanks a lot to [Duy Tran](https://x.com/TranKha50277352)
+Yeah, I kind of have no idea why this was needed, but it works sooooo :shrug:. I didn't find out about this, thanks a lot to [Duy Tran](https://x.com/TranKha50277352)
 
 Anyway after this it boots!! But there isn't much use to that yet. We have to hook some code in our patched launchd. This can be done by using a hooking library like `fishhook`. I used this fork from jevinskie [here](https://github.com/jevinskie/fishhook) that supported PAC (arm64e devices).
 
@@ -321,6 +324,7 @@ We can just add an if check in the hook to check if the `path` argument passed i
 So that's what we're going to do next.
 
 The hook should look like this:
+
 ```c
 int hooked_posix_spawnp(pid_t *restrict pid, const char *restrict path, const posix_spawn_file_actions_t *restrict file_actions, posix_spawnattr_t *attrp, char *const argv[restrict], char *const envp[restrict]) {
     const char *springboardPath = "/System/Library/CoreServices/SpringBoard.app/SpringBoard";
@@ -387,7 +391,18 @@ int hooked_posix_spawnp(pid_t *restrict pid, const char *restrict path, const po
 Okay, we got around launch constraints and our own SpringBoard can finally spawn. Woohoo! But there's still a problem... it still crashes with a new error!
 
 ### os_variant_has_internal_content as a workaround
+If you try running SpringBoard now, you get stuck on a black screen for 2 minutes before `watchdogd` decides to panic and force reboot. But... why???
+To check, we can run the shim we've created in the terminal either via Filza's built in terminal or another terminal.
+You'll see this error:
+![alt text](./images/sbcrash.png)
 
+`platformBinary`?? What's that? Why is it crashing at line 39 for no reason?
+
+The real issue here was that SpringBoard checked if it was platformized, and hooking `csops` here wouldn't work for some reason. (fishhook moment). Without the ability to hook `csops`(_audittoken), there was no way to pretend to be platformized... or is there?
+
+Turns out, there's a random internal function used to determine if the check is needed! And by hooking that function and lying that we're an internal device, we can just get around the platform binary check altogether! This was not found by me again, thanks to Duy Tran Khanh for reversing SB and telling me which function to hook! <3
+
+The function that we have to hook is called `os_variant_has_internal_content()`, and making it return true would work fine.
 
 ```c
 bool os_variant_has_internal_content(const char* subsystem);
@@ -470,7 +485,9 @@ Is this a good way? No lol. But it ended up working with RootHide's bootstrap, w
 
 ![Pasted image 20241129032231.png](./images/semijb7.png)
 
-![Pasted image 20241129032224.png](./images/semijb8.png)
+![Pasted image 20241129032224.png](./images/riced.png)
+
+![Pasted image 20241129032224.png](./images/riced2.png)
 
 The final result can be seen [here](https://x.com/htrowii/status/1743322704730784182)
 
