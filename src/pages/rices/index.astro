@@ -1,46 +1,99 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import BlogCard from '../../components/BlogCard';
-import SkillsCard from '../../components/SkillsCard'
-import Hero from '../../components/Hero'
-import './index.css'
-import ProjectItem from '../../components/ProjectItem';
-import FancyHyperlink from '../../components/FancyHyperlink';
-import {getCollection} from "astro:content";
+import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
+import './index.css';
+
 const albums = await getCollection("albums");
+
+// Group albums by operating system
+const iosAlbums = albums.filter(album => album.id.startsWith('rice') && !album.id.startsWith('macrice') && !album.id.startsWith('linuxrice'));
+const linuxAlbums = albums.filter(album => album.id.startsWith('linuxrice'));
+const macosAlbums = albums.filter(album => album.id.startsWith('macrice'));
 ---
 
-<Layout title="htrowii's website">
+<Layout title="htrowii's Rice Gallery">
 	<main class="content">
-	<h1>Rices!</h1>
-	<p>I love love love ricing / customising my devices, be it macOS, Linux, Android, or iOS. I've dabbled with some Windows theming but the hassle there is a lot worse.</p>
-	<p>Here are most of my setups</p>
-	<div class="mx-auto container max-w-(--breakpoint-sm) grid grid-cols-2 gap-8">
-		{
-		  albums.map((item) => (
-			<a
-			  href={`/gallery/${item.id}`}
-			  class="group transition-all mb-4 block"
-			>
-			  <Image
-				src={item.data.cover}
-				alt={item.data.title}
-				format="avif"
-				width={720}
-				quality="mid"
-				class:list={[
-				  "rounded-lg transition-all",
-				  "group-hover:shadow-lg group-hover:opacity-90"
-				]}
-			  />
-			  <div class="mt-4 text-center text-neutral-700">
-				<strong class="font-normal">{item.data.title}</strong>
-				<p class="text-xs">{item.data.description}</p>
-			  </div>
-			</a>
-		  ))
-		}
-	  </div>
+		<h1>Rices!</h1>
+		<p>I love love love ricing / customising my devices, be it macOS, Linux, Android, or iOS. I've dabbled with some Windows theming but the hassle there is a lot worse.</p>
+		<p>Here are most of my setups</p>
+
+		<section class="os-section">
+			<h2>iOS</h2>
+			<div class="rice-grid">
+				{
+					iosAlbums.map((item) => (
+						<a href={`/rices/${item.id}`} class="rice-card">
+							<div class="image-wrapper">
+								<Image
+									src={item.data.cover}
+									alt={item.data.title}
+									format="avif"
+									width={720}
+									height={405}
+									quality="mid"
+								/>
+							</div>
+							<div class="rice-info">
+								<h3>{item.data.title}</h3>
+								<p class="rice-description">{item.data.description}</p>
+							</div>
+						</a>
+					))
+				}
+			</div>
+		</section>
+
+		<section class="os-section">
+			<h2>Linux</h2>
+			<div class="rice-grid">
+				{
+					linuxAlbums.map((item) => (
+						<a href={`/rices/${item.id}`} class="rice-card">
+							<div class="image-wrapper">
+								<Image
+									src={item.data.cover}
+									alt={item.data.title}
+									format="avif"
+									width={720}
+									height={405}
+									quality="mid"
+								/>
+							</div>
+							<div class="rice-info">
+								<h3>{item.data.title}</h3>
+								<p class="rice-description">{item.data.description}</p>
+							</div>
+						</a>
+					))
+				}
+			</div>
+		</section>
+
+		<section class="os-section">
+			<h2>macOS</h2>
+			<div class="rice-grid">
+				{
+					macosAlbums.map((item) => (
+						<a href={`/rices/${item.id}`} class="rice-card">
+							<div class="image-wrapper">
+								<Image
+									src={item.data.cover}
+									alt={item.data.title}
+									format="avif"
+									width={720}
+									height={405}
+									quality="mid"
+								/>
+							</div>
+							<div class="rice-info">
+								<h3>{item.data.title}</h3>
+								<p class="rice-description">{item.data.description}</p>
+							</div>
+						</a>
+					))
+				}
+			</div>
+		</section>
 	</main>
 </Layout>
