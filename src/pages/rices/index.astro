@@ -6,15 +6,41 @@ import Hero from '../../components/Hero'
 import './index.css'
 import ProjectItem from '../../components/ProjectItem';
 import FancyHyperlink from '../../components/FancyHyperlink';
+import {getCollection} from "astro:content";
+import { Image } from "astro:assets";
+const albums = await getCollection("albums");
 ---
 
 <Layout title="htrowii's website">
 	<main class="content">
 	<h1>Rices!</h1>
 	<p>I love love love ricing / customising my devices, be it macOS, Linux, Android, or iOS. I've dabbled with some Windows theming but the hassle there is a lot worse.</p>
-	<p>Here are most of my setups, organised by OS.</p>
-	<h2>macOS</h2>
-	<h2>iOS</h2>
-	<h2>Linux</h2>
+	<p>Here are most of my setups</p>
+	<div class="mx-auto container max-w-(--breakpoint-sm) grid grid-cols-2 gap-8">
+		{
+		  albums.map((item) => (
+			<a
+			  href={`/gallery/${item.id}`}
+			  class="group transition-all mb-4 block"
+			>
+			  <Image
+				src={item.data.cover}
+				alt={item.data.title}
+				format="avif"
+				width={720}
+				quality="mid"
+				class:list={[
+				  "rounded-lg transition-all",
+				  "group-hover:shadow-lg group-hover:opacity-90"
+				]}
+			  />
+			  <div class="mt-4 text-center text-neutral-700">
+				<strong class="font-normal">{item.data.title}</strong>
+				<p class="text-xs">{item.data.description}</p>
+			  </div>
+			</a>
+		  ))
+		}
+	  </div>
 	</main>
 </Layout>
