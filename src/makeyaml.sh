@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Change to the script's directory
-cd "$(dirname "$0")"
+cd "$(dirname "$0")"/content/albums
 
 # Function to create yaml files
 create_yaml() {
@@ -56,7 +56,7 @@ for file in linux/*.png; do
 done
 
 # Process macOS files
-for file in macos/*.png macos/*.jpeg; do
+for file in macos/*.png macos/*.jpeg macos/*.jpg; do
   # Skip if the wildcard doesn't match any files
   [ -e "$file" ] || continue
   create_yaml "$file" "macos"
