@@ -17,8 +17,8 @@ const { filename, title, date } = Astro.props;
     slot="metadata"
     title={filenameToTitle(filename)}
     description={title}
-    image={`${Astro.url}og.png`}
-    canonicalUrl={`${Astro.url}`}
+    image={`https://hrtowii.nekoweb.org/${Astro.url.pathname}og.png`}
+    canonicalUrl={`${Astro.url.pathname}`}
     publishedTime={date.toISOString()}
     type="article"
   />
