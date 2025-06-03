@@ -1,0 +1,63 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import './slug.css';
+import FancyHyperlink from '../../../components/FancyHyperlink';
+
+// Get the slug from the params
+export async function getStaticPaths() {
+  const albumEntries = await getCollection("albums");
+  return albumEntries.map(entry => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { title, description, cover } = entry.data;
+
+// Get the platform from the entry id
+let platform = "Unknown";
+if (entry.id.startsWith("rice")) {
+  platform = "iOS";
+} else if (entry.id.startsWith("linuxrice")) {
+  platform = "Linux";
+} else if (entry.id.startsWith("macrice")) {
+  platform = "macOS";
+}
+---
+
+<Layout title={`${title} | htrowii's Rice Gallery`}>
+  <div class="container">
+    <!-- <a href="/rices" class="back-link">← Back to all rices</a> -->
+    <FancyHyperlink href="/rices" content="Back to all rices" />
+
+    <div class="rice-detail">
+      <div class="image-container">
+        <Image
+          src={cover}
+          alt={title}
+          width={1200}
+          format="avif"
+          quality="high"
+          class="rice-image"
+        />
+      </div>
+
+      <div class="metadata">
+        <h1>{title}</h1>
+        <div class="metadata-item">
+          <h3>Platform:</h3>
+          <p>{platform}</p>
+        </div>
+        <div class="metadata-item">
+          <h3>Description:</h3>
+          <p>{description}</p>
+        </div>
+
+        <!-- You can add more metadata here if you have it in your YAML files -->
+      </div>
+    </div>
+  </div>
+</Layout>
