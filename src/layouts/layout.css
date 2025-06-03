@@ -1,0 +1,200 @@
+html::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/oneshotcatwalks.png');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(0.55) blur(4px);
+    z-index: -1;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --accent: 136, 58, 234;
+        --accent-light: 224, 204, 250;
+        --accent-dark: 49, 10, 101;
+        --accent-gradient: linear-gradient(
+            45deg,
+            rgb(var(--accent)),
+            rgb(var(--accent-light)) 30%,
+            white 60%
+        );
+        --card-background: hsl(220, 82%, 92%);
+        --card-foreground: hsl(222.2 14% 14.9%);
+        --background: hsl(220, 93%, 95%);
+        --foreground: hsl(234, 16%, 35%);
+        --Hero: hsl(231, 97%, 92%);
+        --dots-color: hsl(231, 97%, 72%);
+        --card-border: hsl(231, 97%, 72%);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --accent: 136, 58, 234;
+        --accent-light: 224, 204, 250;
+        --accent-dark: 49, 10, 101;
+        --accent-gradient: linear-gradient(
+        45deg,
+        rgb(var(--accent)),
+        rgb(var(--accent-light)) 30%,
+        white 60%
+    );
+        --card-foreground: hsl(0 0% 90%);
+        --card-background: hsl(222.2 34% 8.9%);
+        --background: hsl(222.2 34% 5.9%);
+        --foreground: hsl(222.2 94% 90.9%);
+        --Hero: hsl(222.2 34% 6.9%);
+        --dots-color: hsl(222.2 4% 24.9%);
+        --card-border: rgb(51, 55, 57);
+        --border: rgb(3, 169, 244);
+        --g1: rgb(98, 0, 234);
+        --g2: rgb(236, 64, 122);
+        --g3: rgb(253, 216, 53);
+    }
+}
+
+html {
+    font-family: 'Sora', system-ui, sans-serif;
+}
+
+body {
+    margin: 0px;
+}
+
+p, span, h1, h2, h3, h4, h5, h6, ol, ul {
+    color: var(--foreground);
+}
+
+code {
+    /* font-family:
+        Menlo,
+        Monaco,
+        Lucida Console,
+        Liberation Mono,
+        DejaVu Sans Mono,
+        Bitstream Vera Sans Mono,
+        Courier New,
+        monospace; */
+    color: rgb(var(--accent-light)) !important;
+    background-color: #242424;
+    padding: 0.25rem;
+    border-radius: 0.5rem;
+}
+
+pre > code {
+    background-color: rgba(0,0,0,0) !important;
+}
+
+pre {
+    padding: 1.2rem;
+    border-radius: 0.8rem;
+}
+
+.content {
+    margin: 10vh;
+}
+
+article a::before {
+    content: "\[\[";
+    color: #beebfe99;
+}
+
+article a::after {
+    content: "\]\]";
+    color: #beebfe99;
+}
+
+article a {
+    color: rgb(190 235 254);
+}
+
+article a:hover {
+    opacity: 0.8;
+    transition: 0.08s ease-out;
+}
+
+blockquote {
+    border-left: 5px solid #ccc;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
+}
+
+blockquote:before {
+    color: #ccc;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+}
+
+blockquote p {
+    display: inline;
+}
+
+#rainCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+body {
+    margin: 0px;
+    background: rgba(0,0,0,0);
+}
+
+.crt-filter {
+    &:after {
+        content: " ";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: rgba(18, 16, 16, 0.1);
+        opacity: 0;
+        z-index: 2;
+        pointer-events: none;
+        animation: flicker 0.15s infinite;
+    }
+
+    &:before {
+        content: " ";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+        z-index: 2;
+        background-size: 100% 2px, 3px 100%;
+        pointer-events: none;
+    }
+
+    & * {
+        animation: phosphor 1.6s infinite !important;
+    }
+}
+
+.container {
+    margin: 10vh 10vw;
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin: 5vh 0;
+    }
+}
