@@ -21,27 +21,24 @@ return seconds == 60
 function MusicTitle({title, artist, elapsed, length}: {title: string, artist: string, elapsed: number, length: number}) {
 	const progressPercentage = (elapsed / length) * 100;
 	return ( 
-		<>
-		<div className='title-artist'>
-			<p style={{margin: 0}}>{title}</p>
-			<p style={{margin: 0, fontSize: "0.8rem", opacity: 0.8}}>listening toooo {artist} :3</p>
+		<>		<div className='title-artist'>
+			<p>{title}</p>
+			<p>listening toooo {artist} :3</p>
 		</div>
-		{/* <div style={{ marginTop: '10px', width: '100%' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '5px', fontSize: '0.7rem' }}>
+		{/* <div className="progress-container">
+        <div className="progress-time-display">
           <span>{msToMinSeconds(elapsed)}</span>
           <span>{msToMinSeconds(length)}</span>
         </div>
-        <div style={{ width: '100%', height: '4px', backgroundColor: 'var(--foreground)', borderRadius: '1rem' }}>
+        <div className="progress-bar-background">
           <div
+            className="progress-bar-fill"
             style={{
               width: `${progressPercentage}%`,
-              height: '100%',
-              backgroundColor: 'rgb(var(--accent-light))',
-              borderRadius: '2px',
             }}
           />
-        </div> */}
-      {/* </div> */}
+        </div>
+      </div> */}
 		</>
 	)
 }
@@ -83,8 +80,8 @@ export default function MusicCard() {
 		</div> */}
 		
 		<div className="image_wrapper">
-			<img className="album_art_glow" height={125} width={125} src={oldMusic?.art_url || '/placeholder_album_art.png'}></img>
-			<img className="album_art" height={125} width={125} src={oldMusic?.art_url || '/placeholder_album_art.png'}></img>
+			<img className="album_art_glow" height={60} width={60} src={oldMusic?.art_url || '/placeholder_album_art.png'}></img>
+			<img className="album_art" height={60} width={60} src={oldMusic?.art_url || '/placeholder_album_art.png'}></img>
 		</div>
 
 		<div className='music_card_end'>

@@ -161,6 +161,8 @@ blockquote p {
 body {
   margin: 0px;
   background: rgba(0, 0, 0, 0);
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
 }
 
 .crt-filter {
@@ -208,7 +210,9 @@ body {
 }
 
 .container {
-  margin: 10vh 8vw;
+  grid-column: 2;
+  margin-top: 10vh;
+  margin-bottom: 0;
   background: rgba(from var(--card-background) r g b / 0.4);
   /* https://caniuse.com/mdn-css_types_color_rgb_relative_syntax */
   backdrop-filter: blur(10px);
@@ -217,7 +221,12 @@ body {
 }
 
 @media (max-width: 576px) {
+  body {
+    grid-template-columns: 5vw 1fr 5vw;
+  }
+  
   .container {
-    margin: 5vh 5vw;
+    margin-top: 5vh;
+    margin-bottom: 0;
   }
 }

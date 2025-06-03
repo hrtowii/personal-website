@@ -18,12 +18,14 @@ body {
   grid-template-columns: 1fr 3fr;
   gap: 2rem;
   padding: 1.25rem;
+  box-sizing: border-box;
 }
 
 .content-area {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  box-sizing: border-box;
 }
 
 .tophalf {
@@ -70,7 +72,7 @@ body {
   }
 
   .bio {
-    font-size: 24px;
+    font-size: 32px;
     text-align: left;
     margin-top: 0;
   }
@@ -272,7 +274,7 @@ body {
 .bio {
   filter: drop-shadow(0 0 6px rgba(105, 155, 255, 0.5));
   font-family: MyWebFont;
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 100;
   text-align: center;
   margin-top: 1rem;

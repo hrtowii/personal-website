@@ -37,7 +37,9 @@ const Sidebar: React.FC = () => {
         <span className="bio">h t r o w i i</span>
       </div>
       
-      <div className="music-section">
+      <div className="music-section" 
+      // style={{ margin: '0 -20px', width: 'calc(100% + 40px)' }}
+      >
         <MusicCard />
       </div>
       

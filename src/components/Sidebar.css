@@ -9,6 +9,8 @@
   border: 0.6px var(--card-border) solid;
   height: fit-content;
   top: 2rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .profile-section {
