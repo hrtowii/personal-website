@@ -1,115 +1,116 @@
 #Hero {
-    /* background-color: var(--card-background); */
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    background-color: var(--Hero);
-    justify-content: space-between;
-    width: 100%;
-    height: 100vh;
-    padding-inline: 2rem;
-    /* padding-block: 2rem; */
+  /* background-color: var(--card-background); */
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  /* background-color: var(--Hero); */
+  justify-content: space-between;
+  /* width: 100%; */
+  /* height: 100vh; */
+  padding-inline: 2rem;
+  /* padding-block: 2rem; */
 }
 
-@font-face{
-	font-family: 'MyWebFont';
-	src: url('/ndot47.ttf'); 
+@font-face {
+  font-family: "MyWebFont";
+  src: url("/ndot47.ttf");
 }
 /* copied from https://staturnz.com */
 .bio {
-	filter: drop-shadow(0 0 6px rgba(105, 155, 255, 0.5));
-	font-family: MyWebFont;
-	font-size: 40px;
-	font-weight: 100;
-	max-width: 700px;
+  filter: drop-shadow(0 0 6px rgba(105, 155, 255, 0.5));
+  font-family: MyWebFont;
+  font-size: 40px;
+  font-weight: 100;
+  max-width: 700px;
 }
 
 .main-text {
-    font: 500 20px/1 "SF Mono", Helvetica, sans-serif;
-    font-size: 15px;
-    line-height: 1;
+  font: 500 20px/1 "SF Mono", Helvetica, sans-serif;
+  font-size: 15px;
+  line-height: 1;
 }
 
 footer {
-    z-index: 100000;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+  z-index: 100000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 .footer-links {
-    margin-top: 1em;
-    color: rgb(var(--accent-light));
-    border-bottom: 1px solid rgb(var(--accent));
-    text-decoration: none;
+  margin-top: 1em;
+  color: rgb(var(--accent-light));
+  border-bottom: 1px solid rgb(var(--accent));
+  text-decoration: none;
 }
 
 @media (prefers-color-scheme: light) {
-    .footer-links {
-        margin-top: 1em;
-        color: rgb(var(--accent-dark));
-        border-bottom: 1px solid rgb(var(--accent-dark));
-        text-decoration: none;
-    }
+  .footer-links {
+    margin-top: 1em;
+    color: rgb(var(--accent-dark));
+    border-bottom: 1px solid rgb(var(--accent-dark));
+    text-decoration: none;
+  }
 }
 
 @media (max-width: 576px) {
-	.bio {
-		font-size: 2rem;
-	}
-    .Hero-bottom, .Hero-top {
-        flex-direction: column;
-        align-items: flex-start !important;
-        gap: 2rem;
-    }
+  .bio {
+    font-size: 2rem;
+  }
+  .Hero-bottom,
+  .Hero-top {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 2rem;
+  }
 }
 
-.pfp, .pfp_glow {
-    position: absolute;
-    border-radius: 12px;
-    /* border-radius: 2rem+12px; */
-    border: 0.8px #94a3b8 solid;
+.pfp,
+.pfp_glow {
+  position: absolute;
+  border-radius: 12px;
+  /* border-radius: 2rem+12px; */
+  border: 0.8px #94a3b8 solid;
 }
 
 .pfp_wrapper {
-    height: 125px;
-    width: 125px;
+  height: 125px;
+  width: 125px;
 }
 
 .pfp_glow {
-    opacity: 0.5;
-    filter: blur(12px) saturate(6);
+  opacity: 0.5;
+  filter: blur(12px) saturate(6);
 }
 
 .navsocial {
-    overflow: hidden;
-    background-color: var(--card-background);
-    border-radius: 2rem+10px;
-    width: 90%;
+  overflow: hidden;
+  background-color: var(--card-background);
+  border-radius: 2rem+10px;
+  width: 90%;
 }
 
 .navsocial a {
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
 }
-  
+
 .navsocial :not(a) {
-    padding-right: 0px;
+  padding-right: 0px;
 }
 
 .Hero-top {
-    margin-top: 2rem;
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    /* align-items: end; */
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  /* align-items: end; */
 }
 .Hero-bottom {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    align-items: end;
-    margin-bottom: 2rem;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 2rem;
 }

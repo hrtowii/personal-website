@@ -8,6 +8,7 @@ import FancyHyperlink from '../../../components/FancyHyperlink';
 // Get the slug from the params
 export async function getStaticPaths() {
   const albumEntries = await getCollection("albums");
+  console.log(albumEntries)
   return albumEntries.map(entry => ({
     params: { slug: entry.id },
     props: { entry },

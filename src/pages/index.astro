@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import BlogCard from '../components/BlogCard';
 import SkillsCard from '../components/SkillsCard'
-import Hero from '../components/Hero'
+import Sidebar from '../components/Sidebar';
 import './index.css'
 import ProjectItem from '../components/ProjectItem';
 import FancyHyperlink from '../components/FancyHyperlink';
@@ -17,11 +17,10 @@ const blogPosts = sortedBlogPosts.slice(0, 2).map(post => ({
 ---
 
 <Layout title="htrowii's website">
-	<main class="grid-container">
-		<div id="Hero-wrapper">
-			<Hero client:load/>
-		</div>
-		<div class="main-content">
+	<div class="main-content">
+		<Sidebar client:load />
+		
+		<div class="content-area">
 			<div class="tophalf">
 				<ProjectItem client:load description="Flutter app that pulls news RSS feed and runs sentimental analysis with Flask" id="item1" title="hnr2024" repo="hrtowii/hnr2024" link='https://github.com/hrtowii/hnr2024'/>
 				<ProjectItem client:load description="Fork of WDBFontOverwrite that uses kfd to overwrite fonts on iOS" id="item2" title="KFDFontOverwrite" repo="hrtowii/WDBFontOverwrite" link='https://github.com/hrtowii/KFDFontOverwrite'/>
@@ -38,7 +37,7 @@ const blogPosts = sortedBlogPosts.slice(0, 2).map(post => ({
 					'https://play-lh.googleusercontent.com/jcYU6dq8k2D3LwGM1qOLVovL7xnXMD1SCfPE0hvGJvE3EqDekoLrQoLR83Xk4otEJsw=w1024-h768-rw',
 					'https://play-lh.googleusercontent.com/UiUSPtagzOX1RbuvDTWmNd2qLCP1VhPX1TPSjoehZMctNEYGb1cmlJgOImGhQ_kJ8ks=w1024-h768-rw',
 				]}/>
-				<ProjectItem client:load description="Semi-jailbreak written for iOS 16.0 - 16.6.1, using RootHide Bootstrap" id="item6" title="Serotonin" repo="mineek/Serotonin" link='https://github.com/mineek/Serotonin' 
+				<ProjectItem client:load description="Semi-jailbreak written for iOS 16.0 - 16.6.1, using RootHide Bootstrap" id="item6" title="Serotonin" repo="mineek/Serotonin" link='https://github.com/mineek/Serotonin'
 				images={[
 					'/serotonin2.jpg',
 					'/serotonin.jpg',
@@ -51,7 +50,7 @@ const blogPosts = sortedBlogPosts.slice(0, 2).map(post => ({
 								Built full-stack B2B software for funeral parlors to list and sell funeral services to customers.
 							</p>
 						</div>
-						<FancyHyperlink href="https://eas-ai.com" 
+						<FancyHyperlink href="https://eas-ai.com"
 						content="Link to company" />
 					</div>
 				</div>
@@ -67,5 +66,5 @@ const blogPosts = sortedBlogPosts.slice(0, 2).map(post => ({
 				</div>
 			</div>
 		</div>
-	</main>
+	</div>
 </Layout>

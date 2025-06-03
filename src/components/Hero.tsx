@@ -17,18 +17,6 @@ export default function Hero() {
   }, [data]);
   return (
     <>
-      {/* <section className="shooting_star">
-			<span className="span_star"></span>
-			<span className="span_star"></span>
-			<span className="span_star"></span>
-			<span className="span_star"></span>
-			<span className="span_star"></span>
-			<span className="span_star"></span>
-			<span className="span_star"></span>
-			<span className="span_star"></span>
-			<span className="span_star"></span>
-			<span className="span_star"></span>
-		</section> */}
       <div id="Hero">
         <div className="Hero-top">
           <div className="pfp_wrapper">
@@ -37,8 +25,15 @@ export default function Hero() {
               height={125}
               width={125}
               src={avatarLink}
+              alt="meow"
             />
-            <img className="pfp" height={125} width={125} src={avatarLink} />
+            <img
+              className="pfp"
+              height={125}
+              width={125}
+              src={avatarLink}
+              alt="meow"
+            />
           </div>
           <MusicCard />
         </div>
