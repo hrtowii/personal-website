@@ -21,50 +21,12 @@ const blogPosts = sortedBlogPosts.slice(0, 2).map(post => ({
 		<Sidebar client:load />
 		
 		<div class="content-area">
-			<div class="tophalf">
-				<ProjectItem client:load description="Flutter app that pulls news RSS feed and runs sentimental analysis with Flask" id="item1" title="hnr2024" repo="hrtowii/hnr2024" link='https://github.com/hrtowii/hnr2024'/>
-				<ProjectItem client:load description="Fork of WDBFontOverwrite that uses kfd to overwrite fonts on iOS" id="item2" title="KFDFontOverwrite" repo="hrtowii/WDBFontOverwrite" link='https://github.com/hrtowii/KFDFontOverwrite'/>
-				<div id="item3" class="transparentitem">
-					<div class="item-wrapper">
-					 	<h3>Projects</h3>
-					</div>
-				</div>
-				<ProjectItem client:load description="Telegram bot to download YouTube audio" id="item4" title="yt2mp3" repo="hrtowii/telegram_yt2mp3" link='https://github.com/hrtowii/telegram_yt2mp3'/>
-				<ProjectItem client:load description="Coffee brewing timer app made for different recipes written with React Native" id="item5" title="Coffier" repo="hrtowii/hnr2023" link='https://github.com/hrtowii/hnr2023'
-				images={[
-					'https://play-lh.googleusercontent.com/Hcyangc3wU6CFaWXqitVVtQLQK7W_VzUw_Fyq2a1vrbhvHjGG5UHJNcW-rmvN3cNDA=w1024-h768-rw',
-					'https://play-lh.googleusercontent.com/HqIkMwBTmzJQp9eVwTVemlcsgbFvKkQaatRgB2XvGpTprw2X3Za3MLr2IBMXAyEsa1o=w1024-h768-rw',
-					'https://play-lh.googleusercontent.com/jcYU6dq8k2D3LwGM1qOLVovL7xnXMD1SCfPE0hvGJvE3EqDekoLrQoLR83Xk4otEJsw=w1024-h768-rw',
-					'https://play-lh.googleusercontent.com/UiUSPtagzOX1RbuvDTWmNd2qLCP1VhPX1TPSjoehZMctNEYGb1cmlJgOImGhQ_kJ8ks=w1024-h768-rw',
-				]}/>
-				<ProjectItem client:load description="Semi-jailbreak written for iOS 16.0 - 16.6.1, using RootHide Bootstrap" id="item6" title="Serotonin" repo="mineek/Serotonin" link='https://github.com/mineek/Serotonin'
-				images={[
-					'/serotonin2.jpg',
-					'/serotonin.jpg',
-				]}/>
-				<div id="item7" class="item">
-					<div class="item-wrapper">
-						<div class="item-content">
-							<h4>Heartfelt</h4>
-							<p>
-								Built full-stack B2B software for funeral parlors to list and sell funeral services to customers.
-							</p>
-						</div>
-						<FancyHyperlink href="https://eas-ai.com"
-						content="Link to company" />
-					</div>
-				</div>
-				<ProjectItem client:load description="Telegram bot that takes images of books and links LibGen downloads for them" id="item8" title="img2epub" repo="hrtowii/telegram_img2epub" link='https://github.com/hrtowii/telegram_img2epub'/>
-				<ProjectItem client:load description="Python script to overwrite equalizer presets for Spotify on iOS" id="item9" title="SpotifyEQ-iOS" repo="hrtowii/SpotifyEQ-iOS" link='https://github.com/hrtowii/SpotifyEQ-iOS'/>
+			<div class="about-me">
+				<h1>meow :3</h1>
 			</div>
-			<div class="bottomhalf">
-				<div class="one-third">
-					<BlogCard client:load blogPosts={blogPosts} />
-				</div>
-				<div class="two-thirds">
-					<SkillsCard/>
-				</div>
-			</div>
+			<div class="hobbies"></div>
+			<div class="projects"></div>
+			<div class="blogposts"></div>
 		</div>
 	</div>
 </Layout>

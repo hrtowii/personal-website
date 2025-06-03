@@ -61,7 +61,7 @@ html::before {
 }
 
 html {
-  font-family: "Sora", system-ui, sans-serif;
+  font-family: "Galmuri7", "Sora", system-ui, sans-serif;
 }
 
 body {
@@ -209,16 +209,15 @@ body {
 
 .container {
   margin: 10vh 8vw;
-  padding-top: 5vh;
   background: rgba(from var(--card-background) r g b / 0.4);
   /* https://caniuse.com/mdn-css_types_color_rgb_relative_syntax */
   backdrop-filter: blur(10px);
-  border-radius: 12px;
+  border-radius: 1.75rem;
   border: 1px solid var(--card-border);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 576px) {
   .container {
-    margin: 5vh 0;
+    margin: 5vh 5vw;
   }
 }

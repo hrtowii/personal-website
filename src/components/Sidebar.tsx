@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLanyard } from "use-lanyard";
 import MusicCard from "./MusicCard";
-
+import './Sidebar.css'
 const Sidebar: React.FC = () => {
   const DISCORD_ID = "413331641109446656";
   const { data } = useLanyard(DISCORD_ID);

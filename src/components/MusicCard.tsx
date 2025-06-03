@@ -24,9 +24,9 @@ function MusicTitle({title, artist, elapsed, length}: {title: string, artist: st
 		<>
 		<div className='title-artist'>
 			<p style={{margin: 0}}>{title}</p>
-			<p style={{margin: 0, fontSize: "0.8rem", opacity: 0.8}}>{artist}</p>
+			<p style={{margin: 0, fontSize: "0.8rem", opacity: 0.8}}>listening toooo {artist} :3</p>
 		</div>
-		<div style={{ marginTop: '10px', width: '100%' }}>
+		{/* <div style={{ marginTop: '10px', width: '100%' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '5px', fontSize: '0.7rem' }}>
           <span>{msToMinSeconds(elapsed)}</span>
           <span>{msToMinSeconds(length)}</span>
@@ -40,8 +40,8 @@ function MusicTitle({title, artist, elapsed, length}: {title: string, artist: st
               borderRadius: '2px',
             }}
           />
-        </div>
-      </div>
+        </div> */}
+      {/* </div> */}
 		</>
 	)
 }

@@ -11,7 +11,7 @@
 
 .album_art_glow {
     filter: blur(12px) saturate(3);
-    opacity: 0.6;
+    opacity: 0.4;
 }
 
 .music_card {

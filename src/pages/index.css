@@ -18,41 +18,6 @@ body {
   grid-template-columns: 1fr 3fr;
   gap: 2rem;
   padding: 1.25rem;
-  min-height: 100vh;
-}
-
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  padding: 2rem;
-  background-color: var(--card-background);
-  border-radius: 1.25rem;
-  border: 0.6px var(--card-border) solid;
-  height: fit-content;
-  position: sticky;
-  top: 2rem;
-}
-
-.profile-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-
-.music-section {
-  width: 100%;
-}
-
-.social-section {
-  width: 100%;
-}
-
-.social-section footer {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
 }
 
 .content-area {
@@ -88,13 +53,6 @@ body {
   .main-content {
     display: flex;
     flex-direction: column;
-    /* grid dots */
-    background-image: radial-gradient(
-      circle at 1px 1px,
-      var(--dots-color) 1px,
-      transparent 0
-    );
-    background-size: 40px 40px;
     padding: 1.25rem;
     gap: 1.25rem;
     margin-top: 0rem;
@@ -106,7 +64,7 @@ body {
   }
 
   .profile-section {
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     gap: 1rem;
   }
@@ -143,9 +101,7 @@ body {
     order: -1;
     /* moves to the front, scuffed */
   }
-  .shooting_star {
-    display: none;
-  }
+
 }
 
 /* copied from https://staturnz.com */

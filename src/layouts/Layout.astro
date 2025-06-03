@@ -18,6 +18,7 @@ import { ViewTransitions } from 'astro:transitions';
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css" />
 		<slot name="metadata" />
 		<title>{title}</title>
 	</head>
@@ -250,7 +251,7 @@ class WeatherManager {
 				constructor() {
 								this.rainSystem = null;
 								this.isFirstVisit = !getCookie('weatherPreferencesSet');
-								this.speedMultiplier = parseFloat(getCookie('weatherSpeed') || '10.0');
+								this.speedMultiplier = parseFloat(getCookie('weatherSpeed') || '1.0');
 								this.initializeSystems();
 								this.initializeUI();
 								this.loadSettings();
@@ -263,7 +264,7 @@ class WeatherManager {
 				async loadSettings() {
 								if (this.isFirstVisit) {
 												setCookie('rainEnabled', 'true');
-												setCookie('weatherSpeed', '10.0');
+												setCookie('weatherSpeed', '1.0');
 												setCookie('weatherPreferencesSet', 'true');
 
 												const rainToggle = document.getElementById('rainToggle');
@@ -271,7 +272,7 @@ class WeatherManager {
 												const speedValue = document.getElementById('speedValue');
 
 												if (rainToggle) rainToggle.checked = true;
-												if (speedSlider) speedSlider.value = 10.0;
+												if (speedSlider) speedSlider.value = 1.0;
 												if (speedValue) speedValue.textContent = '3x';
 
 												this.rainSystem.start();
@@ -279,7 +280,7 @@ class WeatherManager {
 								}
 
 								const rainEnabled = getCookie('rainEnabled') === 'true';
-								const speed = parseFloat(getCookie('weatherSpeed') || '10.0');
+								const speed = parseFloat(getCookie('weatherSpeed') || '11.0');
 
 								const rainToggle = document.getElementById('rainToggle');
 								const speedSlider = document.getElementById('weatherSpeed');
