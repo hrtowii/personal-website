@@ -15,7 +15,7 @@
   --font-size-tagline: 0.702rem;
 }
 
-@media (max-width: 576px) {
+@media (max-width: px) {
   :root {
     --font-size-displayLarge: 2.435rem;
     --font-size-displayMedium: 2.165rem;
@@ -33,31 +33,39 @@
     --font-size-tagline: 0.527rem;
   }
 }
+
 h1 {
   font-size: var(--font-size-heading1);
+  margin-bottom: 1.5rem;
 }
 
 h2 {
   font-size: var(--font-size-heading2);
+  margin-bottom: 1.25rem;
 }
 
 h3 {
   font-size: var(--font-size-heading3);
+  margin-bottom: 1.125rem;
 }
 
 h4 {
   font-size: var(--font-size-heading4);
+  margin-bottom: 1rem;
 }
 
 h5 {
   font-size: var(--font-size-heading5);
+  margin-bottom: 0.875rem;
 }
 
 h6 {
   font-size: var(--font-size-heading6);
+  margin-bottom: 0.75rem;
 }
 
 body,
 p {
   font-size: var(--font-size-body);
+  margin-bottom: 1rem;
 }

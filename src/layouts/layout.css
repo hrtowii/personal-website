@@ -68,6 +68,13 @@ body {
   margin: 0px;
 }
 
+.bold {
+  font-weight: 900;
+}
+
+.italic {
+  font-style: italic;
+}
 p,
 span,
 h1,
@@ -148,6 +155,40 @@ blockquote p {
   display: inline;
 }
 
+ul {
+  list-style: none;
+  padding-left: 1.5em;
+}
+
+ul li {
+  position: relative;
+}
+
+ul li::before {
+  content: "-";
+  position: absolute;
+  left: -1.5em;
+  color: var(--foreground);
+  font-weight: bold;
+}
+
+ol {
+  list-style: none;
+  padding-left: 1.5em;
+}
+
+ol li {
+  position: relative;
+}
+
+ol li::before {
+  content: "-";
+  position: absolute;
+  left: -1.5em;
+  color: var(--foreground);
+  font-weight: bold;
+}
+
 #rainCanvas {
   position: fixed;
   top: 0;
@@ -210,8 +251,7 @@ body {
 .container {
   width: 80vw;
   margin-inline: 10vw;
-  margin-top: 10vh;
-  margin-bottom: 0;
+  margin-block: 10vh;
   /* background: rgba(from var(--card-background) r g b / 0.4); */
   /* https://caniuse.com/mdn-css_types_color_rgb_relative_syntax */
   background: color-mix(in srgb, var(--card-background) 40%, transparent);
@@ -227,6 +267,6 @@ body {
 
   .container {
     margin-top: 5vh;
-    margin-bottom: 0;
+    margin-bottom: 5vh;
   }
 }

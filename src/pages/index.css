@@ -7,6 +7,10 @@ body {
   border: 0.6px var(--card-border) solid;
   height: 100vh;
 } */
+p,
+li {
+  line-height: 1.4rem;
+}
 
 .intro {
   display: flex;

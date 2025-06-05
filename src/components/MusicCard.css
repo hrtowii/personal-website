@@ -95,6 +95,7 @@
   opacity: 0.7;
   font-style: italic;
   width: 100%;
+  line-height: 1rem;
 }
 
 @media (max-width: 576px) {
@@ -103,8 +104,8 @@
   }
 
   .music_content {
-    flex-direction: column;
-    text-align: center;
+    /* flex-direction: column; */
+    /* text-align: center; */
     gap: 0.8rem;
   }
 

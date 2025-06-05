@@ -9,6 +9,10 @@
   height: 100%;
 }
 
+.blog_card p {
+  margin-bottom: 0;
+}
+
 .blog_status_header {
   margin-bottom: 0.8rem;
   border-bottom: 1px solid var(--card-border);
