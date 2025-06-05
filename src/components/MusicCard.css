@@ -27,8 +27,8 @@
 }
 
 .music_card.playing {
-  border-color: rgb(var(--accent-light));
-  box-shadow: 0 0 20px rgba(var(--accent-light), 0.3);
+  border-color: var(--accent-light);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--accent-light) 30%, transparent);
 }
 
 .music_card.playing .album_art_glow {
@@ -52,7 +52,7 @@
 }
 
 .music_card.playing .status-text {
-  color: rgb(var(--accent-light));
+  color: var(--accent-light);
 }
 
 .music_content {

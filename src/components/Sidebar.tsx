@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLanyard } from "use-lanyard";
 import MusicCard from "./MusicCard";
 import LinksCard from "./LinksCard";
 import "./Sidebar.css";
 import BlogCard from "./BlogCard";
+import SettingsCard from "./SettingsCard";
 
 // MARK: blog post fetching logic
 import { getCollection } from "astro:content";
@@ -39,14 +40,14 @@ const Sidebar: React.FC = () => {
             height={125}
             width={125}
             src={avatarLink}
-            alt="profile"
+            alt="User avatar"
           />
           <img
             className="pfp"
             height={125}
             width={125}
             src={avatarLink}
-            alt="profile"
+            alt="User avatar"
           />
         </div>
         <span className="bio">h t r o w i i</span>
@@ -61,6 +62,10 @@ const Sidebar: React.FC = () => {
       </div>
       <div className="blogs-section">
         <BlogCard blogPosts={blogPosts} />
+      </div>
+      
+      <div className="settings-section">
+        <SettingsCard />
       </div>
     </div>
   );

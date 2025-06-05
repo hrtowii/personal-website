@@ -39,7 +39,7 @@
   display: block;
   padding: 0.5rem 0;
   text-decoration: underline;
-  color: rgb(var(--accent-light));
+  color: var(--accent-light);
   font-size: 0.9rem;
   font-weight: 500;
   transition: all 0.2s ease;
@@ -73,11 +73,11 @@
   .links_card {
     padding: 1rem;
   }
-  
+
   .links_grid {
     gap: 0.8rem;
   }
-  
+
   .link-item {
     padding: 0.8rem;
     text-align: center;

@@ -32,7 +32,7 @@ import { ViewTransitions } from "astro:transitions";
 		<slot name="metadata" />
 		<title>{title}</title>
 	</head>
-	<body class="crt-filter">
+	<body>
 		<script src="./oneko.js"></script>
 		<canvas id="rainCanvas"></canvas>
 		<div class="container">
@@ -41,6 +41,7 @@ import { ViewTransitions } from "astro:transitions";
 	</body>
 </html>
 <script>
+	// @ts-nocheck
 	// Helper functions for cookies
 	function getCookie(name) {
 		const value = `; ${document.cookie}`;
@@ -284,8 +285,8 @@ import { ViewTransitions } from "astro:transitions";
 				const speedValue = document.getElementById("speedValue");
 				if (rainToggle) rainToggle.checked = true;
 				if (speedSlider) speedSlider.value = 1.0;
-				if (speedValue)
-					speedValue.textContent = this.rainSystem.start();
+				if (speedValue) speedValue.textContent = "1.0x";
+				this.rainSystem.start();
 				return;
 			}
 			const rainEnabled = getCookie("rainEnabled") === "true";
@@ -295,7 +296,7 @@ import { ViewTransitions } from "astro:transitions";
 			const speedValue = document.getElementById("speedValue");
 			if (rainToggle) rainToggle.checked = rainEnabled;
 			if (speedSlider) speedSlider.value = speed;
-			if (speedValue) speedValue.textContent = `${speed}x`;
+			if (speedValue) speedValue.textContent = speed + "x";
 			this.rainSystem.stop();
 			if (rainEnabled) {
 				this.rainSystem.start();
@@ -316,7 +317,7 @@ import { ViewTransitions } from "astro:transitions";
 			}
 
 			document.addEventListener("click", (e) => {
-				if (weatherSettings && !weatherSettings.contains(e.target)) {
+				if (weatherSettings && e.target && !weatherSettings.contains(e.target)) {
 					weatherSettings.classList.remove("open");
 				}
 			});
@@ -343,7 +344,7 @@ import { ViewTransitions } from "astro:transitions";
 
 				speedSlider.addEventListener("input", (e) => {
 					const speed = parseFloat(e.target.value);
-					if (speedValue) speedValue.textContent = `${speed}x`;
+					if (speedValue) speedValue.textContent = speed + "x";
 					this.updateSpeed(speed);
 				});
 			}
@@ -379,8 +380,59 @@ import { ViewTransitions } from "astro:transitions";
 		}
 	}
 
+	// =======================================
+	// >> CRT FILTER MANAGEMENT
+	// =======================================
+
+	class CRTManager {
+		constructor() {
+			this.isLightMode = false;
+			this.crtEnabled = true;
+			this.initializeSettings();
+			this.setupMediaQuery();
+		}
+
+		initializeSettings() {
+			const savedCrtEnabled = getCookie("crtEnabled");
+			if (savedCrtEnabled !== null) {
+				this.crtEnabled = savedCrtEnabled === "true";
+			} else {
+				setCookie("crtEnabled", "true");
+			}
+			this.updateCRTFilter();
+		}
+
+		setupMediaQuery() {
+			const mediaQuery = window.matchMedia("(prefers-color-scheme: light)");
+			this.isLightMode = mediaQuery.matches;
+
+			// Update on media query change
+			mediaQuery.addEventListener("change", (e) => {
+				this.isLightMode = e.matches;
+				this.updateCRTFilter();
+			});
+		}
+
+		updateCRTFilter() {
+			const body = document.body;
+
+			if (this.isLightMode || !this.crtEnabled) {
+				body.classList.remove("crt-filter");
+			} else {
+				body.classList.add("crt-filter");
+			}
+		}
+
+		setCRTEnabled(enabled) {
+			this.crtEnabled = enabled;
+			setCookie("crtEnabled", enabled.toString());
+			this.updateCRTFilter();
+		}
+	}
+
 	document.addEventListener("DOMContentLoaded", () => {
-		new WeatherManager();
+		window.weatherManager = new WeatherManager();
+		window.crtManager = new CRTManager();
 	});
 </script>
 <ViewTransitions />

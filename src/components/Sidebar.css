@@ -46,6 +46,14 @@
   width: 100%;
 }
 
+.blogs-section {
+  width: 100%;
+}
+
+.settings-section {
+  width: 100%;
+}
+
 /* Profile picture styling */
 .pfp,
 .pfp_glow {

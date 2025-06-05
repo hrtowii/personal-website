@@ -14,49 +14,94 @@ html::before {
   z-index: -1;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --accent: 136, 58, 234;
-    --accent-light: 224, 204, 250;
-    --accent-dark: 49, 10, 101;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      rgb(var(--accent-light)) 30%,
-      white 60%
-    );
-    --card-background: hsl(220, 82%, 92%);
-    --card-foreground: hsl(222.2 14% 14.9%);
-    --background: hsl(220, 93%, 95%);
-    --foreground: hsl(234, 16%, 35%);
-    --Hero: hsl(231, 97%, 92%);
-    --dots-color: hsl(231, 97%, 72%);
-    --card-border: hsl(231, 97%, 72%);
-  }
+/* :root {
+  --accent: 136, 58, 234;
+  --accent-light: 224, 204, 250;
+  --accent-dark: 49, 10, 101;
+  --accent-gradient: linear-gradient(
+    45deg,
+    rgb(var(--accent)),
+    rgb(var(--accent-light)) 30%,
+    white 60%
+  );
+  --card-foreground: hsl(0 0% 90%);
+  --card-background: hsl(222.2 34% 8.9%);
+  --background: hsl(222.2 34% 5.9%);
+  --foreground: hsl(222.2 94% 90.9%);
+  --Hero: hsl(222.2 34% 6.9%);
+  --dots-color: hsl(222.2 4% 24.9%);
+  --card-border: rgb(51, 55, 57);
+  --border: rgb(3, 169, 244);
+  --g1: rgb(98, 0, 234);
+  --g2: rgb(236, 64, 122);
+  --g3: rgb(253, 216, 53);
+} */
+
+:root {
+  /* Accent Colors */
+  --accent: hsl(343, 76%, 68%);
+  --accent-light: hsl(343, 76%, 78%);
+  --accent-dark: hsl(343, 76%, 58%);
+  --accent-gradient: linear-gradient(
+    45deg,
+    hsl(343, 76%, 68%),
+    hsl(343, 76%, 78%) 30%,
+    white 60%
+  );
+
+  /* Backgrounds */
+  --background: hsl(249, 22%, 12%);
+  --card-background: hsl(247, 23%, 15%);
+  --overlay: hsl(248, 25%, 18%);
+  --Hero: hsl(244, 18%, 15%); /* Highlight Low */
+
+  /* Foregrounds */
+  --foreground: hsl(245, 50%, 91%);
+  --card-foreground: hsl(245, 50%, 91%);
+
+  /* Borders and Highlights */
+  --card-border: hsl(248, 13%, 36%); /* Highlight High */
+  --border: hsl(343, 76%, 68%); /* Accent */
+
+  /* Additional Colors */
+  --dots-color: hsl(249, 12%, 47%); /* Muted */
+  --g1: hsl(267, 57%, 78%); /* Iris */
+  --g2: hsl(35, 88%, 72%); /* Gold */
+  --g3: hsl(2, 55%, 83%); /* Rose */
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
-    --accent: 136, 58, 234;
-    --accent-light: 224, 204, 250;
-    --accent-dark: 49, 10, 101;
+    /* Accent Colors */
+    --accent: hsl(343, 35%, 55%); /* Love */
+    --accent-light: hsl(343, 35%, 65%);
+    --accent-dark: hsl(343, 35%, 45%);
     --accent-gradient: linear-gradient(
       45deg,
-      rgb(var(--accent)),
-      rgb(var(--accent-light)) 30%,
+      hsl(343, 35%, 55%),
+      hsl(343, 35%, 65%) 30%,
       white 60%
     );
-    --card-foreground: hsl(0 0% 90%);
-    --card-background: hsl(222.2 34% 8.9%);
-    --background: hsl(222.2 34% 5.9%);
-    --foreground: hsl(222.2 94% 90.9%);
-    --Hero: hsl(222.2 34% 6.9%);
-    --dots-color: hsl(222.2 4% 24.9%);
-    --card-border: rgb(51, 55, 57);
-    --border: rgb(3, 169, 244);
-    --g1: rgb(98, 0, 234);
-    --g2: rgb(236, 64, 122);
-    --g3: rgb(253, 216, 53);
+
+    /* Backgrounds */
+    --background: hsl(32, 57%, 95%); /* Base */
+    --card-background: hsl(35, 100%, 98%); /* Surface */
+    --overlay: hsl(33, 43%, 91%); /* Overlay */
+    --Hero: hsl(25, 35%, 93%); /* Highlight Low */
+
+    /* Foregrounds */
+    --foreground: hsl(248, 19%, 40%); /* Text */
+    --card-foreground: hsl(248, 19%, 40%); /* Text */
+
+    /* Borders and Highlights */
+    --card-border: hsl(315, 4%, 80%); /* Highlight High */
+    --border: hsl(343, 35%, 55%); /* Accent */
+
+    /* Additional Colors */
+    --dots-color: hsl(257, 9%, 61%); /* Muted */
+    --g1: hsl(268, 21%, 57%); /* Iris */
+    --g2: hsl(35, 81%, 56%); /* Gold */
+    --g3: hsl(3, 53%, 67%); /* Rose */
   }
 }
 
@@ -98,7 +143,7 @@ code {
         Bitstream Vera Sans Mono,
         Courier New,
         monospace; */
-  color: rgb(var(--accent-light)) !important;
+  color: var(--accent-light) !important;
   background-color: #242424;
   padding: 0.25rem;
   border-radius: 0.5rem;

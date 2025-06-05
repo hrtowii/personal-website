@@ -57,15 +57,15 @@ li {
 /* Footer links styling */
 .footer-links {
   margin-top: 0.5em;
-  color: rgb(var(--accent-light));
-  border-bottom: 1px solid rgb(var(--accent));
+  color: var(--accent-light);
+  border-bottom: 1px solid var(--accent);
   text-decoration: none;
   padding: 0.25rem 0;
 }
 
 @media (prefers-color-scheme: light) {
   .footer-links {
-    color: rgb(var(--accent-dark));
-    border-bottom: 1px solid rgb(var(--accent-dark));
+    color: var(--accent-dark);
+    border-bottom: 1px solid var(--accent-dark);
   }
 }
