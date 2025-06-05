@@ -1,11 +1,15 @@
-import React from 'react';
-import './FancyHyperlink.css'
+import React from "react";
+import "./FancyHyperlink.css";
 interface FancyHyperlinkProps extends React.HTMLAttributes<HTMLAnchorElement> {
   href: string;
   content: string;
 }
 
-const FancyHyperlink: React.FC<FancyHyperlinkProps> = ({ href, content, ...rest }) => {
+const FancyHyperlink: React.FC<FancyHyperlinkProps> = ({
+  href,
+  content,
+  ...rest
+}) => {
   return (
     <a href={href} className="fancy-link" {...rest}>
       <span className="link-content">

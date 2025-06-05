@@ -1,18 +1,18 @@
 .item {
-    background-color: var(--card-background);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 0.6px var(--card-border) solid;
-    position: relative;
-    overflow: hidden;
-    z-index: 2;
-    height: auto;
-    border-radius: 1.5rem;
+  background-color: var(--card-background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.6px var(--card-border) solid;
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+  height: auto;
+  border-radius: 1.5rem;
 }
 
 .item-wrapper {
-    /* 
+  /* 
     background-image: radial-gradient(
       rgba(255, 255, 255, 0.2) 8%, 
       transparent 8%
@@ -22,115 +22,115 @@
     position: relative;
     transition: background-position 350ms ease;
     */
-    height: 100%;
-    width: calc(100% - 2rem);
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  height: 100%;
+  width: calc(100% - 2rem);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .item-wrapper h4 {
-    margin: 0px;
-    margin-top: 1rem;
-    font-size: 1.25rem;
+  margin: 0px;
+  margin-top: 1rem;
+  font-size: 1.25rem;
 }
 
 .item-wrapper .fancy-link {
-    margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .item-content-again {
-    width: 100%;
+  width: 100%;
 }
 
 .carousel-container {
-    gap: 10px;
-    overflow-x: scroll;
-    display: inline-flex;
-    width: 100%;
+  gap: 10px;
+  overflow-x: scroll;
+  display: inline-flex;
+  width: 100%;
 }
 
 .carousel-image {
-    max-height: 250px;
-    border-radius: 8px;
-    /* object-fit: cover; */
+  max-height: 250px;
+  border-radius: 8px;
+  /* object-fit: cover; */
 }
 
 .item-title,
 .stars {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .stars {
-    gap: 0.5rem;
+  gap: 0.5rem;
 }
 
 /* rgb(51, 55, 57) */
 /* rgb(242 244 247) */
 
 #item1 {
-    grid-column: span 1;
-    grid-row: span 1;
-    /* border-radius: 4px 3rem 3rem 3rem; */
+  grid-column: span 1;
+  grid-row: span 1;
+  /* border-radius: 4px 3rem 3rem 3rem; */
 }
 
 #item2 {
-    grid-column: span 2;
-    grid-row: span 1;
-    /* border-radius: 4px 3rem 4px 4px; */
+  grid-column: span 2;
+  grid-row: span 1;
+  /* border-radius: 4px 3rem 4px 4px; */
 }
 
 #item3 {
-    grid-column: span 1;
-    grid-row: span 1;
-    background-color: rgba(0, 0, 0, 0);
-    border: none;
+  grid-column: span 1;
+  grid-row: span 1;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
 }
 
 /* project */
-#item3>.item-wrapper {
-    width: 100%;
-    padding: 0px;
-    font-size: 1.25rem;
-    align-items: center;
-    justify-content: center;
+#item3 > .item-wrapper {
+  width: 100%;
+  padding: 0px;
+  font-size: 1.25rem;
+  align-items: center;
+  justify-content: center;
 }
 
 #item4 {
-    grid-column: span 1;
-    grid-row: span 1;
-    /* border-radius: 4px 3rem 3rem 4px; */
+  grid-column: span 1;
+  grid-row: span 1;
+  /* border-radius: 4px 3rem 3rem 4px; */
 }
 
 #item5 {
-    grid-column: span 1;
-    grid-row: span 2;
-    /* border-radius: 4px+3rem; */
+  grid-column: span 1;
+  grid-row: span 2;
+  /* border-radius: 4px+3rem; */
 }
 
 #item6 {
-    grid-column: span 2;
-    grid-row: span 2;
-    /* border-radius: 4px 4px 4px 3rem; */
+  grid-column: span 2;
+  grid-row: span 2;
+  /* border-radius: 4px 4px 4px 3rem; */
 }
 
 #item7 {
-    grid-column: span 1;
-    grid-row: span 2;
-    /* border-top-right-radius: 3rem; */
+  grid-column: span 1;
+  grid-row: span 2;
+  /* border-top-right-radius: 3rem; */
 }
 
 #item8 {
-    grid-column: span 1;
-    grid-row: span 1;
-    /* border-radius: 4px 4px 3rem 3rem; */
+  grid-column: span 1;
+  grid-row: span 1;
+  /* border-radius: 4px 4px 3rem 3rem; */
 }
 
 #item9 {
-    grid-column: span 1;
-    grid-row: span 1;
-    /* border-radius: 4px 3rem 3rem 3rem; */
+  grid-column: span 1;
+  grid-row: span 1;
+  /* border-radius: 4px 3rem 3rem 3rem; */
 }

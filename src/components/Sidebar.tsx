@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLanyard } from "use-lanyard";
 import MusicCard from "./MusicCard";
-import './Sidebar.css'
+import "./Sidebar.css";
 const Sidebar: React.FC = () => {
   const DISCORD_ID = "413331641109446656";
   const { data } = useLanyard(DISCORD_ID);
@@ -36,13 +36,14 @@ const Sidebar: React.FC = () => {
         </div>
         <span className="bio">h t r o w i i</span>
       </div>
-      
-      <div className="music-section" 
-      // style={{ margin: '0 -20px', width: 'calc(100% + 40px)' }}
+
+      <div
+        className="music-section"
+        // style={{ margin: '0 -20px', width: 'calc(100% + 40px)' }}
       >
         <MusicCard />
       </div>
-      
+
       <div className="social-section">
         <footer className="footer main-text-small">
           <a

@@ -2,6 +2,7 @@
 date: 2024-11-29
 title: Making a semi-jailbreak in a week
 ---
+
 <style>
 img {
     display: block !important;
@@ -28,36 +29,43 @@ a {
     text-overflow: ellipsis !important;
 }
 </style>
+
 # Introduction
+
 One fine week in January 2024, I released a semi-jailbreak named [Serotonin](https://github.com/hrtowii/Serotonin). If you're unaware of what it does, it aims to enable tweak injection for SpringBoard and works with the RootHide bootstrap. I never really explained how it worked and why I view it as a failure, so this blog post aims to cover that. Let's go over what led up to the release, how I made it, and how I'd have made it now if I didn't rush it out.
 
-Disclaimer: I did not do this alone. I have gotten countless amounts of help from very patient people, and I would not be able to make this without them. 
+Disclaimer: I did not do this alone. I have gotten countless amounts of help from very patient people, and I would not be able to make this without them.
+
 # Background: What's a semi-jailbreak?
 
 ## What does a jailbreak need?
+
 Traditional jailbreaks typically involve running exploits to ultimately defeat codesigning in order to inject dylibs into them for tweaks.
 
-In Dopamine 1 (v2 wasn't out yet), this was achieved by using the [Fugu15 exploit chain](https://objectivebythesea.org/v5/talks/OBTS_v5_lHenze.pdf), which consisted of a DriverKit kernel exploit, a CoreTrust+installd bypass, a PAC bypass, and a PPL bypass. 
+In Dopamine 1 (v2 wasn't out yet), this was achieved by using the [Fugu15 exploit chain](https://objectivebythesea.org/v5/talks/OBTS_v5_lHenze.pdf), which consisted of a DriverKit kernel exploit, a CoreTrust+installd bypass, a PAC bypass, and a PPL bypass.
 
 Do you spot the problem here? There are just too many exploits needed to be chained together. How do we get around this?
 
-**Let me ask you:** What do you *really* want from a jailbreak?
+**Let me ask you:** What do you _really_ want from a jailbreak?
 
 Is it the ability to run arbitrary binaries? To get a root shell? To get cool icons on your homescreen? If all you really want is that, you don't even need systemwide injection, just SpringBoard injection. This is exactly what a "semi-jailbreak" aims to be. Note that I'm just making this shit up, the terminology isn't exactly set in stone.
 
 ### kernel r/w
-To read and write to kernel memory, a kernel exploit is needed. 
 
-I could write another blogpost on how \*OS kexploits have evolved throughout their versions, but the gist is that vulnerabilities present in the *virtual memory layer* of the kernel have a lot more mitigations than bugs affecting the *physical memory layer* only. This is evident from recent kexploits abusing [physical use-after-frees](https://github.com/felix-pb/kfd/blob/main/writeups/exploiting-puafs.md) and the last virtual memory exploit being [multicast_bytecopy](https://github.com/potmdehex/multicast_bytecopy) and [weightBufs](https://github.com/0x36/weightBufs) which only work up to iOS 15.
+To read and write to kernel memory, a kernel exploit is needed.
+
+I could write another blogpost on how \*OS kexploits have evolved throughout their versions, but the gist is that vulnerabilities present in the _virtual memory layer_ of the kernel have a lot more mitigations than bugs affecting the _physical memory layer_ only. This is evident from recent kexploits abusing [physical use-after-frees](https://github.com/felix-pb/kfd/blob/main/writeups/exploiting-puafs.md) and the last virtual memory exploit being [multicast_bytecopy](https://github.com/potmdehex/multicast_bytecopy) and [weightBufs](https://github.com/0x36/weightBufs) which only work up to iOS 15.
 
 [kfd](https://github.com/felix-pb/kfd) is a set of kernel exploits that mainly work from iOS ???-16.6.1. landa is the most recent version that works up to 16.6.1, and doesn't require any cleanup on exploit failure. This makes it the best version in terms of both reliability and version support.
 
 ### Codesigning bypass
+
 Codesigning is an essential part of the iOS security model that ensures that random binaries can't run with arbitrary entitlements. For more info on this I recommend reading [the Apple Wiki article](https://theapplewiki.com/wiki/Code_signature) and [this article from Alfie](https://alfiecg.uk/2024/01/06/Ad-hoc-signing.html).
 
 What's relevant here is that CoreTrust has a vulnerability that allows us to run any binary we want with arbitrary entitlements (barring 3). This is because CoreTrust was recently changed to fast track binaries to be run without any further checks if it reports that it's from Apple. By itself, this is pretty useful (see TrollStore, Bootstrap).
 
 # The idea: Replacing launchd to win
+
 `launchd` replacement has always been viewed as a "holy grail" in the sense that running arbitrary code in it allows us to hook every other spawn function, as every process that's spawned in iOS userspace has to go through its `posix_spawn()` function.
 
 If we could replace launchd with our own using the CoreTrust bypass, it'd be game over. This has been demonstrated using [asdfugil's haxx](https://github.com/asdfugil/haxx/launchd.c) if you just replace the original `/sbin/launchd` binary on iOS 14-14.8.1. A related article from Alfie is [here](https://alfiecg.uk/2023/02/25/Getting-untethered-code-execution-on-iOS-14.8.html) which talks about it.
@@ -71,23 +79,27 @@ If so, we could get a semi-jailbreak to work by hooking `posix_spawn()` and maki
 # Getting it to work
 
 ## launchd control first
+
 ### Idea: MacDirtyCow / kfd
+
 MacDirtyCow (MDC) is a unique kernel exploit in the sense that it doesn't grant krw, but overwrites arbitrary files, similar to the dirty COW exploit on Linux. It only works up to 16.1.2, which hinders version support
 
 Similarly to MacDirtyCow, kexploits such as kfd can also overwrite files temporarily. I've demonstrated this with my [fork of WDBFontOverwrite](https://github.com/hrtowii/WDBFontOverwrite/blob/main/WDBFontOverwrite/fun/thanks_opa334dev_htrowii.m#L171). Good thing that kfd supports up to 16.6.1!
 
 As a plus, changes get reverted on reboot because of SSV. A great example of what MDC can do is [grant_full_disk_access.m](https://gist.github.com/zhuowei/bc7a90bdc520556fda84d33e0583eb3e), which overwrites **tccd** on iOS temporarily to allow full disk read/write. Sounds great, why don't we do that for launchd?
 
-Unfortunately, I'm not skilled enough to write a patchfinder. 😭 
+Unfortunately, I'm not skilled enough to write a patchfinder. 😭
 
 It's not possible to just replace the whole file, because MDC/kfd isn't a magical solution; it can't write to binary TEXT segments or the dyld_shared_cache, because the minute you write to an executable page you will get a page fault and the process will crash.
 
 It is possible to work around this, as shown in the above code and from [Ian Beer](https://project-zero.issues.chromium.org/issues/42451497#comment5):
 
-> ...writing to the *data* segments of binaries (not the shared cache) *does* work ;-) What this means in practise is that from inside the app sandbox you can mess with the fixup chains in the data segment which basically gives you a neat JOP primitive where the loader will rebase and sign all your gadgets for you with the correct keys for the target process.
+> ...writing to the _data_ segments of binaries (not the shared cache) _does_ work ;-) What this means in practise is that from inside the app sandbox you can mess with the fixup chains in the data segment which basically gives you a neat JOP primitive where the loader will rebase and sign all your gadgets for you with the correct keys for the target process.
 
 I might mess around and learn how to write JOP chains in the future, but for the time being I marked it off as an option.
+
 ### Idea: NSGetExecutablePath
+
 As stated [here](https://procursus.social/@zhuowei@notnow.dev/111555587905536008) by zhuowei, iOS 16 calls the `NSGetExecutablePath` function to find the path of a binary when relaunching it. This applies to launchd as well. If you could overwrite it to point to our own launchd file, it'd work! Right?
 
 Well, yes, but it was also patched on iOS 16.2 when userspace reboots were hardcoded to reboot from `/sbin/launchd`... rip
@@ -98,6 +110,7 @@ I know that evelyné got it to work [here](https://x.com/eveiyneee/status/174047
 
 A [vnode](https://github.com/apple-oss-distributions/xnu/blob/main/bsd/sys/vnode_internal.h#L159) is essentially a kernel representation of a file.
 Reading this struct, you may come across this interesting part:
+
 ```c
 struct vnode {
 	// ...
@@ -107,10 +120,9 @@ struct vnode {
 }
 ```
 
-
-
 Ok, now that we've figured out what v_ncchildren and v_nclinks mean, let's figure out what exactly a namecache is.
 From XNU [(source)](https://github.com/apple-oss-distributions/xnu/blob/xnu-8792.41.9/bsd/sys/namei.h#L243):
+
 ```c
 struct namecache {
 	TAILQ_ENTRY(namecache)  nc_entry;       /* chain of all entries */
@@ -132,6 +144,7 @@ struct namecache {
 The basic idea behind redirecting files is to overwrite the `nc_vp` pointer of a file's `namecache` entry with another. By overwriting launchd's `nc_vp`, we can make the kernel treat `/sbin/launchd` as if it were any other file.
 
 Assuming that we have krw and want to replace `/sbin/launchd` with `/var/mobile/kfc`, there are two ways of doing this:
+
 1. Traverse the linked list of `v_ncchildren` of `/sbin/` and check if the `v_name` of the current namecache is `launchd`. If it is, kwrite its `nc_vp` with `/var/mobile/kfc`'s `nc_vp`
 2. Directly change the `v_nclinks`: Find the `namecache` directly linked to a vnode and then kwriting its `nc_vp` with another vnode.
 
@@ -151,7 +164,7 @@ int SwitchSysBin(uint64_t vnode, char* what, char* with)
     uint64_t vp_namecache = kread64(vnode + off_vnode_v_ncchildren_tqh_first);
     if(vp_namecache == 0)
         return 0;
-    
+
     while(1) {
         if(vp_namecache == 0)
             break;
@@ -159,12 +172,12 @@ int SwitchSysBin(uint64_t vnode, char* what, char* with)
         if(vnode == 0)
             break;
         vp_nameptr = kread64(vnode + off_vnode_v_name);
-        
+
         char vp_name[256];
-        // 
+        //
         kreadbuf(kread64(vp_namecache + 96), &vp_name, 256);
 //        printf("vp_name: %s\n", vp_name);
-        
+
         if(strcmp(vp_name, what) == 0)
         {
             uint64_t with_vnd = getVnodeAtPath(with);
@@ -189,11 +202,12 @@ int SwitchSysBin(uint64_t vnode, char* what, char* with)
 If you're confused by what the random numbers mean (+116, +80) they're just the struct offsets for the vnode. You could also just use `offsetof()` but I didn't know it existed...
 
 **Let's look at the second method.**
-We start by accessing the first entry in the `nclinks` list of the target vnode, which holds the `namecache` structures mapping paths to the vnode. 
+We start by accessing the first entry in the `nclinks` list of the target vnode, which holds the `namecache` structures mapping paths to the vnode.
 
 By reading the `nclinks_lh_first` field, we obtain the pointer to the first `namecache` entry. From there, we overwrite the `nc_vp` of the from_vnode to the one of `/var/mobile/kfc`, redirecting the path.
 
 Here's the code:
+
 ```c
 uint64_t SwitchSysBin160(char* to, char* from, uint64_t* orig_to_vnode, uint64_t* orig_nc_vp)
 {
@@ -241,14 +255,14 @@ HOLY SHIT IT WORKS???????
 
 This panic is from our launchd violating Launch Constraints, and to fix it I just copied over the entitlements of the original launchd, and added `get-task-allow`.
 
-and... we have a replaced launchd! 
+and... we have a replaced launchd!
 i renamed it to lunchd for shits and giggles
 
 ![semijb2](./images/semijb2.png)
 
 We're not out of the woods yet, though. Having a copy of the original isn't very helpful unless you hook it to run your own code. This is where more problems arise...
 
-Initially, launchd was just SIGSEGVing for no reason even when there was no load command added for dylib injection. 
+Initially, launchd was just SIGSEGVing for no reason even when there was no load command added for dylib injection.
 
 ![semijb3](./images/semijb3.png)
 
@@ -268,7 +282,9 @@ Yeah, I kind of have no idea why this was needed, but it works sooooo :shrug:. I
 Anyway after this it boots!! But there isn't much use to that yet. We have to hook some code in our patched launchd. This can be done by using a hooking library like `fishhook`. I used this fork from jevinskie [here](https://github.com/jevinskie/fishhook) that supported PAC (arm64e devices).
 
 So we just build a dylib with `fishhook` to patch out some of its functions to work. But which exactly do we need to change?
+
 ### csops hook
+
 launchd checks if a binary is a platform binary before spawning it. This is done with the `csops` and `csops_audittoken` function. This can be easily solved by just hooking the function. This makes launchd thinks that everything is platformized so it doesn't just kill itself.
 
 So ideally, you'd hook those functions like this:
@@ -294,11 +310,13 @@ int hooked_csops_audittoken(pid_t pid, unsigned int ops, void * useraddr, size_t
 ```
 
 in fishhook and interpose them.
+
 ### hooking posix_spawn(\_p)
 
 Now the last part is to hook the posix_spawn functions and make them spawn in our own SpringBoard.
 
 So as a test, i just hooked it to fwrite to a log file:
+
 ```c
 // ... include fishhook, previous csops hooks
 
@@ -323,7 +341,7 @@ __attribute__((constructor)) static void init(int argc, char **argv) {
     sprintf(output, "[lunchd] launchdhook pid %d", getpid());
     printf("[lunchd] launchdhook pid %d", getpid());
     fputs(output, file);
-    
+
     struct rebinding rebindings[] = (struct rebinding[]){
         {"csops", hooked_csops, (void *)&orig_csops},
         {"csops_audittoken", hooked_csops_audittoken, (void *)&orig_csops_audittoken},
@@ -333,8 +351,8 @@ __attribute__((constructor)) static void init(int argc, char **argv) {
 }
 
 ```
-[Source](https://github.com/hrtowii/Serotonin/blob/871ea7a83cf2e49a82fae9d7d5c443aa8eb8154a/RootHelperSample/launchdshim/launchdhook/main.m)
 
+[Source](https://github.com/hrtowii/Serotonin/blob/871ea7a83cf2e49a82fae9d7d5c443aa8eb8154a/RootHelperSample/launchdshim/launchdhook/main.m)
 
 And well well well. It works! Opening any app will log it to our log file at `/var/mobile/lunchd.log`.
 
@@ -342,7 +360,7 @@ And well well well. It works! Opening any app will log it to our log file at `/v
 
 ## SpringBoard injection
 
-So from this, we've managed to hook launchd's posix_spawn function to do whatever the hell we want. 
+So from this, we've managed to hook launchd's posix_spawn function to do whatever the hell we want.
 
 We can just add an if check in the hook to check if the `path` argument passed in is SpringBoard's one, then we just change it to our own.
 
@@ -358,7 +376,7 @@ int hooked_posix_spawnp(pid_t *restrict pid, const char *restrict path, const po
     if (!strncmp(path, springboardPath, strlen(springboardPath))) {
         path = coolerSpringboard;
         return posix_spawnp(pid, path, file_actions, (posix_spawnattr_t *)attrp, argv, envp);
-    }     
+    }
     return orig_posix_spawnp(pid, path, file_actions, (posix_spawnattr_t *)attrp, argv, envp);
 }
 ```
@@ -370,7 +388,7 @@ AMFI: Launch Constraint Violation (enforcing), error info: c[8]p[1]m[1]e[6], (Co
 ```
 
 Okay, so what's a launch constraint??
-Basically it requires the launch type of our SpringBoard to be 0, but it's currently one. This can be fixed by hooking `launchd` again to set the launch type of some (but not ALL) binaries to 0. 
+Basically it requires the launch type of our SpringBoard to be 0, but it's currently one. This can be fixed by hooking `launchd` again to set the launch type of some (but not ALL) binaries to 0.
 
 So we just set everything in /var and /private/preboot to get a launch type of 0.
 
@@ -408,7 +426,7 @@ int hooked_posix_spawnp(pid_t *restrict pid, const char *restrict path, const po
         path = coolerSpringboard;
         return posix_spawnp(pid, path, file_actions, (posix_spawnattr_t *)attrp, argv, envp);
     }
-            
+
     return orig_posix_spawnp(pid, path, file_actions, (posix_spawnattr_t *)attrp, argv, envp);
 }
 ```
@@ -416,6 +434,7 @@ int hooked_posix_spawnp(pid_t *restrict pid, const char *restrict path, const po
 Okay, we got around launch constraints and our own SpringBoard can finally spawn. Woohoo! But there's still a problem... it still crashes with a new error!
 
 ### os_variant_has_internal_content as a workaround
+
 If you try running SpringBoard now, you get stuck on a black screen for 2 minutes before `watchdogd` decides to panic and force reboot. But... why???
 To check, we can run the shim we've created in the terminal either via Filza's built in terminal or another terminal.
 You'll see this error:
@@ -423,7 +442,7 @@ You'll see this error:
 
 `platformBinary`?? What's that? Why is it crashing at line 39 for no reason?
 
-The real issue here was that SpringBoard checked if it was platformized, and hooking `csops` here wouldn't work for some reason. (fishhook moment). Without the ability to hook `csops`(_audittoken), there was no way to pretend to be platformized... or is there?
+The real issue here was that SpringBoard checked if it was platformized, and hooking `csops` here wouldn't work for some reason. (fishhook moment). Without the ability to hook `csops`(\_audittoken), there was no way to pretend to be platformized... or is there?
 
 Turns out, there's a random internal function used to determine if the check is needed! And by hooking that function and lying that we're an internal device, we can just get around the platform binary check altogether! This was not found by me again, thanks to Duy Tran Khanh for reversing SB and telling me which function to hook! <3
 
@@ -437,7 +456,8 @@ bool os_variant_has_internal_content(const char* subsystem);
 ```
 
 ### jit springboard to allow invalid pages, dlopen bootstrap.dylib
-Hooking functions means that unsigned pages /have/ to run. Usually, the only way to allow this is to JIT your process. 
+
+Hooking functions means that unsigned pages /have/ to run. Usually, the only way to allow this is to JIT your process.
 
 There's a trick that PojavLauncher does on iOS to jit itself [here](https://www.reddit.com/r/jailbreak/comments/xcd2v4/news_found_way_to_achieve_wx_jit_for/), thanks to Duy Tran Khanh again :pray: that allows us to JIT ourself. By spawning a child process that calls PT_TRACE_ME to us (the parent), both the child and US will get the `CS_DEBUGGED` flag, allowing invalid pages to execute.
 
@@ -516,7 +536,6 @@ Is this a good way? No lol. But it ended up working with RootHide's bootstrap, w
 
 The final result can be seen [here](https://x.com/htrowii/status/1743322704730784182)
 
-
 # Improvements
 
 Anyway, there were still a lot of improvements to be done; this was really specific to hooking SpringBoard only, and it relied heavily on an external bootstrap to work. But I'd say for 1 week it was pretty okay.
@@ -527,4 +546,4 @@ Dopamine 2 was released and everyone on applicable versions moved on to it, whic
 
 It was only a few months later in July when I decided to get off my ass and try to work on generalising the hook made for SpringBoard to other processes, namely daemons as some tweaks such as AppStore++, Mitsuha Forever, and Snapper 3 rely on injecting into them.
 
-I never ended up finishing it, but I may still write what I did for them. I ended up getting pretty far in, even managing to inject into `installd` before I got burned out again and just gave up lmao. 
+I never ended up finishing it, but I may still write what I did for them. I ended up getting pretty far in, even managing to inject into `installd` before I got burned out again and just gave up lmao.

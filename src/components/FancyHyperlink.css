@@ -1,51 +1,55 @@
 .fancy-link {
-    --text-color: hsl(231, 97%, 72%);
-    --accent-color: hsl(231, 97%, 72%);
-    --hover-text-color: hsl(222.2 34% 8.9%);;
-    --hover-bg-color: hsl(231, 97%, 72%);
-    display: inline-block;
-    font-family: 'Sora';
-    color: var(--foreground);
-    text-decoration: none;
-    transition: color 0.15s ease-in-out;
+  --text-color: hsl(231, 97%, 72%);
+  --accent-color: hsl(231, 97%, 72%);
+  --hover-text-color: hsl(222.2 34% 8.9%);
+  --hover-bg-color: hsl(231, 97%, 72%);
+  display: inline-block;
+  font-family: "Sora";
+  color: var(--foreground);
+  text-decoration: none;
+  transition: color 0.15s ease-in-out;
 }
 
 .link-content {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    background-image: linear-gradient(to bottom, var(--accent-color), var(--accent-color));
-    background-size: 100% 1px;
-    background-position: 0 100%;
-    background-repeat: no-repeat;
-    transition: all 0.15s ease-in-out;
-    padding-top: 2.5px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  background-image: linear-gradient(
+    to bottom,
+    var(--accent-color),
+    var(--accent-color)
+  );
+  background-size: 100% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: all 0.15s ease-in-out;
+  padding-top: 2.5px;
 }
 
 .arrow-icon {
-    margin-left: 0px;
-    transition: stroke 0.15s ease-in-out;
+  margin-left: 0px;
+  transition: stroke 0.15s ease-in-out;
 }
 
 .fancy-link:hover .link-content {
-    color: var(--hover-text-color);
-    background-size: 100% 100%;
+  color: var(--hover-text-color);
+  background-size: 100% 100%;
 }
 
-.fancy-link:hover .link-content>* {
-    color: var(--hover-text-color);
-    background-size: 100% 100%;
+.fancy-link:hover .link-content > * {
+  color: var(--hover-text-color);
+  background-size: 100% 100%;
 }
 
 .fancy-link:hover .arrow-icon {
-    stroke: var(--hover-text-color);
+  stroke: var(--hover-text-color);
 }
 
 @media (prefers-color-scheme: dark) {
-    .fancy-link {
-        --text-color: hsl(231, 97%, 72%);
-        --accent-color: hsl(231, 97%, 72%);
-        --hover-text-color: hsl(222.2 34% 8.9%);;
-        --hover-bg-color: hsl(231, 97%, 72%);
-    }
+  .fancy-link {
+    --text-color: hsl(231, 97%, 72%);
+    --accent-color: hsl(231, 97%, 72%);
+    --hover-text-color: hsl(222.2 34% 8.9%);
+    --hover-bg-color: hsl(231, 97%, 72%);
+  }
 }

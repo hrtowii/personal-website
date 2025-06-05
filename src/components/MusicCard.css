@@ -1,125 +1,126 @@
-.album_art, .album_art_glow {
-    border-radius: 12px;
-    grid-row-start: 1;
-    grid-column-start: 1;
+.album_art,
+.album_art_glow {
+  border-radius: 12px;
+  grid-row-start: 1;
+  grid-column-start: 1;
 }
 
 .image_wrapper {
-    display: grid;
-    grid-template-columns: 1fr;
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 .album_art_glow {
-    filter: blur(12px) saturate(3);
-    opacity: 0.4;
+  filter: blur(12px) saturate(3);
+  opacity: 0.4;
 }
 
 .music_card {
-    padding: 1.2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--card-background);
-    border-radius: 20px;
-    gap: 1rem;
-    border: 0.6px var(--card-border) solid;
-    height: 125px;
-    z-index: 2;
-    /* width: calc(100% - 2.4rem); */
+  padding: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--card-background);
+  border-radius: 20px;
+  gap: 1rem;
+  border: 0.6px var(--card-border) solid;
+  height: 125px;
+  z-index: 2;
+  /* width: calc(100% - 2.4rem); */
 }
 
 @media (max-width: 576px) {
-    .music_card {
-        /* width: calc(100% - 2.4rem); */
-        display: none;
-    }
+  .music_card {
+    /* width: calc(100% - 2.4rem); */
+    display: none;
+  }
 }
 .music_card_end {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 50%;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50%;
+  height: 100%;
 }
 
 .title-artist {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .title-artist p {
-    margin: 0;
+  margin: 0;
 }
 
 .title-artist p:nth-child(2) {
-    font-size: 0.8rem;
-    opacity: 0.8;
+  font-size: 0.8rem;
+  opacity: 0.8;
 }
 
 .progress-container {
-    margin-top: 10px;
-    width: 100%;
+  margin-top: 10px;
+  width: 100%;
 }
 
 .progress-time-display {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
-    font-size: 0.7rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  font-size: 0.7rem;
 }
 
 .progress-bar-background {
-    width: 100%;
-    height: 4px;
-    background-color: var(--foreground);
-    border-radius: 1rem;
+  width: 100%;
+  height: 4px;
+  background-color: var(--foreground);
+  border-radius: 1rem;
 }
 
 .progress-bar-fill {
-    height: 100%;
-    background-color: rgb(var(--accent-light));
-    border-radius: 2px;
+  height: 100%;
+  background-color: rgb(var(--accent-light));
+  border-radius: 2px;
 }
 
 .title-artist {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .title-artist p {
-    margin: 0;
+  margin: 0;
 }
 
 .title-artist p:first-child {
-    /* Main title */
+  /* Main title */
 }
 
 .title-artist p:nth-child(2) {
-    font-size: 0.8rem;
-    opacity: 0.8;
+  font-size: 0.8rem;
+  opacity: 0.8;
 }
 
 .progress-container {
-    margin-top: 10px;
-    width: 100%;
+  margin-top: 10px;
+  width: 100%;
 }
 
 .progress-time-display {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
-    font-size: 0.7rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  font-size: 0.7rem;
 }
 
 .progress-bar-background {
-    width: 100%;
-    height: 4px;
-    background-color: var(--foreground);
-    border-radius: 1rem;
+  width: 100%;
+  height: 4px;
+  background-color: var(--foreground);
+  border-radius: 1rem;
 }
 
 .progress-bar-fill {
-    height: 100%;
-    background-color: rgb(var(--accent-light));
-    border-radius: 2px;
+  height: 100%;
+  background-color: rgb(var(--accent-light));
+  border-radius: 2px;
 }

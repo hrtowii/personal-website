@@ -2,13 +2,14 @@
 title: Theming CAML files on iOS
 date: 2023-04-06
 ---
+
 ## Introduction
 
 In iOS 11, Apple totally revamped the Control Center to become more modular and clean. Ever since then, it was thought that theming the icon modules were almost impossible, as they were written in a weird file format: CAML. Workarounds for this through jailbreak tweaks were made by creating entirely separate icon modules that contained just static pngs (flipswitch/flipconvert). This is fine, but the only exception to this are the sliders. It was mostly thought to be impossible to theme those by the theming community until now.
 
 ## Wtf is CAML?
 
-Huge thanks to iOSCreatix for his medium post. Read this article if you want to understand more. His maize repository on Github ([https://github.com/andrewwiik/Maize/tree/master/Modules](https://github.com/andrewwiik/Maize/tree/master/Modules))  also contains many examples of CAML files that I used to understand it.
+Huge thanks to iOSCreatix for his medium post. Read this article if you want to understand more. His maize repository on Github ([https://github.com/andrewwiik/Maize/tree/master/Modules](https://github.com/andrewwiik/Maize/tree/master/Modules)) also contains many examples of CAML files that I used to understand it.
 
 Essentially, CAML is a xml kind of file that describes how a particular CC module is drawn, and uses CoreGraphics/CoreAnimation. Although the API for CAML is private, CoreAnimation documentation is public on Apple’s website here: [https://developer.apple.com/documentation/quartzcore](https://developer.apple.com/documentation/quartzcore)
 

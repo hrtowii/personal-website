@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import './ProjectItem.css'
-import FancyHyperlink from './FancyHyperlink';
+import React, { useEffect, useState } from "react";
+import "./ProjectItem.css";
+import FancyHyperlink from "./FancyHyperlink";
 interface ProjectItemProps {
   id: string;
   title: string;
@@ -10,8 +10,15 @@ interface ProjectItemProps {
   images?: string[];
 }
 
-const ProjectItem: React.FC<ProjectItemProps> = ({ id, title, repo, link, description, images }) => {
-  const [stars, setStars] = useState<number | string>('Loading');
+const ProjectItem: React.FC<ProjectItemProps> = ({
+  id,
+  title,
+  repo,
+  link,
+  description,
+  images,
+}) => {
+  const [stars, setStars] = useState<number | string>("Loading");
 
   useEffect(() => {
     const fetchStars = async () => {
@@ -20,10 +27,10 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ id, title, repo, link, descri
         // const data = await res.json();
         // setStars(data.stargazers_count);
         // use this to prevent rate limiting yourself
-        setStars(100)
+        setStars(100);
       } catch (error) {
-        console.error('Error fetching repo data:', error);
-        setStars('N/A');
+        console.error("Error fetching repo data:", error);
+        setStars("N/A");
       }
     };
 
@@ -51,7 +58,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ id, title, repo, link, descri
                   d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"
                 ></path>
               </svg>
-              <div id={`projectStars_${repo.replace('/', '_')}`}>
+              <div id={`projectStars_${repo.replace("/", "_")}`}>
                 <p>{stars}</p>
               </div>
             </div>
@@ -59,11 +66,16 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ id, title, repo, link, descri
           <div className="item-content-again">
             <p>{description}</p>
             {images && images.length > 0 && (
-                <div className="carousel-container">
-                  {images.map((url, index) => (
-                    <img key={index} src={url} alt={`project-${id}-image-${index}`} className="carousel-image" />
-                  ))}
-                </div>
+              <div className="carousel-container">
+                {images.map((url, index) => (
+                  <img
+                    key={index}
+                    src={url}
+                    alt={`project-${id}-image-${index}`}
+                    className="carousel-image"
+                  />
+                ))}
+              </div>
             )}
           </div>
         </div>
