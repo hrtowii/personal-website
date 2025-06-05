@@ -3,7 +3,9 @@ interface Props {
 	title: string;
 }
 const { title } = Astro.props;
+import './reset.css'
 import "./animations.css";
+import './fonts.css'
 import "./layout.css";
 import { ViewTransitions } from "astro:transitions";
 ---
@@ -30,10 +32,10 @@ import { ViewTransitions } from "astro:transitions";
 		<slot name="metadata" />
 		<title>{title}</title>
 	</head>
-	<body>
+	<body class="crt-filter">
 		<script src="./oneko.js"></script>
 		<canvas id="rainCanvas"></canvas>
-		<div class="container crt-filter">
+		<div class="container">
 			<slot />
 		</div>
 	</body>

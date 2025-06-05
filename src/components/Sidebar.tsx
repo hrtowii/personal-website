@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLanyard } from "use-lanyard";
 import MusicCard from "./MusicCard";
+import LinksCard from "./LinksCard";
 import "./Sidebar.css";
 const Sidebar: React.FC = () => {
   const DISCORD_ID = "413331641109446656";
@@ -24,54 +25,31 @@ const Sidebar: React.FC = () => {
             height={125}
             width={125}
             src={avatarLink}
-            alt="profile picture"
+            alt="profile"
           />
           <img
             className="pfp"
             height={125}
             width={125}
             src={avatarLink}
-            alt="profile picture"
+            alt="profile"
           />
         </div>
         <span className="bio">h t r o w i i</span>
       </div>
 
-      <div
-        className="music-section"
-        // style={{ margin: '0 -20px', width: 'calc(100% + 40px)' }}
-      >
+      <div className="music-section">
         <MusicCard />
       </div>
 
-      <div className="social-section">
-        <footer className="footer main-text-small">
-          <a
-            className="footer-links link-twitter"
-            href="https://twitter.com/htrowii"
-          >
-            twitter
-          </a>
-          <a
-            className="footer-links link-github"
-            href="https://github.com/hrtowii"
-          >
-            github
-          </a>
-          <a
-            className="footer-links link-mastodon"
-            rel="me"
-            href="mailto:leonghongkit@gmail.com"
-          >
-            email
-          </a>
-          <a
-            className="footer-links link-repo"
-            href="https://discordapp.com/users/413331641109446656"
-          >
-            discord
-          </a>
-        </footer>
+      <div className="links-section">
+        <LinksCard />
+      </div>
+      <div className="links-section">
+        <LinksCard />
+      </div>
+      <div className="links-section">
+        <LinksCard />
       </div>
     </div>
   );

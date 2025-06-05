@@ -212,10 +212,11 @@ body {
   margin-inline: 10vw;
   margin-top: 10vh;
   margin-bottom: 0;
-  background: rgba(from var(--card-background) r g b / 0.4);
+  /* background: rgba(from var(--card-background) r g b / 0.4); */
   /* https://caniuse.com/mdn-css_types_color_rgb_relative_syntax */
+  background: color-mix(in srgb, var(--card-background) 40%, transparent);
   backdrop-filter: blur(10px);
-  border-radius: 1.75rem;
+  /* border-radius: 1.75rem; */
   border: 1px solid var(--card-border);
 }
 

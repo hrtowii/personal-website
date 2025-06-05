@@ -16,8 +16,8 @@ body {
 .main-content {
   display: grid;
   grid-template-columns: 1fr 3fr;
-  gap: 2rem;
-  padding: 1.25rem;
+  gap: 1rem;
+  padding: 1rem;
   box-sizing: border-box;
 }
 
@@ -28,29 +28,12 @@ body {
   box-sizing: border-box;
 }
 
-.tophalf {
-  display: grid;
-  height: 80vh;
-  /* grid-row: 1 / 2; */
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 1.25rem;
+.content-area > div {
+  background-color: var(--card-bg);
+  border: 0.6px var(--card-border) solid;
+  padding: 1rem;
 }
 
-.bottomhalf {
-  display: grid;
-  grid-row: 2 / 3;
-  grid-template-columns: 1fr 2fr;
-  gap: 1.25rem;
-  height: 100%;
-}
-
-.one-third,
-.two-thirds {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
 @media (max-width: 576px) {
   .main-content {
     display: flex;
@@ -82,201 +65,6 @@ body {
     flex-wrap: wrap;
     gap: 1rem;
   }
-
-  .bottomhalf {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .tophalf {
-    display: flex;
-    flex-direction: column;
-    height: fit-content;
-  }
-  .item {
-    display: flex;
-    height: 100%;
-    border-radius: 1.25rem !important;
-    /* overflow: visible; */
-  }
-  #item3 {
-    order: -1;
-    /* moves to the front, scuffed */
-  }
-}
-
-/* copied from https://staturnz.com */
-
-.shooting_star {
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-position-x: center;
-  background-size: cover;
-  animation: animateBg 50s linear infinite;
-  overflow: hidden;
-}
-
-@keyframes animateBg {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.2);
-  }
-}
-
-.span_star {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 4px;
-  height: 4px;
-  background: rgb(203, 219, 255);
-  border-radius: 100%;
-  filter: drop-shadow(0 0 6px rgb(255, 175, 230));
-  animation: animate 3s linear infinite;
-}
-
-.span_star::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 300px;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(226, 95, 255, 0.75), transparent);
-}
-
-@keyframes animate {
-  0% {
-    transform: rotate(315deg) translateX(10px);
-    opacity: 1;
-  }
-  70% {
-    opacity: 1;
-  }
-  100% {
-    transform: rotate(315deg) translateX(-1800px);
-    opacity: 0;
-  }
-}
-
-.span_star:nth-child(1) {
-  top: 0px;
-  right: 10px;
-  left: initial;
-  animation-delay: 0;
-  animation-duration: 1s;
-}
-
-.span_star:nth-child(2) {
-  top: 10px;
-  right: 80px;
-  left: initial;
-  animation-delay: 0.2s;
-  animation-duration: 3s;
-}
-
-.span_star:nth-child(3) {
-  top: 80px;
-  right: 20px;
-  left: initial;
-  animation-delay: 0.4s;
-  animation-duration: 2s;
-}
-
-.span_star:nth-child(4) {
-  top: 0px;
-  right: 180px;
-  left: initial;
-  animation-delay: 0.6s;
-  animation-duration: 1.5s;
-}
-
-.span_star:nth-child(5) {
-  top: 0px;
-  right: 400px;
-  left: initial;
-  animation-delay: 0.8s;
-  animation-duration: 2.5s;
-}
-
-.span_star:nth-child(6) {
-  top: 0px;
-  right: 600px;
-  left: initial;
-  animation-delay: 1s;
-  animation-duration: 3s;
-}
-.span_star:nth-child(7) {
-  top: 300px;
-  right: 100px;
-  left: initial;
-  animation-delay: 1s;
-  animation-duration: 1.75s;
-}
-
-.span_star:nth-child(8) {
-  top: 0px;
-  right: 700px;
-  left: initial;
-  animation-delay: 1.4s;
-  animation-duration: 1.25s;
-}
-
-.span_star:nth-child(9) {
-  top: 0px;
-  right: 1000px;
-  left: initial;
-  animation-delay: 0.75s;
-  animation-duration: 2.25s;
-}
-
-.span_star:nth-child(10) {
-  top: 80px;
-  right: 900x;
-  left: initial;
-  animation-delay: 2.75s;
-  animation-duration: 2.25s;
-}
-
-/* Profile picture styling */
-.pfp,
-.pfp_glow {
-  position: absolute;
-  border-radius: 12px;
-  border: 0.8px #94a3b8 solid;
-}
-
-.pfp_wrapper {
-  height: 125px;
-  width: 125px;
-  position: relative;
-}
-
-.pfp_glow {
-  opacity: 0.5;
-  filter: blur(12px) saturate(6);
-}
-
-/* Bio styling */
-@font-face {
-  font-family: "MyWebFont";
-  src: url("/ndot47.ttf");
-}
-
-.bio {
-  filter: drop-shadow(0 0 6px rgba(105, 155, 255, 0.5));
-  font-family: MyWebFont;
-  font-size: 24px;
-  font-weight: 100;
-  text-align: center;
-  margin-top: 1rem;
 }
 
 /* Footer links styling */

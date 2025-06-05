@@ -1,0 +1,86 @@
+.links_card {
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--card-background);
+  /* border-radius: 20px; */
+  border: 0.6px var(--card-border) solid;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.links_status_header {
+  margin-bottom: 0.8rem;
+  border-bottom: 1px solid var(--card-border);
+  padding-bottom: 0.5rem;
+}
+
+.links_status_header .status-text {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: lowercase;
+  letter-spacing: 0.5px;
+  opacity: 0.8;
+}
+
+.links_content {
+  display: flex;
+  flex-direction: column;
+}
+
+.links_grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.link-item {
+  display: block;
+  padding: 0.5rem 0;
+  text-decoration: underline;
+  color: rgb(var(--accent-light));
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border-radius: 8px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.link-item:hover {
+  /* background-color: var(--card-border); */
+  transform: translateX(4px);
+}
+
+.link-twitter:hover {
+  color: #1da1f2;
+}
+
+/* .link-github:hover {
+  color: #333;
+} */
+
+.link-email:hover {
+  color: #ea4335;
+}
+
+.link-discord:hover {
+  color: #5865f2;
+}
+
+@media (max-width: 576px) {
+  .links_card {
+    padding: 1rem;
+  }
+  
+  .links_grid {
+    gap: 0.8rem;
+  }
+  
+  .link-item {
+    padding: 0.8rem;
+    text-align: center;
+    font-size: 1rem;
+  }
+}
