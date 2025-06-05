@@ -33,9 +33,22 @@ li {
 }
 
 .content-area > div {
-  background-color: var(--card-bg);
+  background-color: color-mix(in srgb, var(--card-background) 30%, transparent);
   border: 0.6px var(--card-border) solid;
   padding: 1rem;
+}
+
+@media (prefers-color-scheme: light) {
+  .content-area > div {
+    background-color: color-mix(
+      in srgb,
+      var(--card-background) 40%,
+      transparent
+    );
+    backdrop-filter: blur(12px);
+    border: 0.6px var(--card-border) solid;
+    padding: 1rem;
+  }
 }
 
 @media (max-width: 576px) {
@@ -51,6 +64,12 @@ li {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 1rem;
+  }
+  .content-area > div {
+    background-color: rgba(0, 0, 0, 0);
+    backdrop-filter: none;
+    border: none;
+    padding: 0;
   }
 }
 
