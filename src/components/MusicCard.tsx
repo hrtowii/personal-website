@@ -15,8 +15,9 @@ interface MusicData {
 function MusicTitle({ title, artist }: { title: string; artist: string }) {
   return (
     <div className="title-artist">
-      <p>{title}</p>
-      <p className="artist-name">by {artist}</p>
+      <p className="title">{title}</p>
+      {/* create an invisible div that copies text and check if the width of that > 100% when inline blocked, if it is, add marquee tag */}
+      <p className="artist-name">by {artist} :3</p>
     </div>
   );
 }

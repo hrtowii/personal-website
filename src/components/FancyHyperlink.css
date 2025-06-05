@@ -4,12 +4,17 @@
   --hover-text-color: hsl(222.2 34% 8.9%);
   --hover-bg-color: hsl(231, 97%, 72%);
   display: inline-block;
-  font-family: "Sora";
-  color: var(--foreground);
   text-decoration: none;
   transition: color 0.15s ease-in-out;
+  font-size: 0.8rem;
+  font-style: italic;
+  white-space: nowrap;
 }
 
+.link-content,
+.link-content > span {
+  color: var(--accent-color);
+}
 .link-content {
   position: relative;
   display: inline-flex;

@@ -14,22 +14,27 @@ interface BlogCardProps {
 
 function BlogCard({ blogPosts }: BlogCardProps) {
   return (
-    <div className="blog-card">
-      <div className="blog-card-title">
-        <h2>Blog</h2>
+    <div className="blog_card">
+      <div className="blog_status_header">
+        <p className="status-text">blog !!</p>
         <FancyHyperlink href="/blog" content="view all" />
       </div>
-      <div className="blog-entries">
+      <div className="blog_content">
         {blogPosts.map((post, index) => (
-          <div key={index} className="blog-entry">
-            <div className="blog-entry-part1">
-              <h3>{post.title}</h3>
-              <p>{post.date}</p>
+          <a href={`/blog/${post.slug}`}>
+            <div key={index} className="blog-entry">
+              <div className="blog-entry-info">
+                <p className="blog-entry-title">{post.title}</p>
+                <p className="blog-entry-date">{post.date}</p>
+              </div>
+              <div className="blog-entry-link">
+                <FancyHyperlink
+                  href={`/blog/${post.slug}`}
+                  content="Read More"
+                />
+              </div>
             </div>
-            <div className="blog-entry-part2">
-              <FancyHyperlink href={`/blog/${post.slug}`} content="Read More" />
-            </div>
-          </div>
+          </a>
         ))}
       </div>
     </div>

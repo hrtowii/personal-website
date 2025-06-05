@@ -3,6 +3,20 @@ import { useLanyard } from "use-lanyard";
 import MusicCard from "./MusicCard";
 import LinksCard from "./LinksCard";
 import "./Sidebar.css";
+import BlogCard from "./BlogCard";
+
+// MARK: blog post fetching logic
+import { getCollection } from "astro:content";
+const allBlogPosts = await getCollection("blog");
+const sortedBlogPosts = allBlogPosts.sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+const blogPosts = sortedBlogPosts.slice(0, 2).map((post) => ({
+  title: post.data.title,
+  date: post.data.date.toLocaleDateString(),
+  slug: post.slug,
+}));
+
 const Sidebar: React.FC = () => {
   const DISCORD_ID = "413331641109446656";
   const { data } = useLanyard(DISCORD_ID);
@@ -45,11 +59,8 @@ const Sidebar: React.FC = () => {
       <div className="links-section">
         <LinksCard />
       </div>
-      <div className="links-section">
-        <LinksCard />
-      </div>
-      <div className="links-section">
-        <LinksCard />
+      <div className="blogs-section">
+        <BlogCard blogPosts={blogPosts} />
       </div>
     </div>
   );

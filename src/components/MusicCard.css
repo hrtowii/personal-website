@@ -74,35 +74,40 @@
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .title-artist p {
   margin: 0;
 }
 
-.title-artist p:first-child {
+.title {
   font-weight: 600;
   font-size: 1rem;
   line-height: 1.2;
+  width: 100%;
 }
 
 .artist-name {
   font-size: 0.8rem;
   opacity: 0.7;
   font-style: italic;
+  width: 100%;
 }
 
 @media (max-width: 576px) {
   .music_card {
     padding: 1rem;
   }
-  
+
   .music_content {
     flex-direction: column;
     text-align: center;
     gap: 0.8rem;
   }
-  
+
   .music_card_end {
     width: 100%;
   }

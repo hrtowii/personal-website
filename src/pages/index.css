@@ -43,23 +43,6 @@ body {
     margin-top: 0rem;
   }
 
-  .sidebar {
-    position: static;
-    order: -1;
-  }
-
-  .profile-section {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .bio {
-    font-size: 32px;
-    text-align: left;
-    margin-top: 0;
-  }
-
   .social-section footer {
     flex-direction: row;
     flex-wrap: wrap;
