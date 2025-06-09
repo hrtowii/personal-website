@@ -1,0 +1,80 @@
+.collapsible-section {
+  margin-bottom: 1.5rem;
+}
+
+.section-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--card-border);
+  transition: all 0.3s ease;
+}
+
+.section-header:hover {
+  color: var(--accent-light);
+}
+
+.section-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: left;
+}
+
+.chevron {
+  transition: transform 0.3s ease;
+  opacity: 0.7;
+}
+
+.chevron.rotated {
+  transform: rotate(180deg);
+}
+
+.section-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.section-content.open {
+  max-height: 2000px;
+  padding-top: 1.5rem;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .section-header h2 {
+    font-size: 1.25rem;
+  }
+  
+  .section-header {
+    padding: 0.75rem 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .projects-grid {
+    gap: 1rem;
+  }
+  
+  .section-content.open {
+    padding-top: 1rem;
+  }
+}

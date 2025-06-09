@@ -6,14 +6,170 @@ import Sidebar from '../components/Sidebar';
 import './index.css'
 import ProjectItem from '../components/ProjectItem';
 import FancyHyperlink from '../components/FancyHyperlink';
-import { getCollection } from 'astro:content';
-const allBlogPosts = await getCollection('blog');
-const sortedBlogPosts = allBlogPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-const blogPosts = sortedBlogPosts.slice(0, 2).map(post => ({
-  title: post.data.title,
-  date: post.data.date.toLocaleDateString(),
-  slug: post.slug
-}));
+import CollapsibleSection from '../components/CollapsibleSection';
+// import { getCollection } from 'astro:content';
+// const allBlogPosts = await getCollection('blog');
+// const sortedBlogPosts = allBlogPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+// const blogPosts = sortedBlogPosts.slice(0, 2).map(post => ({
+//   title: post.data.title,
+//   date: post.data.date.toLocaleDateString(),
+//   slug: post.slug
+// }));
+
+const hackathonProjects = [
+  // {
+  //   title: "Lion City Hacks 2022",
+  //   description: "Participated in Lion City Hacks 2022",
+  //   link: "#",
+  // },
+  {
+    title: "hack and roll 2023",
+    repo: "hrtowii/hnr2023",
+    description: "react native app for timing coffee brewing",
+    link: "https://github.com/hrtowii/hnr2023",
+  },
+  {
+    title: "GeekOut 2023",
+    description: "3rd place winner at GeekOut 2023, proposed e-learning platform 'every school good school'",
+    link: "/blog/my-experience-in-geekout-2023",
+  },
+  {
+    title: "BrainHack TIL-AI 2023",
+    description: "8th place semis at BrainHack TIL-AI 2023 in team 'unsupervised learners', did asr, cv, and nlp (with regex)",
+    link: "#",
+  },
+  {
+    title: "hack and roll 2024",
+    repo: "hrtowii/hnr2024",
+    description: "flutter / dart app to pull cna rss feed and run sentiment analysis w flask",
+    link: "https://github.com/hrtowii/hnr2024",
+  },
+  // {
+  //   title: "Hackomania 2024",
+  //   repo: "hrtowii/hackomania24",
+  //   description: "My submission for Hackomania 2024",
+  //   link: "https://github.com/hrtowii/hackomania24",
+  // },
+  {
+    title: "hack and roll 2025",
+    repo: "hrtowii/hacknroll25",
+    description: "personal duck from hell, uses py/sh/React/Tauri to detect emotions and troll the user.",
+    link: "https://github.com/hrtowii/hacknroll25",
+  },
+  {
+    title: "hackomania 2025",
+    repo: "hrtowii/hackomania2025",
+    description: "imagine bereal but for food and with leaderboards, yea... written in react native",
+    link: "https://github.com/hrtowii/hackomania2025",
+  },
+  {
+    title: "brainhack TIL-AI 2025",
+    description: "Participating in BrainHack TIL-AI 2025",
+    link: "#",
+  },
+];
+
+const iosProjects = [
+  {
+    title: "KFDFontOverwrite",
+    repo: "hrtowii/WDBFontOverwrite",
+    description: "Fork of WDBFontOverwrite that uses kfd to overwrite fonts on iOS",
+    link: "https://github.com/hrtowii/WDBFontOverwrite",
+  },
+  {
+    title: "WebKit Exploit PoC",
+    repo: "hrtowii/cve-2023-41993-test",
+    description: "Proof of concept for WebKit vulnerability CVE-2023-41993",
+    link: "https://github.com/hrtowii/cve-2023-41993-test",
+  },
+  {
+    title: "Serotonin",
+    repo: "SerotoninApp/Serotonin",
+    description: "semi-jailbreak written for iOS 16.0 - 16.6.1, using roothide bootstrap",
+    link: "https://github.com/SerotoninApp/Serotonin",
+  },
+  {
+    title: "cve socket panic",
+    repo: "hrtowii/CVE-2024-23208-test",
+    description: "poc for socket panic vulnerability CVE-2024-23208 - https://x.com/htrowii/status/1754188305007333710",
+    link: "https://github.com/hrtowii/CVE-2024-23208-test",
+  },
+  {
+    title: "Spotify EQ",
+    repo: "hrtowii/SpotifyEQ-iOS",
+    description: "Equalizer tweak for Spotify on iOS",
+    link: "https://github.com/hrtowii/SpotifyEQ-iOS",
+  },
+  {
+    title: "SparseThemer",
+    repo: "haxi0/sparsethemer",
+    description: "macOS app that uses SparseRestore exploit and ipatool to replace app icons on iOS",
+    link: "https://github.com/haxi0/",
+  },
+];
+
+const otherProjects = [
+  {
+    title: "llm-tui-rs",
+    repo: "hrtowii/llm-tui-rs",
+    description: "tui written in rust to chat w different llm providers",
+    link: "https://github.com/hrtowii/llm-tui-rs",
+  },
+  {
+    title: "balatro ai bot",
+    repo: "hrtowii/balatrobot",
+    description: "bot to play balatro, part of internship project - kind of unfinished",
+    link: "https://github.com/hrtowii/balatrobot",
+  },
+  {
+    title: "hrt tracker",
+    repo: "hrtowii/hrt-tracker",
+    description: "hrt tracking app built w/ svelte (incomplete)",
+    link: "https://github.com/hrtowii/hrt-tracker",
+  },
+  {
+    title: "img2ascii_c",
+    repo: "hrtowii/img2ascii_c",
+    description: "convert images to colored ascii art w/ C",
+    link: "https://github.com/hrtowii/img2ascii_c",
+  },
+  {
+    title: "c fetch",
+    repo: "hrtowii/fetchc",
+    description: "simple fetch for macos w/ C",
+    link: "https://github.com/hrtowii/fetchc",
+  },
+  {
+    title: "mac dotfiles",
+    repo: "hrtowii/dotfiles",
+    description: "as seen by yours truly on r/unixporn :3",
+    link: "https://github.com/hrtowii/dotfiles/tree/macos",
+  },
+  {
+    title: "my website v1",
+    repo: "hrtowii/hrtowii.github.io",
+    description: "initial website when i started learning coding",
+    link: "https://github.com/hrtowii/hrtowii.github.io",
+  },
+  {
+    title: "my website v2",
+    repo: "hrtowii/schoolwebsite",
+    description: "rewrite made for school assignment",
+    link: "https://github.com/hrtowii/schoolwebsite",
+  },
+  {
+    title: "my website v3",
+    repo: "hrtowii/personal-website",
+    description: "old vers of this website built with astro",
+    link: "https://github.com/hrtowii/personal-website",
+  },
+  {
+    title: "my website v4",
+    repo: "hrtowii/personal-website",
+    description: "new version... old one had no feeling ykwim",
+    link: "https://github.com/hrtowii/personal-website/tree/rewrite",
+  },
+];
 ---
 
 <Layout title="htrowii's website">
@@ -29,13 +185,66 @@ const blogPosts = sortedBlogPosts.slice(0, 2).map(post => ({
 			</div>
 			<div class="hobbies">
     			<h1>cool stuff about me!!</h1>
-    			<ul>
-    			    <li>i like listening to jpop and anime songs (pjsk), miraie/lucy bedroque/jane remover type of music, and also some kpop like newjeans twice red velvet :D</li>
-                    <li>i used to triple boot my laptop, technically quadruple(???) boot because i also installed chromeOS on my own laptop. i don't think there was ever any practical use for it but it's a funny thing to flex... i also wrote a blog post about it!! check it out <FancyHyperlink href="/blog/installing-triple-boot-on-my-laptop/" content="here"></li>
-                    <li>i am / was jailbroke my phones!! i really enjoyed doing so in the past when i had like way too much time ... but from that i learned how to rice my own devices which I still continue to doooo hehe you can check some out hereeee !! it's mainly macOS / linux which i still bother doing now - windows and android i don't really use / find too hard to configure D:<FancyHyperlink href="/rices/" content="here"></li>
-    			</ul>
+                <div>
+                    <ul>
+                        <li>i like listening to jpop and anime songs (pjsk), miraie/lucy bedroque/jane remover type of music, and also some kpop like newjeans twice red velvet :D</li>
+                        <li>i used to triple boot my laptop, technically quadruple(???) boot because i also installed chromeOS on my own laptop. i don't think there was ever any practical use for it but it's a funny thing to flex... i also wrote a blog post about it!! check it out <FancyHyperlink href="/blog/installing-triple-boot-on-my-laptop/" content="here"></li>
+                        <li>i am / was jailbroke my phones!! i really enjoyed doing so in the past when i had like way too much time ... but from that i learned how to rice my own devices which I still continue to doooo hehe you can check some out hereeee !! it's mainly macOS / linux which i still bother doing now - windows and android i don't really use / find too hard to configure D:<FancyHyperlink href="/rices/" content="here"></li>
+    			    </ul>
+                </div>
+                <div>
+                    <h2>games i like kinda</h2>
+                    <ul>
+                        <li>undertale / deltarune.... i cant believe chap3/4 is out omg</li>
+                        <li>oneshot</li>
+                        <li>celeste</li>
+                        <li>ultrakill (ultrapeak)</li>
+                        <li>osu but i quit im finally free</li>
+                        <li>marvel rivals</li>
+                        <li>cyberpunk 2077</li>
+                        <li>balatro</li>
+                        <li>omori</li>
+                        <li>portal 2</li>
+                    </ul>
+                </div>
 			</div>
-			<div class="projects"></div>
+			<div class="projects">
+			    <h1>stuff ive done :ooo</h1>
+
+				<CollapsibleSection title="hackathons" defaultOpen={true} client:load>
+					{hackathonProjects.map((project) => (
+						<ProjectItem
+							title={project.title}
+							repo={project.repo}
+							link={project.link}
+							description={project.description}
+						/>
+					))}
+				</CollapsibleSection>
+
+				<CollapsibleSection title="ios stuff" client:load>
+					{iosProjects.map((project) => (
+						<ProjectItem
+							title={project.title}
+							repo={project.repo}
+							link={project.link}
+							description={project.description}
+						/>
+					))}
+				</CollapsibleSection>
+
+				<CollapsibleSection title="other stuff" client:load>
+					{otherProjects.map((project) => (
+						<ProjectItem
+							title={project.title}
+							repo={project.repo}
+							link={project.link}
+							description={project.description}
+						/>
+					))}
+				</CollapsibleSection>
+			</div>
+
 			<div class="blogposts"></div>
 		</div>
 	</div>

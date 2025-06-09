@@ -38,6 +38,10 @@ li {
   padding: 1rem;
 }
 
+.content-area > div > div {
+  margin-bottom: 1.5rem;
+}
+
 @media (prefers-color-scheme: light) {
   .content-area > div {
     background-color: color-mix(
@@ -49,6 +53,15 @@ li {
     border: 0.6px var(--card-border) solid;
     padding: 1rem;
   }
+}
+
+.projects {
+  padding: 1.5rem !important;
+}
+
+.projects h1 {
+  margin-bottom: 2rem;
+  font-size: 1.75rem;
 }
 
 @media (max-width: 576px) {
@@ -70,6 +83,15 @@ li {
     backdrop-filter: none;
     border: none;
     padding: 0;
+  }
+
+  .projects {
+    padding: 1rem !important;
+  }
+
+  .projects h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
   }
 }
 
