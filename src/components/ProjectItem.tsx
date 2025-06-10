@@ -21,11 +21,11 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
   useEffect(() => {
     const fetchStars = async () => {
       try {
-        // const res = await fetch(`https://api.github.com/repos/${repo}`);
-        // const data = await res.json();
-        // setStars(data.stargazers_count);
+        const res = await fetch(`https://api.github.com/repos/${repo}`);
+        const data = await res.json();
+        setStars(data.stargazers_count);
         // use this to prevent rate limiting yourself
-        setStars(100);
+        // setStars(100);
       } catch (error) {
         console.error("Error fetching repo data:", error);
         setStars(0);

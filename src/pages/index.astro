@@ -1,20 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import BlogCard from '../components/BlogCard';
-import SkillsCard from '../components/SkillsCard'
 import Sidebar from '../components/Sidebar';
 import './index.css'
 import ProjectItem from '../components/ProjectItem';
 import FancyHyperlink from '../components/FancyHyperlink';
 import CollapsibleSection from '../components/CollapsibleSection';
-// import { getCollection } from 'astro:content';
-// const allBlogPosts = await getCollection('blog');
-// const sortedBlogPosts = allBlogPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-// const blogPosts = sortedBlogPosts.slice(0, 2).map(post => ({
-//   title: post.data.title,
-//   date: post.data.date.toLocaleDateString(),
-//   slug: post.slug
-// }));
+import DraggableGallery from '../components/DraggableGallery';
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+const albums = await getCollection("albums");
+
+const iosAlbums = albums.filter(album => album.id.startsWith('rice') && !album.id.startsWith('macrice') && !album.id.startsWith('linuxrice'));
+const linuxAlbums = albums.filter(album => album.id.startsWith('linuxrice'));
+const macosAlbums = albums.filter(album => album.id.startsWith('macrice'));
+
+
 
 const hackathonProjects = [
   // {
@@ -55,6 +55,11 @@ const hackathonProjects = [
     repo: "hrtowii/hacknroll25",
     description: "personal duck from hell, uses py/sh/React/Tauri to detect emotions and troll the user.",
     link: "https://github.com/hrtowii/hacknroll25",
+	images:[
+		'https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/220/385/datas/gallery.jpg',
+		'https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/220/386/datas/gallery.jpg',
+		'https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/220/383/datas/gallery.jpg',
+	]
   },
   {
     title: "hackomania 2025",
@@ -87,6 +92,10 @@ const iosProjects = [
     repo: "SerotoninApp/Serotonin",
     description: "semi-jailbreak written for iOS 16.0 - 16.6.1, using roothide bootstrap",
     link: "https://github.com/SerotoninApp/Serotonin",
+	images:[
+		'/serotonin2.jpg',
+		'/serotonin.jpg',
+	]
   },
   {
     title: "cve socket panic",
@@ -132,6 +141,10 @@ const otherProjects = [
     repo: "hrtowii/img2ascii_c",
     description: "convert images to colored ascii art w/ C",
     link: "https://github.com/hrtowii/img2ascii_c",
+	images: [
+		"https://github.com/hrtowii/img2ascii_c/raw/refs/heads/main/test2.bmp",
+		"https://github.com/hrtowii/img2ascii_c/raw/refs/heads/main/test5.bmp",
+	]
   },
   {
     title: "c fetch",
@@ -195,6 +208,7 @@ const otherProjects = [
                 <div>
                     <h2>games i like kinda</h2>
                     <ul>
+                        <li>maimai!!! omg i started recently and have wasted sm money on it but worth ehehehe washing machine is goated</li>
                         <li>undertale / deltarune.... i cant believe chap3/4 is out omg</li>
                         <li>oneshot</li>
                         <li>celeste</li>
@@ -213,39 +227,49 @@ const otherProjects = [
 
 				<CollapsibleSection title="hackathons" defaultOpen={true} client:load>
 					{hackathonProjects.map((project) => (
-						<ProjectItem
+						<ProjectItem client:load
 							title={project.title}
 							repo={project.repo}
 							link={project.link}
 							description={project.description}
+							images={project.images}
 						/>
 					))}
 				</CollapsibleSection>
 
 				<CollapsibleSection title="ios stuff" client:load>
 					{iosProjects.map((project) => (
-						<ProjectItem
+						<ProjectItem client:load
 							title={project.title}
 							repo={project.repo}
 							link={project.link}
 							description={project.description}
+							images={project.images}
 						/>
 					))}
 				</CollapsibleSection>
 
 				<CollapsibleSection title="other stuff" client:load>
 					{otherProjects.map((project) => (
-						<ProjectItem
+						<ProjectItem client:load
 							title={project.title}
 							repo={project.repo}
 							link={project.link}
 							description={project.description}
+							images={project.images}
 						/>
 					))}
 				</CollapsibleSection>
 			</div>
 
-			<div class="blogposts"></div>
+			<div class="rices">
+			    <h1>my cool rices owo</h1>
+			    <p>drag them around!</p>
+			    <DraggableGallery albums={iosAlbums} client:load />
+			    <div class="rices-link">
+			    	<a href="/rices">view all rices →</a>
+			    </div>
+			</div>
 		</div>
 	</div>
 </Layout>

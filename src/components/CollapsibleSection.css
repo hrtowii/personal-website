@@ -29,12 +29,13 @@
 }
 
 .chevron {
+  color: var(--accent-light);
   transition: transform 0.3s ease;
   opacity: 0.7;
 }
 
 .chevron.rotated {
-  transform: rotate(180deg);
+  transform: rotate(90deg);
 }
 
 .section-content {
@@ -59,11 +60,11 @@
   .projects-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .section-header h2 {
     font-size: 1.25rem;
   }
-  
+
   .section-header {
     padding: 0.75rem 0;
   }
@@ -73,7 +74,7 @@
   .projects-grid {
     gap: 1rem;
   }
-  
+
   .section-content.open {
     padding-top: 1rem;
   }

@@ -69,11 +69,11 @@ html::before {
   --g2: hsl(35, 88%, 72%); /* Gold */
   --g3: hsl(2, 55%, 83%); /* Rose */
 }
-
+/*
 @media (prefers-color-scheme: light) {
   :root {
-    /* Accent Colors */
-    --accent: hsl(343, 35%, 55%); /* Love */
+
+    --accent: hsl(343, 35%, 55%);
     --accent-light: hsl(343, 35%, 65%);
     --accent-dark: hsl(343, 35%, 45%);
     --accent-gradient: linear-gradient(
@@ -83,27 +83,23 @@ html::before {
       white 60%
     );
 
-    /* Backgrounds */
-    --background: hsl(32, 57%, 95%); /* Base */
-    --card-background: hsl(35, 100%, 98%); /* Surface */
-    --overlay: hsl(33, 43%, 91%); /* Overlay */
-    --Hero: hsl(25, 35%, 93%); /* Highlight Low */
+    --background: hsl(32, 57%, 95%);
+    --card-background: hsl(35, 100%, 98%);
+    --overlay: hsl(33, 43%, 91%);
+    --Hero: hsl(25, 35%, 93%);
 
-    /* Foregrounds */
-    --foreground: hsl(248, 19%, 40%); /* Text */
-    --card-foreground: hsl(248, 19%, 40%); /* Text */
+    --foreground: hsl(248, 19%, 40%);
+    --card-foreground: hsl(248, 19%, 40%);
 
-    /* Borders and Highlights */
-    --card-border: hsl(315, 4%, 80%); /* Highlight High */
-    --border: hsl(343, 35%, 55%); /* Accent */
-
-    /* Additional Colors */
-    --dots-color: hsl(257, 9%, 61%); /* Muted */
-    --g1: hsl(268, 21%, 57%); /* Iris */
-    --g2: hsl(35, 81%, 56%); /* Gold */
-    --g3: hsl(3, 53%, 67%); /* Rose */
+    --card-border: hsl(315, 4%, 80%);
+    --border: hsl(343, 35%, 55%);
+    --dots-color: hsl(257, 9%, 61%);
+    --g1: hsl(268, 21%, 57%);
+    --g2: hsl(35, 81%, 56%);
+    --g3: hsl(3, 53%, 67%);
   }
 }
+*/
 
 html {
   font-family: "Galmuri7", "Sora", system-ui, sans-serif;

@@ -1,18 +1,19 @@
+/* https://romiojoseph.github.io/open-source/design-token-studio/type-scale-generator/ */
 :root {
-  --font-size-displayLarge: 3.247rem;
-  --font-size-displayMedium: 2.887rem;
-  --font-size-displaySmall: 2.566rem;
-  --font-size-heading1: 2.281rem;
-  --font-size-heading2: 2.027rem;
-  --font-size-heading3: 1.802rem;
-  --font-size-heading4: 1.602rem;
-  --font-size-heading5: 1.424rem;
-  --font-size-heading6: 1.266rem;
-  --font-size-subtitle: 1.125rem;
-  --font-size-body: 1rem;
-  --font-size-caption: 0.889rem;
-  --font-size-label: 0.79rem;
-  --font-size-tagline: 0.702rem;
+  --font-size-displayLarge: 2.841rem;
+  --font-size-displayMedium: 2.526rem;
+  --font-size-displaySmall: 2.245rem;
+  --font-size-heading1: 1.996rem;
+  --font-size-heading2: 1.774rem;
+  --font-size-heading3: 1.577rem;
+  --font-size-heading4: 1.402rem;
+  --font-size-heading5: 1.246rem;
+  --font-size-heading6: 1.107rem;
+  --font-size-subtitle: 0.984rem;
+  --font-size-body: 0.875rem;
+  --font-size-caption: 0.778rem;
+  --font-size-label: 0.691rem;
+  --font-size-tagline: 0.615rem;
 }
 
 @media (max-width: px) {
