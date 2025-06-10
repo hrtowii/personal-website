@@ -21,9 +21,39 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
   useEffect(() => {
     const fetchStars = async () => {
       try {
+        const cacheKey = `github-stars-${repo}`;
+        const cached = localStorage.getItem(cacheKey);
+
+        if (cached) {
+          const { stars: cachedStars, hits } = JSON.parse(cached);
+
+          if (hits < 10) {
+            // Use cached data and increment hit count
+            setStars(cachedStars);
+            localStorage.setItem(
+              cacheKey,
+              JSON.stringify({
+                stars: cachedStars,
+                hits: hits + 1,
+              })
+            );
+            return;
+          }
+        }
+
+        // Fetch fresh data from GitHub API
         const res = await fetch(`https://api.github.com/repos/${repo}`);
         const data = await res.json();
         setStars(data.stargazers_count);
+
+        // Cache the new data with hit count reset to 1
+        localStorage.setItem(
+          cacheKey,
+          JSON.stringify({
+            stars: data.stargazers_count,
+            hits: 1,
+          })
+        );
         // use this to prevent rate limiting yourself
         // setStars(100);
       } catch (error) {
