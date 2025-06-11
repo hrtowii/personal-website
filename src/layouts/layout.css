@@ -285,7 +285,7 @@ body {
   }
 
   & * {
-    animation: phosphor 1.6s infinite !important;
+    animation: phosphor 1.6s infinite;
   }
 }
 

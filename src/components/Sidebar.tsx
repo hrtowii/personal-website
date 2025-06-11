@@ -8,6 +8,7 @@ import SettingsCard from "./SettingsCard";
 
 // MARK: blog post fetching logic
 import { getCollection } from "astro:content";
+import WebringCard from "./WebringCard";
 const allBlogPosts = await getCollection("blog");
 const sortedBlogPosts = allBlogPosts.sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
@@ -56,14 +57,15 @@ const Sidebar: React.FC = () => {
       <div className="music-section">
         <MusicCard />
       </div>
-
       <div className="links-section">
         <LinksCard />
       </div>
       <div className="blogs-section">
         <BlogCard blogPosts={blogPosts} />
       </div>
-      
+      <div className="webrings-section">
+        <WebringCard />
+      </div>
       <div className="settings-section">
         <SettingsCard />
       </div>

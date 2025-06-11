@@ -23,6 +23,8 @@ li {
   gap: 1rem;
   padding: 1rem;
   box-sizing: border-box;
+  overflow: hidden;
+  max-width: 100vw;
 }
 
 .content-area {

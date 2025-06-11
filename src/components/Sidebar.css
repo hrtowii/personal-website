@@ -13,6 +13,8 @@
   height: fit-content;
   width: 100%;
   box-sizing: border-box;
+  overflow: hidden;
+  max-width: 100%;
 }
 
 @media (max-width: 576px) {
@@ -48,6 +50,12 @@
 
 .blogs-section {
   width: 100%;
+}
+
+.webrings-section {
+  width: 100%;
+  overflow: hidden;
+  max-width: 100%;
 }
 
 .settings-section {
