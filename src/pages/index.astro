@@ -7,12 +7,11 @@ import FancyHyperlink from '../components/FancyHyperlink';
 import CollapsibleSection from '../components/CollapsibleSection';
 import DraggableGallery from '../components/DraggableGallery';
 import { getCollection } from "astro:content";
-import { Image } from "astro:assets";
 const albums = await getCollection("albums");
 
 const iosAlbums = albums.filter(album => album.id.startsWith('rice') && !album.id.startsWith('macrice') && !album.id.startsWith('linuxrice'));
-const linuxAlbums = albums.filter(album => album.id.startsWith('linuxrice'));
-const macosAlbums = albums.filter(album => album.id.startsWith('macrice'));
+// const linuxAlbums = albums.filter(album => album.id.startsWith('linuxrice'));
+// const macosAlbums = albums.filter(album => album.id.startsWith('macrice'));
 
 const hackathonProjects = [
   // {

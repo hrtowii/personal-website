@@ -9,6 +9,9 @@ const WebringCard = () => {
         <div className="infinite-scroll-container">
           <div className="scroll-wrapper">
             <div className="scroll-content">
+              <a href="https://hrtowii.nekoweb.org">
+                <img src="/8831.png" alt="hrtowii.nekoweb.org" />
+              </a>
               <a href="https://dane.gg">
                 <img src="https://dane.gg/assets/img/88x31.gif" alt="dane.gg" />
               </a>
@@ -38,6 +41,9 @@ const WebringCard = () => {
               </a>
 
               {/* copy */}
+              <a href="https://hrtowii.nekoweb.org">
+                <img src="/8831.png" alt="hrtowii.nekoweb.org" />
+              </a>
               <a href="https://dane.gg">
                 <img src="https://dane.gg/assets/img/88x31.gif" alt="dane.gg" />
               </a>
