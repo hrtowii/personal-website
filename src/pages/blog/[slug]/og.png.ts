@@ -12,7 +12,7 @@ export async function GET({ props }: Props) {
   const buffer = await buildOG(
     buildHTML(filenameToTitle(post.id), post.data.date, post.slug)
   );
-  return new Response(buffer, {
+  return new Response(new Uint8Array(buffer), {
     headers: { "Content-Type": "image/png" },
   });
 }

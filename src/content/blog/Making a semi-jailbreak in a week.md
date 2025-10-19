@@ -1,6 +1,7 @@
 ---
 date: 2024-11-29
 title: Making a semi-jailbreak in a week
+draft: false
 ---
 
 <style>
@@ -113,10 +114,10 @@ Reading this struct, you may come across this interesting part:
 
 ```c
 struct vnode {
-	// ...
-	TAILQ_HEAD(, namecache) v_ncchildren;   /* name cache entries that regard us as their parent */
-	LIST_HEAD(, namecache) v_nclinks;       /* name cache entries that name this vnode */
-	// ...
+ // ...
+ TAILQ_HEAD(, namecache) v_ncchildren;   /* name cache entries that regard us as their parent */
+ LIST_HEAD(, namecache) v_nclinks;       /* name cache entries that name this vnode */
+ // ...
 }
 ```
 
@@ -125,17 +126,17 @@ From XNU [(source)](https://github.com/apple-oss-distributions/xnu/blob/xnu-8792
 
 ```c
 struct namecache {
-	TAILQ_ENTRY(namecache)  nc_entry;       /* chain of all entries */
-	TAILQ_ENTRY(namecache)  nc_child;       /* chain of ncp's that are children of a vp */
-	union {
-		LIST_ENTRY(namecache)  nc_link; /* chain of ncp's that 'name' a vp */
-		TAILQ_ENTRY(namecache) nc_negentry; /* chain of ncp's that 'name' a vp */
-	} nc_un;
-	LIST_ENTRY(namecache)   nc_hash;        /* hash chain */
-	vnode_t                 nc_dvp;         /* vnode of parent of name */
-	vnode_t                 nc_vp;          /* vnode the name refers to → This sounds interesting... */
-	unsigned int            nc_hashval;     /* hashval of stringname */
-	const char              *nc_name;       /* pointer to segment name in string cache */
+ TAILQ_ENTRY(namecache)  nc_entry;       /* chain of all entries */
+ TAILQ_ENTRY(namecache)  nc_child;       /* chain of ncp's that are children of a vp */
+ union {
+  LIST_ENTRY(namecache)  nc_link; /* chain of ncp's that 'name' a vp */
+  TAILQ_ENTRY(namecache) nc_negentry; /* chain of ncp's that 'name' a vp */
+ } nc_un;
+ LIST_ENTRY(namecache)   nc_hash;        /* hash chain */
+ vnode_t                 nc_dvp;         /* vnode of parent of name */
+ vnode_t                 nc_vp;          /* vnode the name refers to → This sounds interesting... */
+ unsigned int            nc_hashval;     /* hashval of stringname */
+ const char              *nc_name;       /* pointer to segment name in string cache */
 };
 ```
 
@@ -246,7 +247,7 @@ uint64_t SwitchSysBin160(char* to, char* from, uint64_t* orig_to_vnode, uint64_t
 ```
 
 The code for these two functions are in Serotonin's repo here:
-https://github.com/SerotoninApp/Serotonin/blob/main/usprebooter/fun/vnode.m#L563
+<https://github.com/SerotoninApp/Serotonin/blob/main/usprebooter/fun/vnode.m#L563>
 
 Initially, I just replaced it with a random copy of launchd without extra entitlements, and...
 
@@ -270,7 +271,7 @@ You can get around this by forcing launchd to become arm64 by zeroing out the CP
 
 ```
 CF FA ED FE 0C 00 00 01 02 00 00 80
-						00 00 00 00 <- replace them.
+      00 00 00 00 <- replace them.
 ```
 
 It should look like this:
@@ -474,7 +475,7 @@ So here's what the hook would look like to just get SpringBoard to load (without
 
 bool os_variant_has_internal_content(const char* subsystem);
 %hookf(bool, os_variant_has_internal_content, const char* subsystem) {
-	 return true;
+  return true;
 }
 
 #define CS_DEBUGGED 0x10000000

@@ -1,6 +1,7 @@
 ---
 date: 2023-07-02
 title: My experience in GeekOut 2023
+draft: false
 ---
 
 # Introduction
@@ -26,7 +27,7 @@ Of course, every workshop was eye opening and I gained many new insights from th
 
 On the 4th day of the bootcamp, we were briefed about our hackathon problem statement and tasked to develop a solution to tackle it:
 
-### Develop a smart city solution to improve quality of life for citizens while also enhancing the sustainability of the goal to move towards a smarter nation.
+### Develop a smart city solution to improve quality of life for citizens while also enhancing the sustainability of the goal to move towards a smarter nation
 
 What the guidelines of the hackathon were essentially:
 
@@ -53,7 +54,7 @@ After the hackathon, we were given the chance to talk directly with some of GovT
 
 All in all, I feel like I gained a lot more info about what working in the government was like, and how different government sectors had different styles of working.
 
-# Winning?!
+# Winning?
 
 After the AMA session had concluded, it was obviously time for the part everyone was waiting for the most: the announcements for who won.
 

@@ -48,7 +48,7 @@ export default function MusicCard() {
       }
     } else {
       let music_data: MusicData = {
-        artist: data!.spotify!.artist,
+        artist: data!.spotify!.artist || "Unknown Artist",
         art_url: data!.spotify!.album_art_url!,
         title: data.spotify!.song,
         length: data.spotify.timestamps.end - data.spotify.timestamps.start,

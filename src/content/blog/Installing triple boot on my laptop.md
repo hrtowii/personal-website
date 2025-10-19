@@ -1,6 +1,7 @@
 ---
 date: 2022-12-22
 title: Installing triple boot on my laptop
+draft: false
 ---
 
 # Disclaimer (30th Sep 2024)
@@ -58,7 +59,7 @@ Great! I could follow the guide for my laptop, which had a Kaby Lake CPU and UHD
 - Sound codec not working without Codeccommander
   - Audio is broke OOTB for Hackintoshes. The easiest way to solve this normally is to follow the OpenCore guide to try multiple possible layout IDs for your audio codec.
   - After trial-and-error, I stumbled open a layout ID that played sound correctly, but was weirdly tinny on both headphones and speakers. Confused, I tried other audio codec's layout IDs, but to no avail either.
-  - I eventually had to use Google to check out what I was doing wrong, but it was just a known issue with certain audio codecs, and I had to[ install some software ](https://elitemacx86.com/threads/audio-distortion-when-using-headphones-on-laptops-clover-opencore.185/) to fix it.
+  - I eventually had to use Google to check out what I was doing wrong, but it was just a known issue with certain audio codecs, and I had to[install some software](https://elitemacx86.com/threads/audio-distortion-when-using-headphones-on-laptops-clover-opencore.185/) to fix it.
 
 ## Working around problems
 

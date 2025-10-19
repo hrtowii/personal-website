@@ -2,19 +2,47 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import FancyHyperlink from '../../components/FancyHyperlink';
-const allBlogPosts = await getCollection('blog');
+let allBlogPosts = await getCollection('blog');
+allBlogPosts = allBlogPosts.filter(post => !post.data.draft);
 const sortedBlogPosts = allBlogPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
 <Layout title="htrowii's blogposts!">
-  <div class="content">
+    <div id="blog-content">
     <h1>All Blog Posts</h1>
     {sortedBlogPosts.map((post) => (
-      <div class="blog-item">
-        <h2>{post.data.title}</h2>
-        <p>{post.data.date.toLocaleDateString()}</p>
-        <FancyHyperlink href={`/blog/${post.slug}`} content='read more' />
-      </div>
+      <a href={`/blog/${post.slug}`}>
+        <div class="blog-item">
+          <h2>{post.data.title}</h2>
+          <p>{post.data.date.toLocaleDateString()}</p>
+          <FancyHyperlink href={`/blog/${post.slug}`} content='read more' />
+          <!-- <img src={`https://hrtowii.nekoweb.org//blog/${post.slug}/og.png`}></img> -->
+        </div>
+      </a>
     ))}
   </div>
 </Layout>
+<style>
+    #blog-content {
+        padding: 1.75rem;
+    }
+    #blog-content a {
+        text-decoration: none;
+    }
+    .blog-item {
+        padding: 1.5rem;
+        background-color: color-mix(in srgb, var(--card-background) 30%, transparent);
+        border: 0.6px var(--card-border) solid;
+        padding: 1rem;
+        transition: background-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transition: border 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        margin-bottom: 1.75rem;
+    }
+    .blog-item:hover {
+        padding: 1.5rem;
+        border: 0.6px var(--border) solid;
+        padding: 1rem;
+        background-color: color-mix(in srgb, var(--card-background) 50%, transparent);
+        /*cursor: pointer;*/
+    }
+</style>

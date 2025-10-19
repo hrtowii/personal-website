@@ -1,7 +1,8 @@
 import { html } from "satori-html";
-import { readFile } from "fs/promises";
+import { readFileSync } from "node:fs";
 import satori from "satori";
 import { Resvg } from "@resvg/resvg-js";
+// needs npm run build to work bc magic
 export const buildHTML = (title: string, date: Date, slug: string) => {
   return html`<div style="display: flex;">
     <svg
@@ -38,9 +39,9 @@ export const buildHTML = (title: string, date: Date, slug: string) => {
   </div> `;
 };
 
-const dmSans = await readFile("./public/Sora.ttf");
+const dmSans = readFileSync("./public/Sora.ttf");
 export const buildOG = async (input: ReturnType<typeof html>) => {
-  const svg = await satori(input, {
+  const svg = await satori(input as any, {
     width: 1200,
     height: 630,
     fonts: [
