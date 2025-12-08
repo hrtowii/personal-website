@@ -8,10 +8,12 @@ import ProjectItem from '../components/ProjectItem';
 import FancyHyperlink from '../components/FancyHyperlink';
 import { getCollection } from 'astro:content';
 const allBlogPosts = await getCollection('blog');
-const sortedBlogPosts = allBlogPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const sortedBlogPosts = allBlogPosts
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
 const blogPosts = sortedBlogPosts.slice(0, 2).map(post => ({
   title: post.data.title,
-  date: post.data.date.toLocaleDateString(),
+  date: post.data.date.toLocaleDateString(), // or any formatting you like
   slug: post.slug
 }));
 ---

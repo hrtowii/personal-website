@@ -1,5 +1,5 @@
 ---
-date: 2025-20-10
+date: 2025-10-20
 title: is AI fast or good?
 ---
 
