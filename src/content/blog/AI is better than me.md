@@ -1,6 +1,6 @@
 ---
-title: is AI fast or good?
 date: 2025-20-10
+title: is AI fast or good?
 ---
 
 ## better or faster?
