@@ -8,21 +8,50 @@ interface ProjectItemProps {
   link: string;
   description: string;
   images?: string[];
+  layout?: 'row' | 'column';
 }
 
-const ProjectItem: React.FC<ProjectItemProps> = ({ id, title, repo, link, description, images }) => {
+interface CachedData {
+  hits: number;
+  stars: number | string;
+}
+
+const ProjectItem: React.FC<ProjectItemProps> = ({ id, title, repo, link, description, images, layout = 'column' }) => {
   const [stars, setStars] = useState<number | string | null>(repo ? 'Loading' : null);
 
   useEffect(() => {
     if (!repo) return;
     
+    const cacheKey = `github_stars_${repo.replace('/', '-')}`;
+    
     const fetchStars = async () => {
       try {
+        const cachedDataStr = localStorage.getItem(cacheKey);
+        
+        if (cachedDataStr) {
+          const cachedData: CachedData = JSON.parse(cachedDataStr);
+          
+          if (cachedData.hits < 10) {
+            setStars(cachedData.stars);
+            localStorage.setItem(cacheKey, JSON.stringify({
+              hits: cachedData.hits + 1,
+              stars: cachedData.stars
+            }));
+            return;
+          }
+        }
+        
         const res = await fetch(`https://api.github.com/repos/${repo}`);
         const data = await res.json();
-        setStars(data.stargazers_count);
-        // use this to prevent rate limiting yourself
-        // setStars(100)
+        const starCount = data.stargazers_count;
+        
+        setStars(starCount);
+        
+        localStorage.setItem(cacheKey, JSON.stringify({
+          hits: 1,
+          stars: starCount
+        }));
+        
       } catch (error) {
         console.error('Error fetching repo data:', error);
         setStars('N/A');
@@ -60,8 +89,15 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ id, title, repo, link, descri
               </div>
             )}
           </div>
-          <div className="item-content-again">
-            <p>{description}</p>
+          <div className={`item-content-again ${layout === 'row' ? 'layout-row' : ''}`}>
+            {layout === 'row' ? (
+              <div className="text-and-link-wrapper">
+                <p>{description}</p>
+                <FancyHyperlink content="Link to content" href={link} />
+              </div>
+            ) : (
+              <p>{description}</p>
+            )}
             {images && images.length > 0 && (
                 <div className="carousel-container">
                   {images.map((url, index) => (
@@ -71,7 +107,9 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ id, title, repo, link, descri
             )}
           </div>
         </div>
-        <FancyHyperlink content="Link to content" href={link} />
+        {layout === 'row' ? null : (
+          <FancyHyperlink content="Link to content" href={link} />
+        )}
       </div>
     </div>
   );

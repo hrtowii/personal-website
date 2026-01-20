@@ -40,8 +40,53 @@
     margin-bottom: 1.5rem;
 }
 
+.text-and-link-wrapper > .fancy-link {
+  margin-bottom: 1rem;
+}
 .item-content-again {
     width: 100%;
+}
+
+.item-content-again.layout-row {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: stretch;
+}
+
+.item-content-again.layout-row .text-and-link-wrapper {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.item-content-again.layout-row .text-and-link-wrapper p {
+    margin: 0;
+}
+
+.item-content-again.layout-row p {
+    flex: 1;
+    min-width: 0;
+    padding: 0;
+  margin-block: 0;
+}
+
+.item-content-again.layout-row .carousel-container {
+    flex-shrink: 0;
+    width: auto;
+    align-items: center;
+    overflow-x: visible;
+}
+
+.item-content-again.layout-row .carousel-image {
+    max-height: calc((80vh - 2 * 1.25rem) / 3 - 4rem);
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin-bottom: 0.5rem;
 }
 
 .carousel-container {

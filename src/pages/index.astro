@@ -34,14 +34,18 @@ const blogPosts = sortedBlogPosts.slice(0, 2).map(post => ({
 					link='https://github.com/haxi0/sparsethemer'
 				/>
 				
-				<ProjectItem 
-					client:load 
-					description="Fork of WDBFontOverwrite that uses kfd to overwrite fonts on iOS" 
-					id="item2" 
-					title="KFDFontOverwrite" 
-					repo="hrtowii/WDBFontOverwrite" 
-					link='https://github.com/hrtowii/WDBFontOverwrite'
-				/>
+			<ProjectItem 
+				client:load 
+				description="c program: convert images into ascii text in terminal and bmp images" 
+				id="item2" 
+				title="img2ascii_c" 
+				repo="hrtowii/img2ascii_c" 
+				link='https://github.com/hrtowii/img2ascii_c'
+				images={[
+					"https://github.com/hrtowii/img2ascii_c/blob/main/output.png?raw=true",
+				]}
+				layout="row"
+			/>
 				
 				<div id="item3" class="transparentitem">
 					<div class="item-wrapper">
@@ -83,29 +87,29 @@ const blogPosts = sortedBlogPosts.slice(0, 2).map(post => ({
 						'/serotonin.jpg',
 					]}
 				/>
-				
-				<ProjectItem 
-				client:load 
-				description="Program written in pure C to convert images into ascii / colored text in terminal and bmp images" 
-				id="item7" 
-				title="img2ascii_c" 
-				repo="hrtowii/img2ascii_c" 
-				link='https://github.com/hrtowii/img2ascii_c',
-				images={[
-					"https://github.com/hrtowii/img2ascii_c/raw/refs/heads/main/test2.bmp",
-					"https://github.com/hrtowii/img2ascii_c/raw/refs/heads/main/test5.bmp",
-				]}
-			/>
-
 				<ProjectItem
 					client:load
-					id="item8"
-					description="React Native / Flask app for a bereal but food app. Uses gpt4o for vision"
-					title="hackomania2025"
-					repo="hrtowii/hackomania2025"
-					link="https://github.com/hrtowii/hackomania2025/tree/backend-rewrite"
+					id="item7"
+          description="Hack and Roll 2026 top 9: custom badge firmware in C and RN app for streetpass functionality"
+					title="wayside"
+					repo="jun-lsh/wayside"
+          link="https://github.com/jun-lsh/wayside/tree/master"
+          images={[
+            "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/004/171/718/datas/original.jpg",
+            "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/004/171/710/datas/original.jpg"
+          ]}
 				/>
-				
+
+			<ProjectItem 
+			client:load 
+			description="Fork of WDBFontOverwrite that uses kfd to overwrite fonts on iOS" 
+			id="item8" 
+			title="KFDFontOverwrite" 
+			repo="hrtowii/WDBFontOverwrite" 
+			link='https://github.com/hrtowii/WDBFontOverwrite'
+		/>
+
+								
 				<ProjectItem 
 					client:load 
 					description="Python script to overwrite equalizer presets for Spotify on iOS using SparseRestore exploit" 
