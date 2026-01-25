@@ -185,7 +185,7 @@ const allTags = [
     const noPostsMessage = document.getElementById('no-posts-message');
     const currentTagDisplay = document.getElementById('current-tag-display');
 
-    function filterPosts(tag) {
+    function filterPosts(tag: any) {
       let visibleCount = 0;
 
       blogItems.forEach((item) => {
