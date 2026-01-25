@@ -14,6 +14,8 @@ jobs:
         uses: indiefellas/deploy2nekoweb@vmain
         with:
           nekoweb-api-key: ${{ secrets.NEKOWEB_API_KEY }}
+          nekoweb-domain: 'hrtowii.nekoweb.org'
+          nekoweb-username: 'hrtowii'
           # nekoweb-cookie: ${{ secrets.NEKOWEB_COOKIE }}
           nekoweb-folder: "dist"
           directory: "public"
