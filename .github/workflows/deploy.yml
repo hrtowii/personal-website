@@ -9,6 +9,17 @@ jobs:
         uses: actions/checkout@v4
 
       # your build step here
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Build Astro site
+        run: npm run build
 
       - name: deploy2nekoweb
         uses: indiefellas/deploy2nekoweb@main
@@ -17,4 +28,4 @@ jobs:
           nekoweb-domain: 'hrtowii.nekoweb.org'
           nekoweb-username: 'hrtowii'
           # nekoweb-cookie: ${{ secrets.NEKOWEB_COOKIE }}
-          directory: "public"
+          directory: "dist"
