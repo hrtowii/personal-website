@@ -1,0 +1,84 @@
+---
+import type { Heading } from '../utils/extractHeadings';
+
+interface Props {
+  headings: Heading[];
+}
+
+const { headings } = Astro.props;
+---
+
+<aside class="table-of-contents">
+  <h2>contents</h2>
+  <nav>
+    <ul>
+      {headings.map((heading) => (
+        <li class={`toc-level-${heading.depth}`} data-heading-id={heading.slug}>
+          <a href={`#${heading.slug}`}>{heading.text}</a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</aside>
+
+<script>
+  function initTableOfContents() {
+    const articleHeadings = document.querySelectorAll('article h2, article h3');
+    const tocItems = document.querySelectorAll('.table-of-contents nav li');
+
+    function generateSlug(text: string): string {
+      return text
+        .toLowerCase()
+        .replace(/[^a-z0-9\s-]/g, '')
+        .trim()
+        .replace(/\s+/g, '-');
+    }
+
+    articleHeadings.forEach((heading) => {
+      const text = heading.textContent || '';
+      const slug = generateSlug(text);
+      heading.setAttribute('id', slug);
+    });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            tocItems.forEach((item) => item.classList.remove('toc-active'));
+            const activeToc = document.querySelector(
+              `.table-of-contents nav li[data-heading-id="${id}"]`
+            );
+            activeToc?.classList.add('toc-active');
+          }
+        });
+      },
+      { rootMargin: '-100px 0px -66%' }
+    );
+
+    articleHeadings.forEach((el) => observer.observe(el));
+
+    document.querySelectorAll('.table-of-contents nav a').forEach((anchor) => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
+        if (!href) return;
+        
+        const targetId = href.slice(1);
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          });
+
+          history.pushState(null, '', `#${targetId}`);
+        }
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initTableOfContents);
+  document.addEventListener('astro:page-load', initTableOfContents);
+</script>

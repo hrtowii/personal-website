@@ -67,12 +67,15 @@ const Sidebar: React.FC = () => {
       <div className="webrings-section">
         <WebringCard />
       </div>
-      {/* <div className="webrings-section">
-        <StatsCard />
-      </div> */}
+      {/* <div className="webrings-section"> */}
+      {/*   <StatsCard /> */}
+      {/* </div> */}
       <div className="settings-section">
         <SettingsCard />
       </div>
+      <div className="settings-section">
+      <iframe src="https://webtiles.kicya.net/e/hrtowii.nekoweb.org" width="220" height="270" frameBorder="0"></iframe>
+    </div>
     </div>
   );
 };

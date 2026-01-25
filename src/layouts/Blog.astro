@@ -1,15 +1,21 @@
 ---
 import Layout from './Layout.astro';
 import Metadata from '../components/Metadata.astro';
+import TableOfContents from '../components/TableOfContents.astro';
+import Tags from '../components/Tags.astro';
+import type { Heading } from '../utils/extractHeadings';
+import { filenameToTitle } from '../filenameToTitle';
+
 interface Props {
   filename: string;
   title: string;
   date: Date;
   excerpt?: string;
+  tags?: string[];
+  headings: Heading[];
 }
-import { filenameToTitle } from '../filenameToTitle'
 
-const { filename, title, date } = Astro.props;
+const { filename, title, date, tags = [], headings } = Astro.props;
 ---
 
 <Layout title={title}>
@@ -22,17 +28,97 @@ const { filename, title, date } = Astro.props;
     publishedTime={date.toISOString()}
     type="article"
   />
-  <article>
-    <h1>{title}</h1>
-    <p>Published on: {date.toLocaleDateString()}</p>
+
+  <div class="blog-layout-wrapper">
+    <TableOfContents headings={headings} />
+
+    <article>
+      <h1>{title}</h1>
+
+      {tags.length > 0 && <Tags tags={tags} linkable={true} />}
+
+      <p class="blog-date">Published on: {date.toLocaleDateString()}</p>
+
       <slot />
-  </article>
+    </article>
+  </div>
 </Layout>
 
 <style>
-  article {
-    max-width: 800px;
+  :global(.container:has(.blog-layout-wrapper)) {
+    width: 100%;
+    margin-inline: 0;
+    border: none;
+    background: transparent;
+    backdrop-filter: none;
+  }
+
+  .blog-layout-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    width: 80vw;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 2rem 0;
+  }
+
+  article {
+    min-width: 0;
+    padding: 0;
+  }
+
+  .blog-date {
+    color: var(--foreground);
+    opacity: 0.8;
+    margin-bottom: 2rem;
+  }
+
+  article :global(h2),
+  article :global(h3),
+  article :global(h4),
+  article :global(h5),
+  article :global(h6) {
+    cursor: pointer;
+    transition: text-decoration 0.2s;
+  }
+
+  article :global(h2:hover),
+  article :global(h3:hover),
+  article :global(h4:hover),
+  article :global(h5:hover),
+  article :global(h6:hover) {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+
+  @media (max-width: 1200px) {
+    .blog-layout-wrapper {
+      display: block;
+      width: 90vw;
+      padding: 1rem 0;
+    }
+
+    article {
+      padding: 0;
+    }
   }
 </style>
+
+<script>
+  function initClickableHeadings() {
+    const headings = document.querySelectorAll('article h2, article h3, article h4, article h5, article h6');
+
+    headings.forEach((heading) => {
+      heading.addEventListener('click', () => {
+        const id = heading.getAttribute('id');
+        if (id) {
+          window.location.hash = id;
+        }
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initClickableHeadings);
+  document.addEventListener('astro:page-load', initClickableHeadings);
+</script>

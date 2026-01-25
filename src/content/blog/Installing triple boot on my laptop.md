@@ -2,6 +2,7 @@
 date: 2022-12-22
 title: Installing triple boot on my laptop
 draft: false
+tags: ["linux", "arch btw", "idk bruh"]
 ---
 
 # Disclaimer (30th Sep 2024)
@@ -39,20 +40,17 @@ Great! I could follow the guide for my laptop, which had a Kaby Lake CPU and UHD
 ## Problems faced when installing
 
 - WiFi + Bluetooth incompatibility
-
   - macOS is a picky operating system. As it only needs to support a limited number of laptops and iMacs, each with specified hardware, I was bound to have _some_ sort of incompatible hardware. As Apple macOS devices all contain Broadcom WiFi cards, macOS only supports WiFi and Bluetooth for those WiFi cards.
   - Unfortunately, my laptop contained a Qualcomm Atheros QC6174a Wireless Network Adapter. Bummer.
   - This meant that I wasn't able to connect to the internet or use bluetooth at ALL, which prevented me from using the online macOS installer to install to my laptop. My laptop didn't have an ethernet port either, so I couldn't go down that path.
 
 - NVIDIA (Optimus) being unsupported
-
   - My laptop contained both integrated graphics and a dedicated NVIDIA GPU to switch between at any given time. This was a cool feature on my other operating systems, as I was able to save some battery life when I wasn't doing anything graphically intensive.
   - However, Mac(book)s no longer have any new NVIDIA GPUs, and so macOS doesn't really support them anymore. Hence, the latest GPU that can be supported for NVIDIA are the Maxwell and Pascal generations up to High Sierra. Kepler(v2) GPUs are supported up to the latest version of Big Sur.
   - On the other hand, many AMD graphics cards are still well supported up to the current version of macOS.
   - As my laptop's discrete graphics card was unsupported, I had to disable it and rely on integrated graphics to work. This brings me to my next point:
 
 - iGPU not working initially
-
   - In my rush to quickly install macOS, I messed up in configuring my EFI for OpenCore such that I was not able to use my integrated graphics properly.
   - It was such a PITA that I decided to trash everything and start from the top again.
 

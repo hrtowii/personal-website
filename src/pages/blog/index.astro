@@ -2,47 +2,277 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import FancyHyperlink from '../../components/FancyHyperlink';
+import Tags from '../../components/Tags.astro';
+
 let allBlogPosts = await getCollection('blog');
-allBlogPosts = allBlogPosts.filter(post => !post.data.draft);
-const sortedBlogPosts = allBlogPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+allBlogPosts = allBlogPosts.filter((post) => !post.data.draft);
+const sortedBlogPosts = allBlogPosts.sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const allTags = [
+  ...new Set(sortedBlogPosts.flatMap((post) => post.data.tags || [])),
+].sort();
 ---
 
 <Layout title="htrowii's blogposts!">
-    <div id="blog-content">
+  <div id="blog-content">
     <h1>All Blog Posts</h1>
-    {sortedBlogPosts.map((post) => (
-      <a href={`/blog/${post.slug}`}>
-        <div class="blog-item">
-          <h2>{post.data.title}</h2>
-          <p>{post.data.date.toLocaleDateString()}</p>
-          <FancyHyperlink href={`/blog/${post.slug}`} content='read more' />
-          <!-- <img src={`https://hrtowii.nekoweb.org//blog/${post.slug}/og.png`}></img> -->
+
+    {allTags.length > 0 && (
+      <div class="tag-filter-section">
+        <p class="filter-label">Filter by tag:</p>
+        <div class="tag-filter-list">
+          {allTags.map((tag) => {
+            const tagSlug = tag.toLowerCase().replace(/\s+/g, '-');
+            return (
+              <a
+                href={`/blog/?tag=${tagSlug}`}
+                class="tag-filter-pill"
+                data-tag={tagSlug}
+              >
+                #{tagSlug}
+              </a>
+            );
+          })}
         </div>
-      </a>
-    ))}
+      </div>
+    )}
+
+    <div id="filtered-message" class="filtered-message" style="display: none;">
+      <span>showing tags: <strong id="current-tag-display"></strong></span>
+
+      <a href="/blog/" id="clear-filter">Clear filter</a>
+    </div>
+
+    <div id="no-posts-message" class="filtered-message" style="display: none;">
+      No posts found with this tag.
+      <a href="/blog/" id="clear-filter-empty">Clear filter</a>
+    </div>
+
+    {sortedBlogPosts.map((post) => {
+      const postTags = post.data.tags?.map(tag => tag.toLowerCase().replace(/\s+/g, '-')).join(',') || '';
+      return (
+        <a href={`/blog/${post.slug}`}>
+          <div class="blog-item" data-tags={postTags}>
+            <h2>{post.data.title}</h2>
+            <p>{post.data.date.toLocaleDateString()}</p>
+            {post.data.tags && post.data.tags.length > 0 && (
+              <Tags tags={post.data.tags} linkable={false} />
+            )}
+            <FancyHyperlink href={`/blog/${post.slug}`} content="read more" />
+          </div>
+        </a>
+      );
+    })}
   </div>
 </Layout>
+
 <style>
-    #blog-content {
-        padding: 1.75rem;
+  #blog-content {
+    padding: 1.75rem;
+  }
+  #blog-content a {
+    text-decoration: none;
+  }
+  .blog-item {
+    padding: 1.5rem;
+    background-color: color-mix(
+      in srgb,
+      var(--card-background) 30%,
+      transparent
+    );
+    border: 0.6px var(--card-border) solid;
+    padding: 1rem;
+    transition:
+      background-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      border 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    margin-bottom: 1.75rem;
+  }
+  
+  .blog-item.hidden {
+    display: none;
+  }
+  .blog-item:hover {
+    padding: 1.5rem;
+    border: 0.6px var(--border) solid;
+    padding: 1rem;
+    background-color: color-mix(
+      in srgb,
+      var(--card-background) 50%,
+      transparent
+    );
+  }
+
+  .tag-filter-section {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: color-mix(in srgb, var(--card-background) 20%, transparent);
+    border: 0.6px solid var(--card-border);
+    border-radius: 0px;
+  }
+
+  .filter-label {
+    margin: 0 0 1rem 0;
+    font-weight: 600;
+  }
+
+  .tag-filter-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .tag-filter-pill {
+    display: inline-block;
+    /* padding: 0.5rem 1rem; */
+    /* background: color-mix(in srgb, var(--accent) 20%, transparent); */
+    /* border: 1px solid var(--accent); */
+    border-radius: 0px;
+    color: var(--accent);
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .tag-filter-pill:hover {
+    background: color-mix(in srgb, var(--accent) 35%, transparent);
+  }
+
+  .tag-filter-pill.active {
+    background: var(--accent);
+    color: var(--background);
+    font-weight: 600;
+  }
+
+  .filtered-message {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    border-left: 3px solid var(--accent);
+  }
+
+  .filtered-message a {
+    margin-left: 1rem;
+    color: var(--accent);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .tag-filter-section {
+      padding: 1rem;
     }
-    #blog-content a {
-        text-decoration: none;
+
+    .tag-filter-list {
+      gap: 0.5rem;
     }
-    .blog-item {
-        padding: 1.5rem;
-        background-color: color-mix(in srgb, var(--card-background) 30%, transparent);
-        border: 0.6px var(--card-border) solid;
-        padding: 1rem;
-        transition: background-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        transition: border 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        margin-bottom: 1.75rem;
+
+    .tag-filter-pill {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.8rem;
     }
-    .blog-item:hover {
-        padding: 1.5rem;
-        border: 0.6px var(--border) solid;
-        padding: 1rem;
-        background-color: color-mix(in srgb, var(--card-background) 50%, transparent);
-        /*cursor: pointer;*/
-    }
+  }
 </style>
+
+<script>
+  function initBlogFilter() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentTag = urlParams.get('tag');
+
+    const blogItems = document.querySelectorAll('.blog-item');
+    const tagPills = document.querySelectorAll('.tag-filter-pill');
+    const filteredMessage = document.getElementById('filtered-message');
+    const noPostsMessage = document.getElementById('no-posts-message');
+    const currentTagDisplay = document.getElementById('current-tag-display');
+
+    function filterPosts(tag) {
+      let visibleCount = 0;
+
+      blogItems.forEach((item) => {
+        const itemTags = item.getAttribute('data-tags') || '';
+        const tagArray = itemTags.split(',').filter(t => t.length > 0);
+        
+        if (!tag || tagArray.includes(tag)) {
+          item.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+
+      tagPills.forEach((pill) => {
+        const pillTag = pill.getAttribute('data-tag');
+        if (pillTag === tag) {
+          pill.classList.add('active');
+        } else {
+          pill.classList.remove('active');
+        }
+      });
+
+      if (tag) {
+        if (visibleCount > 0) {
+          if (filteredMessage && currentTagDisplay) {
+            currentTagDisplay.textContent = `#${tag}`;
+            filteredMessage.style.display = 'block';
+          }
+          if (noPostsMessage) {
+            noPostsMessage.style.display = 'none';
+          }
+        } else {
+          if (filteredMessage) {
+            filteredMessage.style.display = 'none';
+          }
+          if (noPostsMessage) {
+            noPostsMessage.style.display = 'block';
+          }
+        }
+      } else {
+        if (filteredMessage) {
+          filteredMessage.style.display = 'none';
+        }
+        if (noPostsMessage) {
+          noPostsMessage.style.display = 'none';
+        }
+      }
+    }
+
+    tagPills.forEach((pill) => {
+      pill.addEventListener('click', (e) => {
+        e.preventDefault();
+        const tag = pill.getAttribute('data-tag');
+        
+        const newUrl = tag ? `/blog/?tag=${tag}` : '/blog/';
+        window.history.pushState({}, '', newUrl);
+        
+        filterPosts(tag);
+      });
+    });
+
+    const clearFilterLinks = document.querySelectorAll('#clear-filter, #clear-filter-empty');
+    clearFilterLinks.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        window.history.pushState({}, '', '/blog/');
+        
+        filterPosts(null);
+      });
+    });
+
+    window.addEventListener('popstate', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const tag = urlParams.get('tag');
+      filterPosts(tag);
+    });
+
+    if (currentTag) {
+      filterPosts(currentTag);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initBlogFilter);
+  } else {
+    initBlogFilter();
+  }
+</script>

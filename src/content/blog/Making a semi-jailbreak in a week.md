@@ -2,6 +2,7 @@
 date: 2024-11-29
 title: Making a semi-jailbreak in a week
 draft: false
+tags: ["ios", "jailbreak"]
 ---
 
 <style>
@@ -37,7 +38,7 @@ One fine week in January 2024, I released a semi-jailbreak named [Serotonin](htt
 
 Disclaimer: I did not do this alone. I have gotten countless amounts of help from very patient people, and I would not be able to make this without them.
 
-# Background: What's a semi-jailbreak?
+<!-- # Background: What's a semi-jailbreak? -->
 
 ## What does a jailbreak need?
 
@@ -434,7 +435,7 @@ int hooked_posix_spawnp(pid_t *restrict pid, const char *restrict path, const po
 
 Okay, we got around launch constraints and our own SpringBoard can finally spawn. Woohoo! But there's still a problem... it still crashes with a new error!
 
-### os_variant_has_internal_content as a workaround
+### internal check workaround
 
 If you try running SpringBoard now, you get stuck on a black screen for 2 minutes before `watchdogd` decides to panic and force reboot. But... why???
 To check, we can run the shim we've created in the terminal either via Filza's built in terminal or another terminal.
@@ -456,7 +457,7 @@ bool os_variant_has_internal_content(const char* subsystem);
 }
 ```
 
-### jit springboard to allow invalid pages, dlopen bootstrap.dylib
+### jit / tweaks
 
 Hooking functions means that unsigned pages /have/ to run. Usually, the only way to allow this is to JIT your process.
 

@@ -1,8 +1,16 @@
 ---
 import Blog from '../../../layouts/Blog.astro';
 import { getCollection } from 'astro:content';
+import { extractHeadings } from '../../../utils/extractHeadings';
+import fs from 'node:fs';
+import path from 'node:path';
+
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+
+const markdownPath = path.join(process.cwd(), 'src/content/blog', entry.id);
+const rawMarkdown = fs.readFileSync(markdownPath, 'utf-8');
+const headings = extractHeadings(rawMarkdown);
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
@@ -11,9 +19,8 @@ export async function getStaticPaths() {
     props: { entry },
   }));
 }
-
 ---
 
-<Blog filename={entry.id} {...entry.data}>
+<Blog filename={entry.id} {...entry.data} headings={headings}>
   <Content />
 </Blog>

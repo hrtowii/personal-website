@@ -2,6 +2,7 @@
 date: 2023-07-02
 title: My experience in GeekOut 2023
 draft: false
+tags: ["hackathon"]
 ---
 
 # Introduction

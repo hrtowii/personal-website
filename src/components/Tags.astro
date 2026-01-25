@@ -1,0 +1,27 @@
+---
+interface Props {
+  tags: string[];
+  linkable?: boolean;
+}
+
+const { tags, linkable = false } = Astro.props;
+
+function formatTag(tag: string): string {
+  return tag.toLowerCase().replace(/\s+/g, '-');
+}
+---
+
+<div class="tags-container">
+  {tags.map((tag) => {
+    const slug = formatTag(tag);
+    return linkable ? (
+      <a href={`/blog/?tag=${slug}`} class="tag-pill">
+        #{slug}
+      </a>
+    ) : (
+      <span class="tag-pill">
+        #{slug}
+      </span>
+    );
+  })}
+</div>

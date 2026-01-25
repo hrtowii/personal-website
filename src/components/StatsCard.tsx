@@ -15,8 +15,9 @@ const StatsCard = () => {
   useEffect(() => {
     const fetchSiteData = async () => {
       try {
-        const request = await fetch("https://nekoweb.org/api/site/info/hrtowii");
+        const request = await fetch("https://nekoweb.org/api/site/info/hrtowii.nekoweb.org");
         const json = await request.json();
+        // console.log(json);
         const data = {
           updated: new Date(json.updated_at).toLocaleDateString(),
           created: new Date(json.created_at).toLocaleDateString(),
