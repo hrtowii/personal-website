@@ -11,7 +11,7 @@ jobs:
       # your build step here
 
       - name: deploy2nekoweb
-        uses: indiefellas/deploy2nekoweb@vmain
+        uses: indiefellas/deploy2nekoweb@main
         with:
           nekoweb-api-key: ${{ secrets.NEKOWEB_API_KEY }}
           nekoweb-domain: 'hrtowii.nekoweb.org'
