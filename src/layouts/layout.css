@@ -5,13 +5,29 @@ html::before {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url("/oneshotcatwalks.png");
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  filter: brightness(0.55) blur(4px);
+  /* background-image: url("/oneshotcatwalks.png"); */
+  /* background-size: cover; */
+  /* background-attachment: fixed; */
+  /* background-position: center; */
+  /* background-repeat: no-repeat; */
+  /* filter: brightness(0.55) blur(4px); */
+
+  background-color:  hsl(249, 22%, 12%);
+  background-image: radial-gradient(circle, hsl(249, 12%, 47%) 1px, transparent 1px);
+  background-size: 24px 24px;
+  filter: brightness(0.67);
+  animation: grid-drift 7.5s linear infinite;
   z-index: -1;
+
+}
+
+@keyframes grid-drift {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 24px 24px;
+  }
 }
 
 /* :root {
@@ -102,7 +118,7 @@ html::before {
 */
 
 html {
-  font-family: "Galmuri7", "Sora", system-ui, sans-serif;
+  font-family: "Maple Mono", "Galmuri7", "Sora", system-ui, sans-serif;
 }
 
 body {
@@ -129,6 +145,12 @@ ul {
   color: var(--foreground);
 }
 
+article p {
+  line-height: 1.25rem;
+}
+article > * {
+  margin-bottom: 1.5rem;
+}
 code {
   /* font-family:
         Menlo,
@@ -147,6 +169,7 @@ code {
 
 pre > code {
   background-color: rgba(0, 0, 0, 0) !important;
+  line-height: 1.55rem;
 }
 
 pre {
@@ -254,7 +277,7 @@ body {
     left: 0;
     bottom: 0;
     right: 0;
-    background: rgba(18, 16, 16, 0.1);
+    background: rgba(18, 16, 16, 0.05);
     opacity: 0;
     z-index: 2;
     pointer-events: none;
@@ -280,7 +303,7 @@ body {
         rgba(0, 0, 255, 0.06)
       );
     z-index: 2;
-    background-size: 100% 2px, 3px 100%;
+    background-size: 100% 1px, 2px 100%;
     pointer-events: none;
   }
 
@@ -290,8 +313,8 @@ body {
 }
 
 .container {
-  width: 80vw;
-  margin-inline: 10vw;
+  width: 70vw;
+  margin-inline: 15vw;
   margin-block: 10vh;
   /* background: rgba(from var(--card-background) r g b / 0.4); */
   /* https://caniuse.com/mdn-css_types_color_rgb_relative_syntax */
