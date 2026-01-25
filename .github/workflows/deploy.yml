@@ -17,5 +17,4 @@ jobs:
           nekoweb-domain: 'hrtowii.nekoweb.org'
           nekoweb-username: 'hrtowii'
           # nekoweb-cookie: ${{ secrets.NEKOWEB_COOKIE }}
-          nekoweb-folder: "dist"
           directory: "public"
