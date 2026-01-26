@@ -57,7 +57,7 @@ const StatsCard = () => {
               <span className="stat_label">followers:</span>
               <span className="stat_value">{siteData.followers}</span>
             </div>
-            <FancyHyperlink href="" content="follow me pls :3" />
+            {/* <FancyHyperlink href="" content="follow me pls :3" /> */}
             {/* <div className="stat_item"> */}
             {/*   <span className="stat_label">last updated:</span> */}
             {/*   <span className="stat_value">{siteData.updated}</span> */}
