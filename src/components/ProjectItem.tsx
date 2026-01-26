@@ -41,12 +41,10 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
           }
         }
 
-        // Fetch fresh data from GitHub API
         const res = await fetch(`https://api.github.com/repos/${repo}`);
         const data = await res.json();
         setStars(data.stargazers_count);
 
-        // Cache the new data with hit count reset to 1
         localStorage.setItem(
           cacheKey,
           JSON.stringify({

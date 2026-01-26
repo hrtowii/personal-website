@@ -10,9 +10,9 @@ export interface Heading {
 function generateSlug(text: string): string {
   return text
     .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, '') // Remove special chars
+    .replace(/[^a-z0-9\s-]/g, "") // Remove special chars
     .trim()
-    .replace(/\s+/g, '-'); // Spaces to hyphens
+    .replace(/\s+/g, "-"); // Spaces to hyphens
 }
 
 /**
@@ -20,12 +20,12 @@ function generateSlug(text: string): string {
  */
 function stripMarkdown(text: string): string {
   return text
-    .replace(/\*\*(.+?)\*\*/g, '$1') // Bold **text**
-    .replace(/\*(.+?)\*/g, '$1') // Italic *text*
-    .replace(/__(.+?)__/g, '$1') // Bold __text__
-    .replace(/_(.+?)_/g, '$1') // Italic _text_
-    .replace(/`(.+?)`/g, '$1') // Inline code `text`
-    .replace(/\[(.+?)\]\(.+?\)/g, '$1') // Links [text](url)
+    .replace(/\*\*(.+?)\*\*/g, "$1") // Bold **text**
+    .replace(/\*(.+?)\*/g, "$1") // Italic *text*
+    .replace(/__(.+?)__/g, "$1") // Bold __text__
+    .replace(/_(.+?)_/g, "$1") // Italic _text_
+    .replace(/`(.+?)`/g, "$1") // Inline code `text`
+    .replace(/\[(.+?)\]\(.+?\)/g, "$1") // Links [text](url)
     .trim();
 }
 
@@ -33,7 +33,7 @@ function stripMarkdown(text: string): string {
  * Extracts H2 and H3 headings from raw markdown content
  */
 export function extractHeadings(markdown: string): Heading[] {
-  const lines = markdown.split('\n');
+  const lines = markdown.split("\n");
   const headings: Heading[] = [];
 
   for (const line of lines) {

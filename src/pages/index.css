@@ -32,12 +32,18 @@ li {
   flex-direction: column;
   gap: 1.25rem;
   box-sizing: border-box;
+  /* https://stackoverflow.com/questions/43311943/prevent-content-from-expanding-grid-items */
+  min-width: 0;
+  overflow: hidden;
 }
 
 .content-area > div {
   background-color: color-mix(in srgb, var(--card-background) 30%, transparent);
   border: 0.6px var(--card-border) solid;
   padding: 1rem;
+  /* https://stackoverflow.com/questions/43311943/prevent-content-from-expanding-grid-items */
+  min-width: 0;
+  overflow: hidden;
 }
 
 .content-area > div > div {
@@ -99,7 +105,11 @@ li {
 
 /* Draggable Gallery Styles */
 .draggable-gallery {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.05) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.02) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
   backdrop-filter: blur(2px);
   margin: 2rem 0;
 }
@@ -119,7 +129,11 @@ li {
 @media (prefers-color-scheme: light) {
   .draggable-gallery {
     border-color: rgba(0, 0, 0, 0.2);
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.02) 0%, rgba(0, 0, 0, 0.05) 100%);
+    background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.02) 0%,
+      rgba(0, 0, 0, 0.05) 100%
+    );
   }
 }
 
@@ -148,7 +162,7 @@ li {
     color: var(--accent-dark);
     border-color: var(--accent-dark);
   }
-  
+
   .rices-link a:hover {
     background-color: var(--accent-dark);
     color: var(--background);

@@ -5,10 +5,12 @@
   padding: 1.2rem;
   transition: all 0.3s ease;
   height: auto;
-  display: flex;
-  flex-direction: column;
+  display: block;
   min-width: 0;
   overflow: hidden;
+  break-inside: avoid;
+  page-break-inside: avoid;
+  margin-bottom: 1.5rem;
 }
 
 .item:hover {
@@ -59,9 +61,10 @@
 }
 
 .carousel-image {
-  max-height: 250px;
+  max-height: 200px;
   border-radius: 8px;
-  /* object-fit: cover; */
+  width: 100%;
+  object-fit: cover;
 }
 
 .item-title {
@@ -87,9 +90,14 @@
   font-weight: 500;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 767px) {
   .item {
     padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .item-wrapper {
+    gap: 0.75rem;
   }
 
   .item-wrapper h4 {
@@ -102,5 +110,9 @@
 
   .stars {
     font-size: 0.75rem;
+  }
+
+  .carousel-image {
+    max-height: 180px;
   }
 }

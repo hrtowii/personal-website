@@ -11,7 +11,7 @@ import { getCollection } from "astro:content";
 import WebringCard from "./WebringCard";
 import StatsCard from "./StatsCard";
 let allBlogPosts = await getCollection("blog");
-allBlogPosts = allBlogPosts.filter(post => !post.data.draft);
+allBlogPosts = allBlogPosts.filter((post) => !post.data.draft);
 const sortedBlogPosts = allBlogPosts.sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
@@ -28,7 +28,8 @@ const Sidebar: React.FC = () => {
 
   useEffect(() => {
     setAvatarLink(
-      `https://cdn.discordapp.com/avatars/${DISCORD_ID}/${data?.discord_user.avatar ?? "60dd1a376bf9e675e002ee5acbdab313"
+      `https://cdn.discordapp.com/avatars/${DISCORD_ID}/${
+        data?.discord_user.avatar ?? "60dd1a376bf9e675e002ee5acbdab313"
       }.png?size=512`
     );
   }, [data]);
@@ -67,15 +68,20 @@ const Sidebar: React.FC = () => {
       <div className="webrings-section">
         <WebringCard />
       </div>
-      {/* <div className="webrings-section"> */}
-      {/*   <StatsCard /> */}
-      {/* </div> */}
+      <div className="webrings-section">
+        <StatsCard />
+      </div>
       <div className="settings-section">
         <SettingsCard />
       </div>
       <div className="settings-section">
-      <iframe src="https://webtiles.kicya.net/e/hrtowii.nekoweb.org" width="220" height="270" frameBorder="0"></iframe>
-    </div>
+        <iframe
+          src="https://webtiles.kicya.net/e/hrtowii.nekoweb.org"
+          width="220"
+          height="270"
+          frameBorder="0"
+        ></iframe>
+      </div>
     </div>
   );
 };

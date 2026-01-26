@@ -21,11 +21,11 @@ const SettingsCard: React.FC = () => {
   useEffect(() => {
     const savedRainEnabled = getCookie("rainEnabled");
     const savedCrtEnabled = getCookie("crtEnabled");
-    
+
     if (savedRainEnabled !== null) {
       setRainEnabled(savedRainEnabled === "true");
     }
-    
+
     if (savedCrtEnabled !== null) {
       setCrtEnabled(savedCrtEnabled === "true");
     } else {
@@ -37,7 +37,7 @@ const SettingsCard: React.FC = () => {
     const syncWithGlobalState = () => {
       const weatherManager = (window as any).weatherManager;
       const crtManager = (window as any).crtManager;
-      
+
       if (weatherManager) {
         const rainCookie = getCookie("rainEnabled");
         if (rainCookie !== null) {
@@ -45,7 +45,7 @@ const SettingsCard: React.FC = () => {
           setRainEnabled(rainState);
         }
       }
-      
+
       if (crtManager) {
         const crtCookie = getCookie("crtEnabled");
         if (crtCookie !== null) {
@@ -63,11 +63,11 @@ const SettingsCard: React.FC = () => {
     const syncInterval = setInterval(() => {
       const currentCrtEnabled = getCookie("crtEnabled") === "true";
       const currentRainEnabled = getCookie("rainEnabled") === "true";
-      
+
       if (currentCrtEnabled !== crtEnabled) {
         setCrtEnabled(currentCrtEnabled);
       }
-      
+
       if (currentRainEnabled !== rainEnabled) {
         setRainEnabled(currentRainEnabled);
       }
@@ -83,7 +83,7 @@ const SettingsCard: React.FC = () => {
   const handleRainToggle = (enabled: boolean) => {
     setRainEnabled(enabled);
     setCookie("rainEnabled", enabled.toString());
-    
+
     // Use global weather manager for immediate effect with retry mechanism
     const tryToggleRain = (attempts = 0) => {
       const weatherManager = (window as any).weatherManager;
@@ -94,14 +94,16 @@ const SettingsCard: React.FC = () => {
         setTimeout(() => tryToggleRain(attempts + 1), 100);
       } else {
         // Fallback: Trigger rain system update through DOM
-        const rainToggle = document.getElementById("rainToggle") as HTMLInputElement;
+        const rainToggle = document.getElementById(
+          "rainToggle"
+        ) as HTMLInputElement;
         if (rainToggle) {
           rainToggle.checked = enabled;
           rainToggle.dispatchEvent(new Event("change"));
         }
       }
     };
-    
+
     tryToggleRain();
   };
 
@@ -109,7 +111,7 @@ const SettingsCard: React.FC = () => {
   const handleCrtToggle = (enabled: boolean) => {
     setCrtEnabled(enabled);
     setCookie("crtEnabled", enabled.toString());
-    
+
     // Use global CRT manager with retry mechanism
     const tryToggleCrt = (attempts = 0) => {
       const crtManager = (window as any).crtManager;
@@ -128,7 +130,7 @@ const SettingsCard: React.FC = () => {
         }
       }
     };
-    
+
     tryToggleCrt();
   };
 

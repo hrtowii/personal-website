@@ -18,7 +18,6 @@ html::before {
   /* filter: brightness(0.67); */
   /* animation: grid-drift 7.5s linear infinite; */
   z-index: -1;
-
 }
 
 @keyframes grid-drift {
@@ -449,5 +448,3 @@ a.tag-pill:hover {
 li {
   line-height: 1.4rem !important;
 }
-
-

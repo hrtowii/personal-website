@@ -12,12 +12,12 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
-      
+          node-version: "20"
+          cache: "npm"
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Build Astro site
         run: npm run build
 
@@ -25,7 +25,7 @@ jobs:
         uses: indiefellas/deploy2nekoweb@main
         with:
           nekoweb-api-key: ${{ secrets.NEKOWEB_API_KEY }}
-          nekoweb-domain: 'hrtowii.nekoweb.org'
-          nekoweb-username: 'hrtowii'
+          nekoweb-domain: "hrtowii.nekoweb.org"
+          nekoweb-username: "hrtowii"
           # nekoweb-cookie: ${{ secrets.NEKOWEB_COOKIE }}
           directory: "dist"

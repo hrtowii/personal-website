@@ -13,9 +13,9 @@ import react from "@astrojs/react";
 //     folder: "dist",
 //   }),
 // });
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 
 export default defineConfig({
   integrations: [react()],
-  output: 'static'
+  output: "static",
 });
