@@ -50,19 +50,9 @@
   overflow: hidden;
   max-width: 100%;
 }
-
 .scroll-content {
   display: flex;
-  animation: scroll 7s linear infinite;
-  width: max-content;
-  align-items: center;
-  gap: 10px;
-  min-width: 100%;
-}
-
-.scroll-content-2 {
-  display: flex;
-  animation: scroll 3s linear infinite;
+  animation: scroll linear infinite;  /* duration comes from inline style */
   width: max-content;
   align-items: center;
   gap: 10px;
