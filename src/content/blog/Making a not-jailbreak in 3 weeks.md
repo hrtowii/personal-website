@@ -210,7 +210,7 @@ i've created a jit daemon, and so the easiest solution is:
 
 there we go! no weird behavior in generalhook. everything's enclosed to the launchdhook :D 
 
-code is here: https://github.com/hrtowii/lycorine/blob/main/Lycorine/Bundled/Hooks/Shared/Spawn/jit_spawn.c
+code is here: https://github.com/hrtowii/lycorine-public/blob/main/Lycorine/Bundled/Hooks/Shared/Spawn/jit_spawn.c
 
 you might notice that xpcproxy here isn't jitted at spawn. that's because jitterd is spawned by xpcproxy, so it'll deadlock and blow up if i don't skip it. and besides, xpcproxyhook doesn't need invalid pages :P all that's needed is to route spawns, which something rebinding with litehook can do easily. the only thing that launchd does for that is redirect its spawn, and give it its send port. this allows xpcproxy to jitterd stuff that ITSELF spawns.
 

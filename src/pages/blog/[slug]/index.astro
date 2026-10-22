@@ -6,7 +6,7 @@ const { Content } = await entry.render();
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
-  return blogEntries.map((entry: { slug: any; }) => ({
+  return blogEntries.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
   }));

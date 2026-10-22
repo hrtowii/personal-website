@@ -1,4 +1,5 @@
 import { html } from "satori-html"
+import type { ReactNode } from "react"
 import { readFile } from "fs/promises"
 import satori from "satori"
 import { Resvg } from "@resvg/resvg-js"
@@ -27,7 +28,7 @@ export const buildHTML = (
 
 const dmSans = await readFile("./public/Sora.ttf")
 export const buildOG = async (input: ReturnType<typeof html>) => {
-	const svg = await satori(input, {
+	const svg = await satori(input as ReactNode, {
 		width: 1200,
 		height: 630,
 		fonts: [

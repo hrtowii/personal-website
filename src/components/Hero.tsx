@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useLanyard, type Data} from 'use-lanyard';
+import {useLanyard} from 'use-lanyard';
 import './Hero.css'
 import MusicCard from './MusicCard';
 // import GitHubCalendar from 'react-github-calendar';

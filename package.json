@@ -2,6 +2,9 @@
   "name": "personal-website",
   "type": "module",
   "version": "0.0.1",
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -24,6 +27,9 @@
     "use-lanyard": "^1.7.0"
   },
   "overrides": {
-  "zod-to-json-schema": "3.23.5"
-}
+    "zod-to-json-schema": "3.23.5"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.1"
+  }
 }

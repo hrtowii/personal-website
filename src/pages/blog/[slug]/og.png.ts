@@ -12,7 +12,7 @@ export async function GET({ props }: Props) {
 	const buffer = await buildOG(
 		buildHTML(filenameToTitle(post.id), post.data.date, post.slug),
 	)
-	return new Response(buffer, {
+	return new Response(new Uint8Array(buffer), {
 		headers: { "Content-Type": "image/png" },
 	})
 }
@@ -20,7 +20,7 @@ export async function GET({ props }: Props) {
 // Invoke the /blog/[slug]/og.png.ts endpoint for each blog post
 export async function getStaticPaths() {
 	const posts = await getCollection("blog")
-	return posts.map((post: { slug: any }) => ({
+	return posts.map((post) => ({
 		params: { slug: post.slug },
 		props: { post: post },
 	}))
