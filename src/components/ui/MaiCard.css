@@ -1,0 +1,154 @@
+.profile {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    max-width: 900px;
+    aspect-ratio: 1080 / 466;
+    padding: 12px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+    font-family:
+      "Hiragino Kaku Gothic Pro",
+      Meiryo,
+      "MS PGothic",
+      system-ui,
+      sans-serif;
+  }
+
+  .info {
+    display: flex;
+    gap: 8px;
+    width: 70%;
+  }
+
+  .avatar {
+    flex-shrink: 0;
+    display: flex;
+    width: 26%;
+    aspect-ratio: 1 / 1;
+    padding: 4px;
+    box-sizing: border-box;
+    background: linear-gradient(#f9d9e8, #f3aecb);
+    border: 2px solid #fff;
+    border-radius: 6px;
+  }
+
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 3px;
+  }
+
+  .plate {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 6px 8px;
+    box-sizing: border-box;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 6px;
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .rating-plate {
+    position: relative;
+    flex-shrink: 0;
+  }
+ 
+  .rating-plate img {
+    display: block;
+    height: 30px;
+    width: auto;
+  }
+ 
+  .rating-value {
+    position: absolute;
+    top: 5px;
+    right: 7px;
+    width: 73px;
+    height: 21px;
+    line-height: 21px;
+    color: #fff;
+    text-align: right;
+    font-size: 16px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+
+  .class-rank {
+    height: 26px;
+    width: auto;
+    margin-left: auto;
+  }
+
+  .name-row {
+    justify-content: space-between;
+    background: #fff;
+    border-radius: 14px;
+    padding: 4px 6px 4px 12px;
+  }
+
+  .name {
+    font-weight: 700;
+    font-size: 14px;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .course-rank {
+    height: 22px;
+    width: auto;
+  }
+
+  .title-pill {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .title-pill span {
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 20px;
+  }
+
+  .circle-row {
+    display: flex;
+    align-items: center;
+    align-self: flex-start;
+    margin-left: calc(26% + 8px);
+    height: 22px;
+    padding: 0 16px 0 24px;
+    box-sizing: border-box;
+    background-size: contain;
+    background-position: left center;
+    background-repeat: no-repeat;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    /* text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4); */
+  }
+
+  .circle-row > span {
+	  justify-content: center;
+	  color: var(--background);
+  }

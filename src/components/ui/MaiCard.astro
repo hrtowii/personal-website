@@ -1,0 +1,108 @@
+---
+import './MaiCard.css';
+export interface MaiCardData {
+  displayName: string;
+  rating: number;
+  title: string;
+  titleType: "normal" | "bronze" | "silver" | "gold" | "rainbow";
+  stars: number;
+  versionPlayCount: number;
+  totalPlayCount: number;
+  courseRankUrl: string;
+  classRankUrl: string;
+  frameUrl: string;
+  nameplateUrl: string;
+  ratingPlateUrl: string;
+  iconUrl: string;
+  circle: {
+    classUrl: string;
+    name: string;
+  };
+}
+
+interface Props {
+  data?: MaiCardData;
+}
+
+const defaultData = {
+  "displayName": "ｈｔｒｏｗｉｉ",
+  "rating": 14011,
+  "title": "hadopelagic zone",
+  "titleType": "silver" as const,
+  "stars": 220,
+  "versionPlayCount": 62,
+  "totalPlayCount": 558,
+  "courseRankUrl": "https://maimaidx-eng.com/maimai-mobile/img/course/course_rank_07zaVOj56m.png",
+  "classRankUrl": "https://maimaidx-eng.com/maimai-mobile/img/class/class_rank_s_03vTmUJ1rz.png",
+  "frameUrl": "https://maimaidx-eng.com/maimai-mobile/img/Frame/de0e17a11c9c8f0b.png",
+  "nameplateUrl": "https://maimaidx-eng.com/maimai-mobile/img/NamePlate/39f760d76a4ce8a7.png",
+  "ratingPlateUrl": "https://maimaidx-eng.com/maimai-mobile/img/rating_base_gold.png?ver=1.65",
+  "iconUrl": "https://maimaidx-eng.com/maimai-mobile/img/Icon/8ed59c0111ca92d6.png",
+  "icon": {
+    "path": "/Users/ibarahime/dev/tomomai/maifetch/icon-1786891543756.png",
+    "contentType": "image/png"
+  },
+  "frame": {
+    "path": "/Users/ibarahime/dev/tomomai/maifetch/frame-1786891544126.png",
+    "contentType": "image/png"
+  },
+  "nameplate": {
+    "path": "/Users/ibarahime/dev/tomomai/maifetch/nameplate-1786891544335.png",
+    "contentType": "image/png"
+  },
+  "circle": {
+    "classUrl": "https://maimaidx-eng.com/maimai-mobile/img/circle/profile/circle_profile_color_yellow.png",
+    "name": "Ｔｒａｎｓｃｅｎｄ☆"
+  }
+}
+
+const data = Astro.props.data ?? defaultData;
+
+const titleTextColor: Record<MaiCardData["titleType"], string> = {
+  normal: "#000",
+  bronze: "#fff",
+  silver: "#000",
+  gold: "#fff",
+  rainbow: "#fff",
+};
+
+const titleBg: Record<MaiCardData["titleType"], string> = {
+  normal: "https://maimaidx-eng.com/maimai-mobile/img/trophy_normal.png",
+  bronze: "https://maimaidx-eng.com/maimai-mobile/img/trophy_bronze.png",
+  silver: "https://maimaidx-eng.com/maimai-mobile/img/trophy_silver.png",
+  gold: "https://maimaidx-eng.com/maimai-mobile/img/trophy_gold.png",
+  rainbow: "https://maimaidx-eng.com/maimai-mobile/img/trophy_rainbow.png",
+};
+---
+
+<div class="profile" style={`background-image:url(${data.frameUrl})`}>
+  <div class="info">
+    <div class="avatar">
+      <img src={data.iconUrl} alt="" />
+    </div>
+
+    <div class="plate" style={`background-image:url(${data.nameplateUrl})`}>
+      <div class="row rating-row">
+                <div class="rating-plate">
+          <img src={data.ratingPlateUrl} alt="" />
+          <span class="rating-value">{data.rating}</span>
+		</div>
+		<img class="class-rank" src={data.classRankUrl} alt="Class rank" />
+      </div>
+
+      <div class="row name-row">
+        <span class="name">{data.displayName}</span>
+        <img class="course-rank" src={data.courseRankUrl} alt="Course rank" />
+      </div>
+
+      <div class="title-pill" style={`background-image:url(${titleBg[data.titleType]})`}>
+        <span style={`color:${titleTextColor[data.titleType]}`}>{data.title}</span>
+      </div>
+        <div class="circle-row" style={`background-image:url(${data.circle.classUrl})`}>
+    <span>{data.circle.name}</span>
+  </div>
+
+    </div>
+  </div>
+
+</div>

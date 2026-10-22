@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
+import "./DraggableGallery.css";
 
-const DraggableGallery = ({ albums }) => {
+const DraggableImages = ({ albums }) => {
   const [images, setImages] = useState([]);
   const [dragging, setDragging] = useState(null);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
@@ -294,5 +295,18 @@ const DraggableGallery = ({ albums }) => {
     </div>
   );
 };
+
+function DraggableGallery({ albums }) {
+  return (
+			<div className="rices">
+			    <h2>rice field</h2>
+			    <p>drag them around!</p>
+			    <DraggableImages albums={albums} />
+			    <div className="rices-link">
+			    	<a href="/rices">view all rices →</a>
+			    </div>
+			</div>
+  );
+}
 
 export default DraggableGallery;

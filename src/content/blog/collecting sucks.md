@@ -1,0 +1,21 @@
+---
+date: 2026-08-20
+title: "collecting sucks"
+tags: ["rant"]
+draft: false
+---
+
+
+my instagram feed has caught me in a doomscroll loop recently. it's insidious and creeps up on you: first it's just normal esp projects, then retro tech, then people playing the guitar, and before you know it 2 hours of your life just passed like that 
+
+but aside from that, one thing that I noticed was kinda common now is that it's trendy to go back to older tech, be it physical music, games, books, whatever. and my question is just like: why? what makes it suddenly so much more appealing over streaming or online solutions? realistically I get the point of collecting things that you like, to support the artist, or have it there rather than going to your phone. but to see that people move exclusively over to it instead of just using it as a backup feels like shooting yourself in the foot, and for what? 
+
+one point that I commonly hear is that physical media has "soul" and that you get to own it. it's true that Spotify etc. are essentially cucking you from your songs, because live service as a whole is unsustainable: this already has happened with the 3ds store, game servers that go down (and have to be reversed manually), so having a local copy usually is better! i can't deny this point: i myself have around 2000 flacs downloaded to my local drive (and counting). soulseek makes this very easy. but is it practical in my day to day? hell no?? even with tailscale and streaming, discovery of songs or downloading what I want becomes a chore. i view it as a backup rather than something i reach for instinctively. not to mention that people who buy CDs because "it sounds better" are kind of confusing. firstly, most of them don't even have good enough gear to distinguish lossless CD audio and Opus, or even MP3. secondly, there is literally no difference between a CD ripped flac or an actual CD with audio on it. 
+
+The other point that I concede is that with physical media, there's a certain ritual or time cost associated with it: i have to buy a cd, put it into my cd player, click play, and there's no way to jump to another playlist if i get bored. it's all the same album. and I suppose that the adage about having less is more also applies to the choices you get.
+
+as for games, it's true that playing it on homebrew is usually the better option, but not when it's commoditised as much as the 3ds or other super overly popular handhelds, to the point where there's even a market that resells consoles at a insane 3x price (im looking at u carousell and haji lane). but ok, fine maybe it's for the vibes there more than getting bang for your buck. it's just annoying that so much of the stuff I wanna get nowadays is just saturated from the online hype wave making things wayyy too expensive, be it old laptops, phones, cd players, camcorders, digicams. Fucking everything. and it's depressing for me when they used to be junk thrown away for goddamn free. 
+
+aesthetics are certainly important, and i do wish that things became more whimsical and colorful again. i get that people like the different styles of everything back when it was the wild west of the 2000s. sony with their cybershot sliding, lipstick-persona players. Bright pink, red, translucent calculators, PSPs, gameboys. people used to mod their ipod shells too! all gone with the advent of the bloody touchscreen and iPhone. even Apple had a thing going on with their colorful G3s and aluminum beauties before the (imo ugly unibody v1). sure, jailbreaking held on as the last bastion of customisability, and Android held on for a while too. but everything looks pretty bleak now. and it doesn't excuse the shitty chinese retailers that just remake things poorly for a facsimile of something that had its own merit and Quality, not just glitzy looks
+
+and i can't even circumvent this anymore by going to dig in ewaste bins. there used to be so much good stuff at the start of the year! but it's just dry spell week after week now. not to mention recent instagram / reddit posts from loser singaporeans and their digital panopticon of social media. they super love taking photos of things that they see aren't sticking to the law. keep sucking that dick, it won't thank you for it

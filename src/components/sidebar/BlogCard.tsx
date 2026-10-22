@@ -1,8 +1,8 @@
 import React from "react";
 import "./BlogCard.css";
-import FancyHyperlink from "./FancyHyperlink";
+import FancyHyperlink from "../ui/FancyHyperlink";
 
-interface BlogPost {
+export interface BlogPost {
   title: string;
   date: string;
   slug: string;

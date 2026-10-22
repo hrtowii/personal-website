@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./ProjectItem.css";
-import FancyHyperlink from "./FancyHyperlink";
+import FancyHyperlink from "../ui/FancyHyperlink";
 interface ProjectItemProps {
   title: string;
   repo?: string;

@@ -1,0 +1,14 @@
+.github-activity {
+  margin: 2rem 0;
+}
+
+.github-activity h2 {
+  margin-bottom: 1rem;
+}
+
+.gh-loading,
+.gh-error {
+  color: var(--text-muted, #888);
+  font-style: italic;
+  margin: 2rem 0;
+}

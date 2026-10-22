@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./StatsCard.css";
-import FancyHyperlink from "./FancyHyperlink.tsx";
+import FancyHyperlink from "../ui/FancyHyperlink.tsx";
 interface SiteData {
   updated: string;
   created: string;

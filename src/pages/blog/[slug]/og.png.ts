@@ -1,6 +1,6 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import { buildHTML, buildOG } from "../../../og.ts";
-import { filenameToTitle } from "../../../filenameToTitle.ts";
+import { filenameToTitle } from "../../../utils/filenameToTitle.ts";
 
 interface Props {
   params: { slug: string };

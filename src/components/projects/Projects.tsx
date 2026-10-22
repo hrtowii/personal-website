@@ -1,0 +1,240 @@
+import CollapsibleSection from "./CollapsibleSection";
+import ProjectItem from "./ProjectItem";
+
+const hackathonProjects = [
+  // {
+  //   title: "Lion City Hacks 2022",
+  //   description: "Participated in Lion City Hacks 2022",
+  //   link: "#",
+  // },
+  {
+    title: "hack&roll 2023",
+    repo: "hrtowii/hnr2023",
+    description: "react native app for timing coffee brewing",
+    link: "https://github.com/hrtowii/hnr2023",
+  },
+  {
+    title: "GeekOut 2023",
+    description: "3rd place winner at GeekOut 2023, proposed e-learning platform 'every school good school'",
+    link: "/blog/my-experience-in-geekout-2023",
+  },
+  // {
+  //   title: "BrainHack TIL-AI 2023",
+  //   description: "8th place semis at BrainHack TIL-AI 2023 in team 'unsupervised learners', did asr, cv, and nlp (with regex)",
+  //   link: "#",
+  // },
+  {
+    title: "hack&roll 2024",
+    repo: "hrtowii/hnr2024",
+    description: "flutter / dart app to pull cna rss feed and run sentiment analysis w flask",
+    link: "https://github.com/hrtowii/hnr2024",
+  },
+  // {
+  //   title: "Hackomania 2024",
+  //   repo: "hrtowii/hackomania24",
+  //   description: "My submission for Hackomania 2024",
+  //   link: "https://github.com/hrtowii/hackomania24",
+  // },
+  {
+    title: "hack&roll 2025",
+    repo: "hrtowii/hacknroll25",
+    description: "personal duck from hell, uses py/sh/React/Tauri to detect emotions and troll the user.",
+    link: "https://github.com/hrtowii/hacknroll25",
+	images:[
+		'https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/220/385/datas/gallery.jpg',
+		'https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/220/386/datas/gallery.jpg',
+		'https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/220/383/datas/gallery.jpg',
+	]
+  },
+  {
+          title:"wayside",
+    repo:"jun-lsh/wayside",
+    description:"Hack and Roll 2026 top 9: custom badge firmware in C and RN app for streetpass functionality",
+
+          link:"https://github.com/jun-lsh/wayside/tree/master",
+          images:[
+            "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/004/171/718/datas/original.jpg",
+            "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/004/171/710/datas/original.jpg"
+          ]
+  },
+  {
+    title: "hackomania 2025",
+    repo: "hrtowii/hackomania2025",
+    description: "imagine bereal but for food and with leaderboards, yea... written in react native",
+    link: "https://github.com/hrtowii/hackomania2025",
+  },
+  {
+    title: "smu legal tech 2025 <3",
+    repo: "hrtowii/smu-legal-tech",
+    description: "glorified form transcriber pitched really well, won 2nd place!",
+    link: "https://github.com/hrtowii/smu-legal-tech",
+  },
+  {
+    title: "hacksmith 6",
+    repo: "hrtowii/hacksmith",
+    description: "code tester with isabelle: generates formal proof in isabelle and tests it w Python, Textual",
+    link: "https://github.com/hrtowii/hacksmith",
+  }
+  // {
+  //   title: "brainhack TIL-AI 2025",
+  //   description: "Participating in BrainHack TIL-AI 2025",
+  //   link: "#",
+  // },
+];
+
+const iosProjects = [
+  {
+    title: "KFDFontOverwrite",
+    repo: "hrtowii/WDBFontOverwrite",
+    description: "Fork of WDBFontOverwrite that uses kfd to overwrite fonts on iOS",
+    link: "https://github.com/hrtowii/WDBFontOverwrite",
+  },
+  // {
+  //   title: "WebKit Exploit PoC",
+  //   repo: "hrtowii/cve-2023-41993-test",
+  //   description: "Proof of concept for WebKit vulnerability CVE-2023-41993",
+  //   link: "https://github.com/hrtowii/cve-2023-41993-test",
+  // },
+  {
+    title: "Serotonin",
+    repo: "SerotoninApp/Serotonin",
+    description: "semi-jailbreak written for iOS 16.0 - 16.6.1, using roothide bootstrap",
+    link: "https://github.com/SerotoninApp/Serotonin",
+	images:[
+		'/serotonin2.jpg',
+		'/serotonin.jpg',
+	]
+  },
+  // {
+  //   title: "cve socket panic",
+  //   repo: "hrtowii/CVE-2024-23208-test",
+  //   description: "poc for socket panic vulnerability CVE-2024-23208 - https://x.com/htrowii/status/1754188305007333710",
+  //   link: "https://github.com/hrtowii/CVE-2024-23208-test",
+  // },
+  {
+    title: "Spotify EQ",
+    repo: "hrtowii/SpotifyEQ-iOS",
+    description: "Equalizer tweak for Spotify on iOS",
+    link: "https://github.com/hrtowii/SpotifyEQ-iOS",
+  },
+  {
+    title: "SparseThemer",
+    repo: "haxi0/sparsethemer",
+    description: "macOS app that uses SparseRestore exploit and ipatool to replace app icons on iOS",
+    link: "https://github.com/haxi0/",
+  },
+];
+
+const otherProjects = [
+  {
+    title: "llm-tui-rs",
+    repo: "hrtowii/llm-tui-rs",
+    description: "tui written in rust to chat w different llm providers",
+    link: "https://github.com/hrtowii/llm-tui-rs",
+  },
+  {
+    title: "balatro ai bot",
+    repo: "hrtowii/balatrobot",
+    description: "bot to play balatro, part of internship project - kind of unfinished",
+    link: "https://github.com/hrtowii/balatrobot",
+  },
+  {
+    title: "hrt tracker",
+    repo: "hrtowii/hrt-tracker",
+    description: "hrt tracking app built w/ svelte (incomplete)",
+    link: "https://github.com/hrtowii/hrt-tracker",
+  },
+  {
+    title: "img2ascii_c",
+    repo: "hrtowii/img2ascii_c",
+    description: "convert images to colored ascii art w/ C",
+    link: "https://github.com/hrtowii/img2ascii_c",
+    images:[
+					"https://github.com/hrtowii/img2ascii_c/blob/main/output.png?raw=true",
+				]
+	// images: [
+	// 	"https://github.com/hrtowii/img2ascii_c/raw/refs/heads/main/test2.bmp",
+	// 	"https://github.com/hrtowii/img2ascii_c/raw/refs/heads/main/test5.bmp",
+	// ]
+  },
+  // {
+  //   title: "c fetch",
+  //   repo: "hrtowii/fetchc",
+  //   description: "simple fetch for macos w/ C",
+  //   link: "https://github.com/hrtowii/fetchc",
+  // },
+  // {
+  //   title: "mac dotfiles",
+  //   repo: "hrtowii/dotfiles",
+  //   description: "as seen by yours truly on r/unixporn :3",
+  //   link: "https://github.com/hrtowii/dotfiles/tree/macos",
+  // },
+  // {
+  //   title: "my website v1",
+  //   repo: "hrtowii/hrtowii.github.io",
+  //   description: "initial website when i started learning coding",
+  //   link: "https://github.com/hrtowii/hrtowii.github.io",
+  // },
+  // {
+  //   title: "my website v2",
+  //   repo: "hrtowii/schoolwebsite",
+  //   description: "rewrite made for school assignment",
+  //   link: "https://github.com/hrtowii/schoolwebsite",
+  // },
+  {
+    title: "my website v3",
+    repo: "hrtowii/personal-website",
+    description: "old vers of this website built with astro",
+    link: "https://github.com/hrtowii/personal-website",
+  },
+  {
+    title: "my website v4",
+    repo: "hrtowii/personal-website",
+    description: "new version... old one had no feeling ykwim",
+    link: "https://github.com/hrtowii/personal-website/tree/rewrite",
+  },
+];
+
+export default function Projects() {
+  return (
+			<div className="projects">
+			    <h2>stuff ive done :ooo</h2>
+
+				<CollapsibleSection title="hackathons" defaultOpen={true}>
+					{hackathonProjects.map((project) => (
+						<ProjectItem key={project.title}
+							title={project.title}
+							repo={project.repo}
+							link={project.link}
+							description={project.description}
+							images={project.images}
+						/>
+					))}
+				</CollapsibleSection>
+
+				<CollapsibleSection title="ios stuff">
+					{iosProjects.map((project) => (
+						<ProjectItem key={project.title}
+							title={project.title}
+							repo={project.repo}
+							link={project.link}
+							description={project.description}
+							images={project.images}
+						/>
+					))}
+				</CollapsibleSection>
+
+				<CollapsibleSection title="other stuff">
+					{otherProjects.map((project) => (
+						<ProjectItem key={project.title}
+							title={project.title}
+							repo={project.repo}
+							link={project.link}
+							description={project.description}
+							images={project.images}
+						/>
+					))}
+				</CollapsibleSection>
+			</div>
+  );
+}
