@@ -10,13 +10,13 @@ html::before {
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;*/
-  filter: brightness(0.55) blur(4px);
+  /*filter: brightness(0.55) blur(4px);*/
 
    background-color:  hsl(249, 22%, 12%);
    background-image: radial-gradient(circle, hsl(249, 12%, 47%) 1px, transparent 1px);
    background-size: 24px 24px;
-   /*filter: brightness(0.67);*/
-  /* animation: grid-drift 7.5s linear infinite; */
+   filter: brightness(0.67);
+   animation: grid-drift 1.5s linear infinite;
   z-index: -1;
 }
 
@@ -117,7 +117,7 @@ html::before {
 */
 
 html {
-  font-family: "Maple Mono", "Galmuri7", "Sora", system-ui, sans-serif;
+  font-family: "Galmuri7", "Sora", system-ui, sans-serif;
 }
 
 body {
@@ -252,63 +252,9 @@ ol li::before {
   font-weight: bold;
 }
 
-#rainCanvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  pointer-events: none;
-}
-
 body {
   margin: 0px;
   background: rgba(0, 0, 0, 0);
-}
-
-.crt-filter {
-  &:after {
-    content: " ";
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: rgba(18, 16, 16, 0.05);
-    opacity: 0;
-    z-index: 2;
-    pointer-events: none;
-    animation: flicker 0.15s infinite;
-  }
-
-  &:before {
-    content: " ";
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: linear-gradient(
-        rgba(18, 16, 16, 0) 50%,
-        rgba(0, 0, 0, 0.25) 50%
-      ),
-      linear-gradient(
-        90deg,
-        rgba(255, 0, 0, 0.06),
-        rgba(0, 255, 0, 0.02),
-        rgba(0, 0, 255, 0.06)
-      );
-    z-index: 2;
-    background-size: 100% 1px, 2px 100%;
-    pointer-events: none;
-  }
-
-  & * {
-    animation: phosphor 1.6s infinite;
-  }
 }
 
 .container {

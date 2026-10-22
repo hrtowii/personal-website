@@ -2,7 +2,6 @@ import MusicCard from "./MusicCard";
 import LinksCard from "./LinksCard";
 import "./Sidebar.css";
 import BlogCard from "./BlogCard";
-import SettingsCard from "./SettingsCard";
 
 import WebringCard from "./WebringCard";
 import StatsCard from "./StatsCard";
@@ -34,10 +33,7 @@ const Sidebar: React.FC<SidebarProps> = ({ blogPosts }) => {
       <div className="webrings-section">
         <StatsCard />
       </div>
-      <div className="settings-section">
-        <SettingsCard />
-      </div>
-      <div className="settings-section">
+      <div className="webtiles-section">
         <WebtilesCard />
       </div>
     </div>
