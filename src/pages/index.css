@@ -1,106 +1,102 @@
-body {
-  overflow-x: hidden;
-}
-
-/* #Hero-wrapper {
-  display: flex;
-  border: 0.6px var(--card-border) solid;
-  height: 100vh;
-} */
 p,
 li {
   line-height: 1.4rem;
 }
 
-.intro {
-  display: flex;
-  align-items: center;
-}
-
-.main-content {
+.page-islands {
   display: grid;
-  grid-template-columns: 1fr 3fr;
-  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-areas:
+    "profile intro intro"
+    "hobbies hobbies music"
+    "games games music"
+    "blog links community"
+    "github github github"
+    "projects projects projects"
+    "rices rices rices";
+  gap: 1.5rem;
   padding: 1rem;
-  box-sizing: border-box;
-  overflow: hidden;
-  max-width: 100vw;
 }
 
-.content-area {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  box-sizing: border-box;
-  /* https://stackoverflow.com/questions/43311943/prevent-content-from-expanding-grid-items */
+.page-islands > *,
+.page-islands .card {
   min-width: 0;
-  overflow: hidden;
 }
 
-.content-area > div {
+.page-islands .profile-section { grid-area: profile; }
+.page-islands .about-me { grid-area: intro; }
+.page-islands .hobbies { grid-area: hobbies; }
+.page-islands .games { grid-area: games; }
+.page-islands .music_card { grid-area: music; }
+.page-islands .blog_card { grid-area: blog; }
+.page-islands .links_card { grid-area: links; }
+.page-islands .community { grid-area: community; }
+.page-islands .github-card { grid-area: github; }
+.page-islands .projects { grid-area: projects; }
+.page-islands .rices { grid-area: rices; }
+
+.page-islands .card {
   background-color: color-mix(in srgb, var(--card-background) 30%, transparent);
   border: 0.6px var(--card-border) solid;
   padding: 1rem;
-  /* https://stackoverflow.com/questions/43311943/prevent-content-from-expanding-grid-items */
-  min-width: 0;
+}
+
+.page-islands .about-me > * + * {
+  margin-top: 1rem;
+}
+
+.page-islands .card > h2 {
+  margin-bottom: 1rem;
+}
+
+.page-islands .github-activity {
+  margin: 0;
+}
+
+.page-islands .community {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  min-height: 0;
+}
+
+.community .webring_card,
+.community .stats_card {
+  height: auto;
   overflow: hidden;
 }
 
-.content-area > div > div {
-  margin-bottom: 1.5rem;
+/*.community iframe {
+  display: block;
+  max-width: 100%;
+  margin-inline: auto;
 }
-
+*/
 @media (prefers-color-scheme: light) {
-  .content-area > div {
-    background-color: color-mix(
-      in srgb,
-      var(--card-background) 40%,
-      transparent
-    );
+  .page-islands .card {
+    background-color: color-mix(in srgb, var(--card-background) 40%, transparent);
     backdrop-filter: blur(12px);
-    border: 0.6px var(--card-border) solid;
-    padding: 1rem;
   }
 }
 
-/* .projects {
-  padding: 1.5rem !important;
-} */
-
-/* .projects h1 {
-  margin-bottom: 2rem;
-  font-size: 1.75rem;
-} */
-
-@media (max-width: 576px) {
-  .main-content {
+@media (max-width: 1024px) {
+  .page-islands {
     display: flex;
     flex-direction: column;
+  }
+}
+
+@media (max-width: 576px) {
+  .page-islands {
     padding: 1.25rem;
-    gap: 1.25rem;
-    margin-top: 0rem;
   }
 
-  .social-section footer {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-  .content-area > div {
-    background-color: rgba(0, 0, 0, 0);
+  .page-islands .card {
+    background: transparent;
     backdrop-filter: none;
     border: none;
     padding: 0;
   }
-
-  /* .projects {
-    padding: 1rem !important;
-  } */
-
-  /* .projects h1 {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-  } */
 }
 
 /* Footer links styling */

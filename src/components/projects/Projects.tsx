@@ -197,7 +197,7 @@ const otherProjects = [
 
 export default function Projects() {
   return (
-			<div className="projects">
+			<div className="projects card">
 			    <h2>stuff ive done :ooo</h2>
 
 				<CollapsibleSection title="hackathons" defaultOpen={true}>

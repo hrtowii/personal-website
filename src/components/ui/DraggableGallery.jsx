@@ -298,7 +298,7 @@ const DraggableImages = ({ albums }) => {
 
 function DraggableGallery({ albums }) {
   return (
-			<div className="rices">
+			<div className="rices card">
 			    <h2>rice field</h2>
 			    <p>drag them around!</p>
 			    <DraggableImages albums={albums} />

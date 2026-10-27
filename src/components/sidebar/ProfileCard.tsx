@@ -17,7 +17,7 @@ const ProfileCard: React.FC = () => {
 
 
   return (
-      <div className="profile-section">
+      <div className="profile-section card">
         <div className="pfp_wrapper">
           <img
             className="pfp_glow"

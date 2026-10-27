@@ -1,11 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Sidebar from '../components/sidebar/Sidebar';
+import ProfileCard from '../components/sidebar/ProfileCard';
+import MusicCard from '../components/sidebar/MusicCard';
+import LinksCard from '../components/sidebar/LinksCard';
+import BlogCard from '../components/sidebar/BlogCard';
+import WebringCard from '../components/sidebar/WebringCard';
+import StatsCard from '../components/sidebar/StatsCard';
+import WebtilesCard from '../components/sidebar/WebtilesCard';
 import './index.css'
 import DraggableGallery from '../components/ui/DraggableGallery';
 import { getCollection } from "astro:content";
 import AboutIntro from "../components/ui/AboutIntro.astro";
 import AboutHobbies from "../components/ui/AboutHobbies.astro";
+import AboutGames from "../components/ui/AboutGames.astro";
 import Projects from "../components/projects/Projects";
 import GitHubActivity from "../components/ui/GitHubActivity";
 const albums = await getCollection("albums");
@@ -27,18 +34,23 @@ const blogPosts = (await getCollection("blog"))
 ---
 
 <Layout title="htrowii's website">
-	<div class="main-content">
-		<Sidebar blogPosts={blogPosts} client:load />
-
-		<div class="content-area">
-			<AboutIntro />
-			<AboutHobbies />
-			<div class="github-card">
-				<GitHubActivity client:load />
-			</div>
-			<Projects client:load />
-
-			<DraggableGallery albums={iosAlbums} client:load />
+	<div class="page-islands">
+		<ProfileCard client:load />
+		<AboutIntro />
+		<Projects client:load />
+		<AboutHobbies />
+		<AboutGames />
+		<MusicCard client:load />
+		<LinksCard />
+		<BlogCard blogPosts={blogPosts} />
+		<div class="community">
+			<WebringCard />
+			<StatsCard client:load />
+			<!-- <WebtilesCard /> -->
 		</div>
+		<div class="github-card card">
+			<GitHubActivity client:load />
+		</div>
+		<DraggableGallery albums={iosAlbums} client:load />
 	</div>
 </Layout>

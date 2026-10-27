@@ -1,28 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./RecentlyPlayed.css";
 import MarqueeText from "./MarqueeText.tsx";
 
-const LASTFM_USER = "htrowii";
-const LASTFM_API_KEY = "7a6a9d9af3a543d82266d8f0ff110f2c";
-const CACHE_KEY = "lastfmRecentCache";
-const CACHE_HITS = 3;
-
-interface LastfmTrack {
+export interface LastfmTrack {
 	name: string;
 	url: string;
 	artist: { "#text": string };
-	image: { size: string; "#text": string }[];
+	image?: { size: string; "#text": string }[];
 	"@attr"?: { nowplaying?: string };
 }
 
-interface LastfmCache {
-	tracks: LastfmTrack[];
-	nowPlaying: LastfmTrack | null;
-	hits: number;
-}
-
 function LastfmTrackRow({ track }: { track: LastfmTrack }) {
-	const artUrl = track.image.find((img) => img.size === "medium")?.["#text"];
+	const artUrl = track.image?.find((img) => img.size === "medium")?.["#text"];
 	return (
 		<div className="track_row">
 			{artUrl && (
@@ -62,66 +51,8 @@ function LastfmTrackRow({ track }: { track: LastfmTrack }) {
 	);
 }
 
-export default function RecentlyPlayed() {
-	const [tracks, setTracks] = useState<LastfmTrack[] | null>(null);
-	const [nowPlaying, setNowPlaying] = useState<LastfmTrack | null>(null);
+export default function RecentlyPlayed({ tracks }: { tracks: LastfmTrack[] }) {
 	const [open, setOpen] = useState(true);
-
-	useEffect(() => {
-		if (!LASTFM_API_KEY) {
-			return;
-		}
-
-		const url = `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${encodeURIComponent(
-			LASTFM_USER
-		)}&api_key=${encodeURIComponent(LASTFM_API_KEY)}&format=json&limit=10`;
-
-		const fetchTracks = async () => {
-			try {
-				const res = await fetch(url);
-				if (!res.ok) throw new Error(`Last.fm API error: ${res.status}`);
-				const data = await res.json();
-				const rawTracks: LastfmTrack[] = data?.recenttracks?.track ?? [];
-
-				if (!rawTracks.length) {
-					return;
-				}
-
-				const playing =
-					rawTracks[0]?.["@attr"]?.nowplaying === "true" ? rawTracks[0] : null;
-				const tracks = playing ? rawTracks.slice(1) : rawTracks;
-				setNowPlaying(playing);
-				setTracks(tracks);
-				localStorage.setItem(
-					CACHE_KEY,
-					JSON.stringify({ tracks, nowPlaying: playing, hits: 0 })
-				);
-			} catch {
-			}
-		};
-
-		let cache: LastfmCache | null = null;
-		try {
-			const raw = localStorage.getItem(CACHE_KEY);
-			cache = raw ? (JSON.parse(raw) as LastfmCache) : null;
-		} catch {
-		}
-
-		if (cache && (cache.tracks?.length || cache.nowPlaying)) {
-			if (cache.hits < CACHE_HITS) {
-				setNowPlaying(cache.nowPlaying);
-				setTracks(cache.tracks);
-				localStorage.setItem(
-					CACHE_KEY,
-					JSON.stringify({ ...cache, hits: cache.hits + 1 })
-				);
-			} else {
-				fetchTracks();
-			}
-		} else {
-			fetchTracks();
-		}
-	}, []);
 
 	return (
 		<div className="music_dropdown">
